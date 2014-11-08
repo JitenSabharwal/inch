@@ -41,7 +41,7 @@ function refresh()
 
   if(sl=="&po=click&wo=create")
 
-    window.location="ps_page.php?op=quotation&search=click";
+   // window.location="ps_page.php?op=quotation&search=click";
 }
 
 </script>
@@ -328,7 +328,7 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po'
 ?>
 
   <div class="wo_po" align="center">
-  <form name="form5" method="post" action="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['pn'];?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create" onSubmit="return confirm();">
+  <form name="form5" method="post" action="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['pn'];?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create">
     <p>Vendor Name : <input type="text" placeholder="Vendor Name" name="vendor_name"> Contact No : <input type="text" placeholder="Contact No" name="contact_no"></p>
 	
 	<table width="700" class="table-bordered">
@@ -344,10 +344,15 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po'
 
 
   <?php
-    include 'dynamic_textfield1.php';
+  if($_SESSION['order']=="wo")
+    {
+      include 'dynamic_textfield1.php';
+    }
    ?>
 </p>
+
     <input name="wo_po_submit" type="submit" class="style3" value="Submit" />
+    
   </form>
 
 
@@ -369,6 +374,7 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click'  && @$_REQUEST['po
       }
       else
       {
+         include 'update.php';
          echo "<script>alert('stage table updated');</script>";
          
       }

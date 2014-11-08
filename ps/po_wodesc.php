@@ -43,6 +43,7 @@ while($row=mysqli_fetch_array($result1))
 		  displaydetail();
   	}
  }
+ $_SESSION['order']="wo";
 }
 while($row=mysqli_fetch_array($result2))
 {
@@ -50,14 +51,16 @@ while($row=mysqli_fetch_array($result2))
   {
     	if(strcmp($row['po_prid'], $_SESSION['prid'])==0)
           {
-                $_SESSION['desc']=@$row['wo_wodesc'];
-                $_SESSION['quantity']=@$row['wo_woquantity'];
+                           
+                $_SESSION['desc']=  $row['po_podesc'];
+                $_SESSION['quantity']=$row['po_poquantity'];
           	    $_SESSION['rate']=$row['po_porate'];
     		        $_SESSION['total']=$row['po_porate']*$row['po_poquantity'];
     		if(isset( $_SESSION['desc']))
         displaydetail();
     	 }
-  }     
+  }
+  $_SESSION['order']="po";     
 }
 
 ?>

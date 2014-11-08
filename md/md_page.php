@@ -531,18 +531,6 @@ else
 </form>
 <?php
 //here the code for stages.................
-if ($_REQUEST['status']=='stage') 
-{
-  
-  if(@$_REQUEST['approval']=='Approval')
-   {
-      include 'stage_approval.php';
-   }
-   elseif(@$_REQUEST['reject']=='Reject')
-   {
-      include 'stage_reject.php';
-   }
-}
 }
 ?>
 </div>

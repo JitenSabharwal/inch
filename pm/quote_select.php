@@ -112,7 +112,7 @@ while($row=mysqli_fetch_array($result))
 		<td><?php echo @$_SESSION['c1'];?></td>
 		<td><?php echo @$_SESSION['c2'];?></td>
 		<td><?php echo @$_SESSION['c3'];?></td>
-		<td><textarea name="Reject_comment" cols="50" rows="4" maxlength="200" placeholder="Comment Here"></textarea></td>
+		<td><textarea name="A_comment" cols="50" rows="4" maxlength="200" placeholder="Comment Here"></textarea></td>
 	</tr>
 	
 	<tr>
