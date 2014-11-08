@@ -32,6 +32,22 @@ function confirm1()
 }
 function confirm2()
 {
+   var x=document.getElementById('myTable').rows.length;
+for (i=1;i<x;i++)
+ {
+  
+if(document.forms["form5"]["description-"+i].value=="")
+{
+alert("Please Enter The Description in row "+i);
+return false;
+}
+else if(document.forms["form5"]["percentage-"+i].value=="")
+{
+alert("Please Enter The percentage value in row "+i);
+return false;
+
+}
+}
   if(confirm("Are you Sure You want to continue!"))
     {
       return true;
@@ -342,7 +358,7 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po'
   <form name="form5" method="post" action="st_in_status.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['pn'];?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create" onSubmit="return confirm2()">
     <p>Vendor Name : <input type="text" placeholder="Vendor Name" name="vendor_name"> Contact No : <input type="text" placeholder="Contact No" name="contact_no"></p>
 	
-	<table width="700" class="table-bordered">
+	<table width="700" class="table-bordered" id="mytable">
   <tr>
     <td>Sno</td>
     <td>Description</td>
@@ -355,9 +371,13 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po'
 
 
   <?php
+<<<<<<< HEAD
   $w=substr($_REQUEST['or'],0,1);
 
   if($w=="W")
+=======
+  if(1)
+>>>>>>> f285d2c46df2c24dc3d2a04d96db85fe7d4fb80c
     {
       include 'dynamic_textfield1.php';
     }

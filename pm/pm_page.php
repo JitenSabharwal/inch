@@ -66,18 +66,23 @@ function refresh(){
 
 function validate_form1()
 {
-for (i=1;i<=$('#num_cat').val();i++) {
+  var x=document.getElementById('myTable').rows.length;
+for (i=1;i<x;i++)
+ {
+  
 if(document.forms["form4"]["description-"+i].value=="")
 {
-alert("Please Enter The Description");
+alert("Please Enter The Description in row "+i);
 return false;
 }
 else if(document.forms["form4"]["quantity-"+i].value=="")
 {
-alert("Please Enter The Quantity");
+alert("Please Enter The Quantity in row "+i);
 return false;
+
 }
 }
+
 if(confirm("Are you Sure You want to continue?"))
 {
   return true;
