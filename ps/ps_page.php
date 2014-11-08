@@ -29,6 +29,17 @@ function confirm1()
       return false;
     }
   }
+}
+function confirm2()
+{
+  if(confirm("Are you Sure You want to continue!"))
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
 }   
 </script>
 
@@ -41,7 +52,7 @@ function refresh()
 
   if(sl=="&po=click&wo=create")
 
-   // window.location="ps_page.php?op=quotation&search=click";
+   window.location="ps_page.php?op=quotation&search=click";
 }
 
 </script>
@@ -328,7 +339,7 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po'
 ?>
 
   <div class="wo_po" align="center">
-  <form name="form5" method="post" action="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['pn'];?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create">
+  <form name="form5" method="post" action="st_in_status.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['pn'];?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create" onSubmit="return confirm2()">
     <p>Vendor Name : <input type="text" placeholder="Vendor Name" name="vendor_name"> Contact No : <input type="text" placeholder="Contact No" name="contact_no"></p>
 	
 	<table width="700" class="table-bordered">
@@ -365,20 +376,6 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po'
 ?>
 <?php
 
-if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click'  && @$_REQUEST['po']=='click' && @$_REQUEST['wo']=='create')
-{
-   include 'stage.php'; 
-    if(empty($insert))
-      {
-        echo "failed";
-      }
-      else
-      {
-         include 'update.php';
-         echo "<script>alert('stage table updated');</script>";
-         
-      }
-}
 if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click'  && @$_REQUEST['po']=='click')
 {
 

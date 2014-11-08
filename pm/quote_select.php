@@ -1,14 +1,14 @@
 <br>
 <br>
 
-<table width="700" border="1">
+<table width="800" border="3">
     <tr>
-      <td>Project Name </td>
-      <td>Description</td>
-      <td>Quantity</td>
-      <td>Quote1</td>
-      <td>Quote2</td>
-      <td>Quote3</td>
+      <th>Project Name </th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Quote1</th>
+      <th>Quote2</th>
+      <th>Quote3</th>
     </tr>
  
 <?php
@@ -92,7 +92,7 @@ while($row=mysqli_fetch_array($result))
 <br>
 <div>
 	
-<form name="formc" method="POST" action="quote_finalize.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_REQUEST['or']; ?>&po=click&wo=create&in=insert&st=quote" onsubmit="return confirm1();">
+<form name="formc" method="POST" action="quote_finalize.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_REQUEST['or']; ?>&po=click&wo=create&in=insert&st=quote" onsubmit="return confirm5();">
 <table width="700" border="3" cellspacing="10" style="text-align:center">
 	<tr>
 		<th>
@@ -124,6 +124,9 @@ while($row=mysqli_fetch_array($result))
 		
 	</tr>	
 </table>
+<br>
+
+
 <input type="submit"/>		
 </form>
 	</div>
@@ -135,9 +138,9 @@ while($row=mysqli_fetch_array($result))
 //}
 ?>
 <script>
-function confirm1()
+function confirm5()
 {	
-	if(document.formc.Reject_comment.value=='')
+	if(document.formc.A_comment.value=='')
 		{
 			alert('Please Enter the Comment!')
 			return false;
@@ -155,5 +158,8 @@ function confirm1()
 		{
 		  return false;
 		}
+		
+		alert('vhhh');
+		return true;
 }		
 </script>

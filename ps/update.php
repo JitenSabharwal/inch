@@ -10,7 +10,7 @@ $id=$_REQUEST['or'];
          	if($row['wo_wocid']==$_REQUEST['or'])
          	{
          		  $up=mysqli_query($con,"UPDATE orders SET or_status='WO Created(PM Approval)' WHERE or_wopo_cid='$id'");
-       
+                         
          	}
          }
           while($row=mysqli_fetch_array($result1))

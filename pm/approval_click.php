@@ -23,8 +23,7 @@ function display_project1()//function to display the table values
 while($row=mysqli_fetch_array($result))
   {
       if(strcmp($row['or_prjname'],@$_REQUEST['pn'])==0)
-      {
-      	
+      {      	
                           	if(strcmp($row['or_wopo_cid'],@$_REQUEST['or'])==0)	
 	                          {
 		                              $_SESSION['project_name'] =$row['or_prjname'];     

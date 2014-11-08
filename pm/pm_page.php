@@ -278,7 +278,7 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click')
   
   include 'approval_table.php';
 }
-elseif(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
+if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
 {
      include 'approval_click.php';
 }
@@ -361,7 +361,7 @@ if(@$_REQUEST['op']=='overview' && @$_REQUEST['search']=='click' && @$_REQUEST['
   </tr>
           
 </table>
-
+<br>
 <input type="submit" name="submit" value="Submit" id="submit" style="display:none;"/>
 
 </div>
