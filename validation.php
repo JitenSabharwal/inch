@@ -19,6 +19,7 @@ $result=mysqli_query($con,"Select * from usx_user");
                 if(strcmp($row['us_active'],$_POST['pass'])==0)
                 {	
                 	$x=1;
+                    $_SESSION['usid']=$row['us_usid']; 
                     $_SESSION['Employee']=$row['us_fname']." ".$row['us_lname'];
                     echo $_SESSION['Employee'];
                     //$role=mysqli_query($con,"Select us_pi,us_pm,us_si,us_md,us_ps,us_fs from usx_user where us_usid")        

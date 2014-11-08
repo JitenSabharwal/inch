@@ -7,6 +7,7 @@ $resultw=mysqli_query($con,"SELECT * from wok_order");
 $resultp=mysqli_query($con,"SELECT * from  pod_order");
 ########################################
 $com=$_REQUEST['A_comment'];
+echo $com;
 while ($row=mysqli_fetch_array($resultw))
 {
 	if(strcmp($row['wo_wocid'],$_REQUEST['or'])==0)
@@ -128,5 +129,5 @@ if(strcmp($_SESSION['quote'],"Reject All")==0)
 	$up_status=mysqli_query($con,"UPDATE orders SET or_status='Request for quotes' WHERE or_wopo_cid='$x'");
 	
 }
-header ("location:pm_page.php?op=approval");
+//header ("location:pm_page.php?op=approval");
 ?>

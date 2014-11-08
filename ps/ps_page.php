@@ -355,7 +355,9 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po'
 
 
   <?php
-  if($_SESSION['order']=="wo")
+  $w=substr($_REQUEST['or'],0,1);
+
+  if($w=="W")
     {
       include 'dynamic_textfield1.php';
     }

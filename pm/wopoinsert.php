@@ -1,4 +1,6 @@
 <?php
+session_start();
+include 'connection.php';
 //echo "working";
 #####################################
 $result=mysqli_query($con,"SELECT * from stg_stage");
@@ -50,4 +52,5 @@ else if(@$_REQUEST['Rejectwopo']=="Reject")
 echo "<script>alert('Tables Updated');</script>";
 	
 }
+header("location:pm_page.php?op=approval&search=click");
 ?>

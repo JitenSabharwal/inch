@@ -159,7 +159,6 @@ function confirm5()
 		  return false;
 		}
 		
-		alert('vhhh');
-		return true;
+		
 }		
 </script>

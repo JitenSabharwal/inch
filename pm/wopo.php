@@ -2,6 +2,11 @@
 &nbsp;
 <br>
 <br>
+<?php 
+$w=substr($_REQUEST['or'],0,1);
+if($w=='W')
+{	
+?>
 <table width="700" border="1">
   <tr>
     <td>Stage id</td>
@@ -49,13 +54,14 @@ while($row1=mysqli_fetch_array($result2))
 			}
 		}
 }
+}
 ?>
 </table>
 &nbsp;
 &nbsp;
 
-<form method="POST" action="pm_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_REQUEST['pn']; ?>&or=<?php echo $_SESSION['order'];?>&st=insert">
+<form method="POST" action="wopoinsert.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_REQUEST['pn']; ?>&or=<?php echo $_SESSION['order'];?>&st=insert">
      
-    <input type="submit" value="Approve" name="Approvalwopo">&nbsp;&nbsp;&nbsp; 
+    <input type="submit" value="Approve" name="Approvalwopo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
     <input type="submit" value="Reject" name="Rejectwopo">
 </form>  
