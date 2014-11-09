@@ -31,16 +31,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 			  	
 
                   $pid=$_SESSION['project_id'];
-                  //echo $pid;
-			  	  $w= $_SESSION['wo_id'];
+                  $w= $_SESSION['wo_id'];
 			  	  $wc= $_SESSION['wo_cid'];
 			  	  $p= $_SESSION['po_id'];
 			  	  $pc= $_SESSION['po_cid'];		
-			  	  //echo $w;
-			  	  //echo $wc;
-			  	  //echo $p;
-			  	  //echo $pc
-				  $i=$_SESSION['SNo'];
+			  	  $i=$_SESSION['SNo'];
 				  $description=$_REQUEST['description-'.$j];
 				  $quality=$_REQUEST['quantity-'.$j];
 				  $type=$_REQUEST['work_type-'.$j];
@@ -52,14 +47,14 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 				  		{
 				  			//echo "working";
 				  			$check=1;
-				  			$inserting=mysqli_query($con,"INSERT INTO wok_order(wo_woid,wo_wocid,wo_wonum,wo_prid,wo_wodesc,wo_woquantity,wo_pspost) VALUES('$w','$wc','$c','$pid','$description','$quality','$type')");
+				  			$inserting=mysqli_query($con,"INSERT INTO wok_order(wo_woid,wo_wocid,wo_psdate,wo_wonum,wo_prid,wo_wodesc,wo_woquantity,wo_pspost) VALUES('$w','$wc',CURDATE(),'$c','$pid','$description','$quality','$type')");
 				  	//		$insert=mysqli_query($con,);
 					  	}
 					  	else
 					  	{
 					  		$check=1;
 					  		//echo "working";
-					  		$inserting=mysqli_query($con,"INSERT INTO pod_order(po_poid,po_pocid,po_prid,po_podesc,po_poquantity,po_pspost) VALUES('$p','$pc','$pid','$description','$quality','$type')");	
+					  		$inserting=mysqli_query($con,"INSERT INTO pod_order(po_poid,po_pocid,po_psdate,po_prid,po_podesc,po_poquantity,po_pspost) VALUES('$p','$pc',CURDATE(),'$pid','$description','$quality','$type')");	
 					  	}
 					  
 					  if(empty($inserting))

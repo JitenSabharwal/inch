@@ -27,10 +27,12 @@ function displayq()
 <?php
 }
 #########################
-$result=mysqli_query($con,"SELECT * from qut_quote");
-$result1=mysqli_query($con,"SELECT * from wok_order");
-$result2=mysqli_query($con,"SELECT * from pod_order");
+$result=mysqli_query($con,"SELECT * from qut_quote a,ven_vendor b WHERE a.qu_venid=b.ve_veid ");
+$result1=mysqli_query($con,"SELECT * from wok_order ");
+$result2=mysqli_query($con,"SELECT * from pod_order ");
 $result3=mysqli_query($con,"SELECT * from orders");
+$result4=mysqli_query($con,"SELECT * from prj_project");
+
 #########################
 while($row=mysqli_fetch_array($result3))
 {
@@ -69,23 +71,6 @@ while($row=mysqli_fetch_array($result2))
 		displayq();
 	}		
 }
-while($row=mysqli_fetch_array($result))
-{
-	
-	if($row['qu_quid']==$_SESSION['id1'])
-	{
-		$_SESSION['c1']=$row['qu_picomment'];
-
-	}
-	if($row['qu_quid']==$_SESSION['id2'])
-	{
-		$_SESSION['c2']=$row['qu_picomment'];
-	}
-	if($row['qu_quid']==$_SESSION['id3'])
-	{
-		$_SESSION['c3']=$row['qu_picomment'];
-	}
-}
 ?>
 </table>
 <br>
@@ -93,28 +78,86 @@ while($row=mysqli_fetch_array($result))
 <div>
 	
 <form name="formc" method="POST" action="quote_finalize.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_REQUEST['or']; ?>&po=click&wo=create&in=insert&st=quote" onsubmit="return confirm5();">
+<h3>Comments</h3>
 <table width="700" border="3" cellspacing="10" style="text-align:center">
 	<tr>
 		<th>
-			Quote1
+			Quote
+		</th>
+		<th> 
+			Name
 		</th>
 		<th>
-			Quote2
+			Designation
 		</th>
 		<th>
-			Quote3
+			Vendor Name
 		</th>
 		<th>
-			Reject
+			Contact
 		</th>
+		<th>
+			Quote comments by Pi
+		</th>
+		
 	</tr>
-	<tr>
-		<td><?php echo @$_SESSION['c1'];?></td>
-		<td><?php echo @$_SESSION['c2'];?></td>
-		<td><?php echo @$_SESSION['c3'];?></td>
-		<td><textarea name="A_comment" cols="50" rows="4" maxlength="200" placeholder="Comment Here"></textarea></td>
+<?php
+$_SESSION['j']=1;
+ function display_quotes()
+	{
+		?>
+		<tr>
+		<td><?php echo "Quote".$_SESSION['j'];?></td>	
+		<td><?php echo @$_SESSION['name'];?></td>
+		<td><?php echo "Pi";?></td>
+		<td><?php echo @$_SESSION['vname'];?></td>
+		<td><?php echo @$_SESSION['contact1'];?></td>
+		<td><?php echo @$_SESSION['c'];?></td>
+		<!--td><textarea name="A_comment" cols="50" rows="4" maxlength="200" placeholder="Comment Here"></textarea></td-->
 	</tr>
+	<?php
+	$_SESSION['j']++;
+	}
+	while($row=mysqli_fetch_array($result))
+	{
 	
+			if($row['qu_quid']==$_SESSION['id1'])
+			{
+				$_SESSION['c']=$row['qu_picomment'];
+				$_SESSION['vname']=$row['ve_vname'];
+				$_SESSION['contact1']=$row['ve_contact1'];
+				while($rowp=mysqli_fetch_array($result4))
+				{
+					if($rowp['pr_prname']==$_REQUEST['pn'])
+					{
+						$_SESSION['name']=$rowp['pr_pi'];	
+					}
+				}
+				display_quotes();
+			}
+			if($row['qu_quid']==$_SESSION['id2'])
+			{
+				$_SESSION['c']=$row['qu_picomment'];
+				$_SESSION['vname']=$row['ve_vname'];
+				$_SESSION['contact1']=$row['ve_contact1'];
+				display_quotes();
+			}
+			if($row['qu_quid']==$_SESSION['id3'])
+			{
+				$_SESSION['c']=$row['qu_picomment'];
+				$_SESSION['vname']=$row['ve_vname'];
+				$_SESSION['contact1']=$row['ve_contact1'];
+				display_quotes();
+			}
+			
+	}
+
+	?>
+</table>
+<br>
+<br>
+<h3>Selection </h3>
+<table border=2 width=400>	
 	<tr>
 		
 		<th><input type="radio" name="quote" id="1" value="Quote1">Quote1 </th>
@@ -130,13 +173,6 @@ while($row=mysqli_fetch_array($result))
 <input type="submit"/>		
 </form>
 	</div>
-<?php
-//if(isset($_REQUEST['quote']))
-//{
-	//include 'quote_finalize.php';
-	//echo "wocsssss";
-//}
-?>
 <script>
 function confirm5()
 {	

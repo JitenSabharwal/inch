@@ -29,8 +29,8 @@ while($row=mysqli_fetch_array($result))
       	//echo @$_REQUEST['pn'];
               $_SESSION['project_name'] =$_REQUEST['pn'];
               $_SESSION['project_id']   =$row['pr_prid'];
-              $_SESSION['status']       =$row['pr_prnotes'];
-              $_SESSION['date']         =$row['pr_adtm'];
+              $_SESSION['status']       ="Request for quotes";
+              $_SESSION['date']         =$row['pr_odate'];
               $_SESSION['order']        =$_REQUEST['or'];
               display_project(); 
          

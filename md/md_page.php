@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
@@ -94,7 +97,8 @@ $(window).load(function(){
 <?php 
 //session_start();
 
-$_SESSION['emp_name']="Garvit";
+
+$md=$_SESSION['Employee'];
 $_SESSION['desig']="managing director";
 
 
@@ -102,7 +106,7 @@ if($_REQUEST['op']=='new_project' && @$_REQUEST['new']=='click')
 {
   include 'connection.php';
 
-  $p_name=$_REQUEST['project_name'];
+ $p_name=$_REQUEST['project_name'];
  $pm=$_REQUEST['pm_list'];
  $pi=$_REQUEST['pi_list'];
  $ps=$_REQUEST['ps_list'];
@@ -113,7 +117,7 @@ if($_REQUEST['op']=='new_project' && @$_REQUEST['new']=='click')
 
 echo "<script>alert('The Project Id is $id_no')</script>";
 
-  $sql=mysqli_query($con,"INSERT INTO prj_project(pr_prid,pr_prname,pr_pm,pr_pi,pr_ps,pr_fs,pr_si) VALUES('$id_no','$p_name','$pm','$pi','$ps','$fs','$si')");
+  $sql=mysqli_query($con,"INSERT INTO prj_project(pr_prid,pr_prname,pr_odate,pr_md,pr_pm,pr_pi,pr_ps,pr_fs,pr_si) VALUES('$id_no','$p_name',CURDATE(),'$md','$pm','$pi','$ps','$fs','$si')");
   if(empty($sql))
   {
     echo "error";
@@ -172,7 +176,7 @@ body {
   <div class="header" align="center">
   <table width="700" class="table table-bordered">
     <tr>
-      <td width="342">Employee Name : <?php echo $_SESSION['emp_name']; ?></td>
+      <td width="342">Employee Name : <?php echo $_SESSION['Employee']; ?></td>
       <td width="342" id="demo"> 
 <script>
 var d = new Date();
