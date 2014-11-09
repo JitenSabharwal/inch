@@ -371,13 +371,10 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po'
 
 
   <?php
-<<<<<<< HEAD
+
   $w=substr($_REQUEST['or'],0,1);
 
   if($w=="W")
-=======
-  if(1)
->>>>>>> f285d2c46df2c24dc3d2a04d96db85fe7d4fb80c
     {
       include 'dynamic_textfield1.php';
     }

@@ -1,4 +1,5 @@
 <?php
+//session_start();
 include 'connection.php';
 //$total=0;
 $_SESSION['j']=1;
@@ -45,7 +46,7 @@ while($row=mysqli_fetch_array($result1))
   	{
       if(strcmp($_REQUEST['or'],$row['wo_wocid'])==0)
       {
-      		if(strcmp($row['wo_prid'], $_SESSION['prid'])==0)
+      		if(strcmp(@$row['wo_prid'], $_SESSION['prid'])==0)
       		{
       			$_SESSION['desc']=$row['wo_wodesc'];
       			$_SESSION['quantity']=$row['wo_woquantity'];
@@ -53,7 +54,7 @@ while($row=mysqli_fetch_array($result1))
             //$_SESSION['vid']=@$row['wo_wovenid'];
             while($row1=mysqli_fetch_array($resultq))
             {
-              if($row['wo_quoteid']==$row1['qu_quid'])
+              if(@$row['wo_quoteid']==$row1['qu_quid'])
               {
                 $_SESSION['vid']=@$row1['qu_venid'];
               }
@@ -76,7 +77,7 @@ while($row=mysqli_fetch_array($result2))
               $_SESSION['rate']=$row['po_porate'];
              while($row1=mysqli_fetch_array($resultq))
             {
-              if($row['wo_quoteid']==$row1['qu_quid'])
+              if(@$row['wo_quoteid']==$row1['qu_quid'])
               {
                 $_SESSION['vid']=@$row1['qu_venid'];
               }
@@ -87,7 +88,7 @@ while($row=mysqli_fetch_array($result2))
     }  
  while($row=mysqli_fetch_array($resultv))
  {
-  if(strcmp($_SESSION['vid'],$row['ve_veid'])==0)
+  if(strcmp(@$_SESSION['vid'],$row['ve_veid'])==0)
   {
     $_SESSION['name']=$row['ve_vname'];
     $_SESSION['contact']=$row['ve_contact1'];

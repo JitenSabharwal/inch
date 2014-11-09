@@ -1,10 +1,11 @@
-<table width="700" border="1">
+<table width="700" border="2">
   <tr>
-    <td>Stage id</td>
-    <td>Work order</td>
-    <td>Description</td>
-    <td>Rate</td>
-    <td>Total</td>
+    <th>S.no</th>
+  <th>Description</th>
+  <th>Quantity</th>
+  <th>Rate</th>
+  <th>Total</th>
+
   </tr>
   <?php
 include 'connection.php';

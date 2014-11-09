@@ -132,7 +132,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
       <td>Project Name </td>
       <td>Project ID </td>
       <td>Status</td>
-      <td>Date</td>
+      
       <td>Order </td>
     </tr>
           
@@ -182,7 +182,7 @@ if(@$_REQUEST['wo']=='create')
   <div class="quote" align="center">
 <p>Quote</p>
 
-  <form name="form4" method="post" action="fs_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create" onsubmit="return confirm1();">
+  <form name="form4" method="post" action="ap_ho.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create" onsubmit="return confirm1();">
     <p>
       Vendor Name :<?php echo "<b>".@$_SESSION['name']."</b>";?>  
       Contact No : <?php echo "<b>".@$_SESSION['contact']."</b>";?>
@@ -216,15 +216,6 @@ if(@$_REQUEST['wo']=='create')
 
 <?php
 }
-}
-if(@$_REQUEST['quote_submit']=='Approve')
-{
-  
-  include 'approval.php';
-}
-else if(@$_REQUEST['quote_submit']=='Hold')
-{
-  include 'hold.php';
 }
 
 

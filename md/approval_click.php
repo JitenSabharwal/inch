@@ -8,7 +8,7 @@ function display_project1()//function to display the table values
       {
         ?>      
     <tr>
-      <td><a href="md_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_REQUEST['or'];?>&po=click">
+      <td><a href="md_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_REQUEST['or'];?>&po=click&status=<?php echo $_REQUEST['status'];?>">
       <?php 
       echo @$_SESSION['project_name']; 
       ?></a></td>
