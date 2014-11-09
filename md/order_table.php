@@ -35,8 +35,6 @@ $_SESSION['j']++;
 $result=mysqli_query($con,"SELECT * from prj_project");
 $result1=mysqli_query($con,"SELECT * from wok_order");
 $result2=mysqli_query($con,"SELECT * from pod_order");
-$resultv=mysqli_query($con,"SELECT * from ven_vendor");
-$resultq=mysqli_query($con,"SELECT * from qut_quote");
 ######################################################  
 
 while($row=mysqli_fetch_array($result))
@@ -59,52 +57,29 @@ while($row=mysqli_fetch_array($result1))
       			$_SESSION['desc']=$row['wo_wodesc'];
       			$_SESSION['quantity']=$row['wo_woquantity'];
             $_SESSION['rate']=$row['wo_worate'];
-            $_SESSION['fscom']=$row['wo_fscomment'];
-            //$_SESSION['vid']=@$row['wo_wovenid'];
-            while($row1=mysqli_fetch_array($resultq))
-            {
-              if($row['wo_quoteid']==$row1['qu_quid'])
-              {
-                $_SESSION['vid']=@$row1['qu_venid'];
-              }
-            }
+            $_SESSION['fscom']=$row['wo_fscomment'];  
             $_SESSION['total']=$row['wo_worate']*$row['wo_woquantity'];
             display();
       		}	
   	  }
    } 
 
-while($row=mysqli_fetch_array($result2))
+while($row1=mysqli_fetch_array($result2))
     {
-        if(strcmp($_REQUEST['or'], $row['po_pocid'])==0)
+        if($_REQUEST['or']==$row1['po_pocid'])
         {
-            if(strcmp($row['po_prid'], $_SESSION['prid'])==0)
+            if(strcmp($row1['po_prid'], $_SESSION['prid'])==0)
             {
-              $_SESSION['desc']=$row['po_podesc'];
-              $_SESSION['quantity']=$row['po_poquantity'];
+              $_SESSION['desc']=$row1['po_podesc'];
+              $_SESSION['quantity']=$row1['po_poquantity'];
               $_SESSION['order']=$_REQUEST['or'];
-              $_SESSION['rate']=$row['po_porate'];
-              $_SESSION['fscom']=$row['po_fscomment'];
-             while($row1=mysqli_fetch_array($resultq))
-            {
-              if($row['po_quoteid']==$row1['qu_quid'])
-              {
-                $_SESSION['vid']=@$row1['qu_venid'];
-              }
-            }
-             display();  
+              $_SESSION['rate']=$row1['po_porate'];      
+              $_SESSION['total']=$row1['po_porate']*$row1['po_poquantity'];    
+              display();  
             }
         }
-    }  
- while($row=mysqli_fetch_array($resultv))
- {
-  if(strcmp($_SESSION['vid'],$row['ve_veid'])==0)
-  {
-    $_SESSION['name']=$row['ve_vname'];
-    $_SESSION['contact']=$row['ve_contact1'];
-  }
- } 	
-  
+    }
+
 ?>
 </table>
 <br>

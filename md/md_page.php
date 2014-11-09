@@ -457,11 +457,16 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
     
     if(@$_REQUEST['status']=='funds')
       {
-
         include 'order_table.php';
         include 'quote_table.php';
+        $w=substr($_REQUEST['or'],0,1);
+        if($w=='W')
+             { 
+                 include 'stage_table.php';
+             }
+        include 'f_comment.php';     
 ?>
-            <form name="form3" method="post" action="Fund.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_REQUEST['or']?>" onsubmit="return val();">
+            <form name="form3" method="post" action="Fund.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_REQUEST['or']?>" onsubmit="return valf();">
             
                 <textarea rows="4" cols="50" name="MD_comment" placeholder="Comment here">
                 
@@ -496,8 +501,8 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
                     <th>
                       Comment
                     </th>   
-                  </tr-->
-                  <?php include 'comment.php'; ?>
+                  </tr>
+                  <?php include 'st_comment.php'; ?>
                 </table>
                 <br>
                 <br>
@@ -533,18 +538,20 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
 
 </body>
 <script type="text/javascript">
-function val () {
-  // body...
-  if(document.form3.MD_comment.value=='')
+function valf() 
+{
+   
+ if(document.form3.MD_comment.value=='')
   {
     alert('Please enter the comment');
     return false;
   }
 else
-  return true;
+    return true;
+  
 }
-
-function val1() {
+function val1() 
+{
   // body...
   if(document.form4.St_comment.value=='')
   {
