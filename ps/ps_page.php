@@ -211,15 +211,6 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
         <td width="612" height="33">Project Name : 
           <input type="text" placeholder="Project Name" name="project_name"></td>
         <td width="612"><label>
-              <!--select name="status" id="status">
-                <option value="">Choose</option>
-                <option value="Project created">Project created</option>
-                <option value="Request for quotation">Request for quotation</option>
-                <option value="Create quotation">Create quotation</option>
-                <option value="Quotation approval">Quotation approval</option>
-                <option value="WO created">WO created</option>
-                <option value="PO created">PO created</option>
-              </select-->
               </label>
           
           </td>
@@ -233,7 +224,10 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
 	</form>
   </div>
   
-  <?php }?>
+  <?php
+   }
+
+   ?>
 <div class="search_table" align="center" >
   <p>&nbsp;</p>
   <table width="700" class="table-bordered table-hover">
@@ -247,11 +241,11 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
     <?php 
     if($_REQUEST['op']=='quotation' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
     {
-      include 'clicktable.php';
+      include 'Project_table_click.php';
     }
     else if($_REQUEST['op']=='quotation' && @$_REQUEST['search']=='click')
     {
-      include 'another.php';
+      include 'Project_table.php';
     }
     if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
     {
@@ -276,121 +270,135 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
 <p>&nbsp;</p>
 
   <?php
+ ################################################################# Quotation ##################################################################################
+ 
   if($_REQUEST['op']=='quotation' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
   {
    
   
-  if(isset($_REQUEST['quote']))
-  {
-    if(@$_REQUEST['wo']=='create')
-    {
-      include 'quote.php';     
-    }  
+                    if(isset($_REQUEST['quote']))
+                    {
+                      if(@$_REQUEST['wo']=='create')
+                      {
+                        include 'quote.php';     
+                      }  
 
-    $quote_no=$_REQUEST['quote']+1;
-  }
-  else
-  {
-    $quote_no=1;
-  }
-  if($quote_no!=4)
-  {
-  ?>
-  
-  <div class="quote" align="center">
-<p>Quote<?php echo $quote_no; ?></p>
-  <form name="form4" method="post" action="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name'] ;?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create&quote=<?php echo $quote_no; ?>" onsubmit="return confirm1();">
-    <p>Vendor Name : <input type="text" placeholder="Vendor Name" name="vendor_name"> Contact No : <input type="text" placeholder="Contact No" name="contact_no"></p>
-	
-	<table width="700" class="table-bordered table-hover" id="desc">
-  <tr>
-    <td>Sno</td>
-    <td>Description</td>
-    <td>Quantity</td>
-    <td>Rate</td>
-    <td>Total</td>
-  </tr>
+                      $quote_no=$_REQUEST['quote']+1;
+                    }
+                    else
+                    {
+                      $quote_no=1;
+                    }
+                    if($quote_no!=4)
+                    {
+   ?>
+                    
+                    <div class="quote" align="center">
+                  <p>Quote<?php echo $quote_no; ?></p>
+                    <form name="form4" method="post" action="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name'] ;?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create&quote=<?php echo $quote_no; ?>" onsubmit="return confirm1();">
+                      <p>Vendor Name : <input type="text" placeholder="Vendor Name" name="vendor_name"> Contact No : <input type="text" placeholder="Contact No" name="contact_no"></p>
+                  	
+                  	<table width="700" class="table-bordered table-hover" id="desc">
+                    <tr>
+                      <td>Sno</td>
+                      <td>Description</td>
+                      <td>Quantity</td>
+                      <td>Rate</td>
+                      <td>Total</td>
+                    </tr>
    <?php include 'description.php'; ?>
- </table>
+                   </table>
 
-    <input name="quote_submit" type="submit" class="style3" value="Submit" />
-  </form>
+                      <input name="quote_submit" type="submit" class="style3" value="Submit" />
+                    </form>
 
 
 
-</div>
+                  </div>
 
-<?php
+   <?php
+                  }
+                  if($quote_no==4)
+                  {
+
+   ?>
+
+                  <div class="upload_box">
+                  <form name="fileUpload" id="fileUpload" action="javascript:void(0);" enctype="multipart/form-data">
+                  <div class="file_browser"><input type="file" name="multiple_files[]" id="_multiple_files" class="hide_broswe"  /></div>
+                  <div class="file_upload"><input type="submit" value="Upload" class="upload_button" /> </div>
+                  </form>
+                  </div>	
+
+
+                  <div class="file_boxes">
+
+                  </div>
+                  <span id="removed_files"></span>
+                  <br>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+
+
+
+
+ <?php
+                  }
 }
-if($quote_no==4)
-{
+################################################################# Quotation Over ##################################################################################
 
-?>
-
-<div class="upload_box">
-<form name="fileUpload" id="fileUpload" action="javascript:void(0);" enctype="multipart/form-data">
-<div class="file_browser"><input type="file" name="multiple_files[]" id="_multiple_files" class="hide_broswe"  /></div>
-<div class="file_upload"><input type="submit" value="Upload" class="upload_button" /> </div>
-</form>
-</div>	
-
-
-<div class="file_boxes">
-
-</div>
-<span id="removed_files"></span>
-<br>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-
-
-
-
-<?php
-}
-}
+ ################################################################# Wo/Po ##################################################################################
 
 if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
 {
 ?>
 
-  <div class="wo_po" align="center">
-  <form name="form5" method="post" action="st_in_status.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['pn'];?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create" onSubmit="return confirm2()">
-    <p>Vendor Name : <input type="text" placeholder="Vendor Name" name="vendor_name"> Contact No : <input type="text" placeholder="Contact No" name="contact_no"></p>
-	
-	<table width="700" class="table-bordered" id="mytable">
-  <tr>
-    <td>Sno</td>
-    <td>Description</td>
-    <td>Quantity</td>
-    <td>Rate</td>
-    <td>Total</td>
-  </tr>
- <?php include 'po_wodesc.php'; ?>
-</table>
+                  <div class="wo_po" align="center">
+                  <form name="form5" method="post" action="st_in_status.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['pn'];?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create" onSubmit="return confirm2()">
+                    
+                    <p>Vendor Name : <input type="text" placeholder="Vendor Name" name="vendor_name"> Contact No : <input type="text" placeholder="Contact No" name="contact_no"></p>
+                	
+                	<table width="700" class="table-bordered" id="mytable">
+                      <tr>
+                        <td>Sno</td>
+                        <td>Description</td>
+                        <td>Quantity</td>
+                        <td>Rate</td>
+                        <td>Total</td>
+                      </tr>
+
+  <?php include 'po_wodesc.php'; ?>
+                
+                </table>
 
 
   <?php
-  if(1)
-    {
-      include 'dynamic_textfield1.php';
-    }
+
+                  $w=substr($_REQUEST['or'],0,1);
+
+                  if($w=="W")
+                    {
+                      include 'dynamic_textfield1.php';
+                    }
    ?>
-</p>
+                </p>
 
-    <input name="wo_po_submit" type="submit" class="style3" value="Submit" />
-    
-  </form>
+                    <input name="wo_po_submit" type="submit" class="style3" value="Submit" />
+                    
+                  </form>
 
 
 
-</div>
+                </div>
 
 
 <?php
 }
+ ################################################################# Wo/Po Over ##################################################################################
+
 ?>
 <?php
+ ################################################################# Approval ##################################################################################
 
 if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click'  && @$_REQUEST['po']=='click')
 {
@@ -441,6 +449,8 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click'  && @$_REQUEST[
 </form>  
 <?php
 }
+ ################################################################# Approval Over ##################################################################################
+
 if(@$_REQUEST['com']=='comment')
 {
   if($_REQUEST['Approval']=='Approval')

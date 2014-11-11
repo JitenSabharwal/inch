@@ -7,6 +7,7 @@ $resultw=mysqli_query($con,"SELECT * from wok_order");
 $resultp=mysqli_query($con,"SELECT * from  pod_order");
 ########################################
 $com=$_REQUEST['A_comment'];
+echo $com;
 while ($row=mysqli_fetch_array($resultw))
 {
 	if(strcmp($row['wo_wocid'],$_REQUEST['or'])==0)

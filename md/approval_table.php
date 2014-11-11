@@ -28,7 +28,7 @@ $result1=mysqli_query($con,"SELECT * from orders");
           <?php 
                 echo $_SESSION['project_name']; 
                 }
-          if($_SESSION['status']=='No Funds' || $_SESSION['status'] =='WO(MD Approval)')
+          if($_SESSION['status']=='No Funds' || $_SESSION['status'] =='WO(MD Approval)'|| $_SESSION['status'] =='PO(MD Approval)')
                   {
           ?>
                <a href="md_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_SESSION['order']?>&po=click&status=funds">
@@ -70,6 +70,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
 			                        $_SESSION['order'] 		   =$row1['or_wopo_cid'];
 			                        display_project();//calling the function diaplay                          
                      		  }
+                          if(strcmp($row1['or_status'],'PO(MD Approval)')==0) 
+                            {
+                              $_SESSION['project_name'] =$row1['or_prjname'];
+                             // echo  $_SESSION['project_name'];    
+                              $_SESSION['project_id']   =$row1['or_prid'];
+                              $_SESSION['status']       =$row1['or_status'];
+                              $_SESSION['date']         =$row['pr_adtm'];
+                              $_SESSION['order']       =$row1['or_wopo_cid'];
+                              display_project();//calling the function diaplay                          
+                          }
                           		
                      			else if (strcmp($row1['or_status'],'No Funds')==0) 
                      			{

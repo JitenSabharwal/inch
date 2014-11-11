@@ -168,7 +168,7 @@ body {
     <td><div align="center"><a href="pm_page.php?op=approval">Approval</a></div></td>
   </tr>
    <tr>
-    <td><div align="center"><a href="pm_page.php?op=Approval">Stage Approval</a></div></td>
+    <td><div align="center"><a href="pm_page.php?op=ST_Approval">Stage Approval</a></div></td>
   </tr>
    <tr>
     <td><div align="center"><a href="../logout.php">Logout</a></div></td>
@@ -272,26 +272,25 @@ else if(@$_REQUEST['op']=='approval' || @$_REQUEST['stage']=='Approval')
 #######################     
 if(@$_REQUEST['op']=='overview' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
 {
-  include 'clicktable.php';
+  include 'Project_table_click.php';
 }
 else if(@$_REQUEST['op']=='overview' && @$_REQUEST['search']=='click')
 {
-     include 'another.php';
+     include 'Project_table.php';
 }
 if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click')
 {
-  
   include 'approval_table.php';
 }
 if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
 {
      include 'approval_click.php';
 }
-if(@$_REQUEST['op']=='Approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
+if(@$_REQUEST['op']=='ST_Approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
  {
     include 'stage_click.php';  
  }
- elseif (@$_REQUEST['op']=='Approval' && @$_REQUEST['search']=='click') 
+ elseif (@$_REQUEST['op']=='ST_Approval' && @$_REQUEST['search']=='click') 
  {
     include 'stage_table.php';    
  }
@@ -301,6 +300,8 @@ if(@$_REQUEST['op']=='Approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
   </table> 
 <?php   
 ###############################
+################################################################ OVERVIEW  ################################################################################
+
 if(@$_REQUEST['op']=='overview' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
 {
 ?>
@@ -314,33 +315,33 @@ if(@$_REQUEST['op']=='overview' && @$_REQUEST['search']=='click' && @$_REQUEST['
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
             if(is_dir($path))
             {
-            $files_count= count(glob("$path./*"));
+                 $files_count= count(glob("$path./*"));
 
   ?>
  
-<div id="container">
-<ul>
-          <?php
-            if($dir_list=@opendir($path))
-            {
-              while (($filename = readdir($dir_list)) !== false) {
-              $ex=strtolower(end(explode('.', $filename)));
+                  <div id="container">
+                  <ul>
+<?php
+                              if($dir_list=@opendir($path))
+                              {
+                                while (($filename = readdir($dir_list)) !== false) {
+                                $ex=strtolower(end(explode('.', $filename)));
 
-              if(in_array($ex, $file_display)==true)
-              {
+                                if(in_array($ex, $file_display)==true)
+                                {
 
-            echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
-              }
+                              echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
+                                }
+                              }
+                            }
+                         
+                              
+?>
+                        </ul>
+                        <span class="button prevButton"></span>
+                        <span class="button nextButton"></span></div>
+<?php
             }
-          }
-       
-            
-            ?>
-      </ul>
-      <span class="button prevButton"></span>
-      <span class="button nextButton"></span></div>
-      <?php
-}
 
 ?>
 
@@ -377,13 +378,37 @@ if(@$_REQUEST['op']=='overview' && @$_REQUEST['search']=='click' && @$_REQUEST['
   @include 'insertion.php';
 
 }
-if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
+################################################################ OVERVIEW OVER ################################################################################
+
+################################################################ Funds Approval  ################################################################################
+     
+      ################################# Quote ########################################
+
+if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click' && @$_REQUEST['st']=='quote')
 {
 include 'quote_select.php';
 }
+
+        ################################# Quote Over ########################################
+  
+        ################################# Wo/Po  ########################################
+  
+if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click' && @$_REQUEST['st']=='wopo')
+{
+  include 'wopo.php';
+}
+
+        ################################# Wo/Po OVER ########################################
+
+
+################################################################ Approval OVER  ################################################################################
+
 ?>
 <?php
-if(@$_REQUEST['op']=='Approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
+
+################################################################ Stage Approval  ################################################################################
+
+if(@$_REQUEST['op']=='ST_Approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
 {
 
  ?>
@@ -455,6 +480,8 @@ if(@$_REQUEST['op']=='Approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
 </form>  
 <?php
 }
+################################################################ Stage Approval OVER ################################################################################
+
 ?>
 </div>
 </div>

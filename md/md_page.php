@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
@@ -94,7 +97,8 @@ $(window).load(function(){
 <?php 
 //session_start();
 
-$_SESSION['emp_name']="Garvit";
+
+$md=$_SESSION['Employee'];
 $_SESSION['desig']="managing director";
 
 
@@ -102,7 +106,7 @@ if($_REQUEST['op']=='new_project' && @$_REQUEST['new']=='click')
 {
   include 'connection.php';
 
-  $p_name=$_REQUEST['project_name'];
+ $p_name=$_REQUEST['project_name'];
  $pm=$_REQUEST['pm_list'];
  $pi=$_REQUEST['pi_list'];
  $ps=$_REQUEST['ps_list'];
@@ -113,7 +117,7 @@ if($_REQUEST['op']=='new_project' && @$_REQUEST['new']=='click')
 
 echo "<script>alert('The Project Id is $id_no')</script>";
 
-  $sql=mysqli_query($con,"INSERT INTO prj_project(pr_prid,pr_prname,pr_pm,pr_pi,pr_ps,pr_fs,pr_si) VALUES('$id_no','$p_name','$pm','$pi','$ps','$fs','$si')");
+  $sql=mysqli_query($con,"INSERT INTO prj_project(pr_prid,pr_prname,pr_odate,pr_md,pr_pm,pr_pi,pr_ps,pr_fs,pr_si) VALUES('$id_no','$p_name',CURDATE(),'$md','$pm','$pi','$ps','$fs','$si')");
   if(empty($sql))
   {
     echo "error";
@@ -172,7 +176,7 @@ body {
   <div class="header" align="center">
   <table width="700" class="table table-bordered">
     <tr>
-      <td width="342">Employee Name : <?php echo $_SESSION['emp_name']; ?></td>
+      <td width="342">Employee Name : <?php echo $_SESSION['Employee']; ?></td>
       <td width="342" id="demo"> 
 <script>
 var d = new Date();
@@ -242,13 +246,14 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
 
 ?>
 <?php 
+
 if($_REQUEST['op']=='overview' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
 {
-        include 'clicktable.php'; 
+        include 'Project_table_click.php'; 
 }
 else if($_REQUEST['op']=='overview' && @$_REQUEST['search']=='click')
 {
-        include 'another.php';
+        include 'Project_table.php';
 }
  else if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click')  
  {
@@ -263,64 +268,71 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
   </table>
   
   
-<?php   
+<?php 
+
+############################################################### OVERVIEW CLICK ######################################################################
 
   if($_REQUEST['op']=='overview' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
 {
 
 ?>
-<?php include 'know_status.php'; ?>  
-  </div>  
+        <?php include 'know_status.php'; ?>  
+          </div>  
 
-  <center>
-  <?php
-            $pid=$_REQUEST['pn'];
-            $path="../si/uploaded_files/$pid";
-            $file_display = array('jpg', 'jpeg', 'png', 'gif');
-            if(is_dir($path))
-            {
-            $files_count= count(glob("$path./*"));
+          <center>
+          <?php
+                    $pid=$_REQUEST['pn'];
+                    $path="../si/uploaded_files/$pid";
+                    $file_display = array('jpg', 'jpeg', 'png', 'gif');
+          if(is_dir($path))
+           {
+                    $files_count= count(glob("$path./*"));
 
-  ?>
-<div id="container">
-  <ul>
+          ?>
+        
+        <div id="container">
+          <ul>
 
-      <?php
-            if($dir_list=@opendir($path))
-            {
-              while (($filename = readdir($dir_list)) !== false) {
-              $ex=strtolower(end(explode('.', $filename)));
+              <?php
+                    if($dir_list=@opendir($path))
+                    {
+                      while (($filename = readdir($dir_list)) !== false) {
+                      $ex=strtolower(end(explode('.', $filename)));
 
-              if(in_array($ex, $file_display)==true)
-              {
+                      if(in_array($ex, $file_display)==true)
+                      {
 
-            echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
-              }
-            }
-          }
-       
-            
-            ?>
-      </ul>
-      <span class="button prevButton"></span>
-      <span class="button nextButton"></span></div>
-<?php
-}
-else
-{
-  echo "<script>alert('No images for this project')</script>";
-}
-?>
+                    echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
+                      }
+                    }
+                  }
+               
+                    
+                    ?>
+          </ul>
+              
+              <span class="button prevButton"></span>
+              <span class="button nextButton"></span></div>
+        <?php
+        }
+
+        else
+        {
+          //echo "<script>alert('No images for this project')</script>";
+        }
+        ?>
 
 
-<p>&nbsp;</p>
+        <p>&nbsp;</p>
 
-  </center>
+          </center>
 
 <?php
 }
   
+############################################################### OVERVIEW CLICK OVER ######################################################################
     
+############################################################### NEW PROJECT CLICK ######################################################################
      
 	
 	if($_REQUEST['op']=='new_project')
@@ -436,120 +448,114 @@ else
 	?>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
+
+
 <?php  
+############################################################### NEW PROJECT CLICK OVER######################################################################
+
+################################################################### APPROVAL CLICK ######################################################################
+
 if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
-{
-if($_REQUEST['status']=='Funds')
-{
+ {
+  ############################################## FUNDS ######################################################
+    
+    if(@$_REQUEST['status']=='funds')
+      {
+        include 'order_table.php';
+        include 'quote_table.php';
+        $w=substr($_REQUEST['or'],0,1);
+        if($w=='W')
+             { 
+                 include 'stage_table.php';
+             }
+        include 'f_comment.php';     
 ?>
-<form name="form3" method="post" action="md_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_REQUEST['or']?>" onsubmit="return val();">
-<textarea rows="4" cols="50" name="MD_comment" placeholder="Comment here">
-</textarea><br>
-<input name="approval" type="submit" class="style3" value="Approval" />
-<input name="reject" type="submit" class="style3" value="Reject" />
-</form>
-<?php
-
-if(@$_REQUEST['approval']=='Approval')
-  {
-    include 'approval.php';
-  }
-  else if(@$_REQUEST['reject']=='Reject')
-  {
-    include 'reject.php';
-  }
-}
-?>
- <center>
-  <?php
-            $pid=$_REQUEST['pn'];
-            $path="../si/uploaded_files/$pid";
-            $file_display = array('jpg', 'jpeg', 'png', 'gif');
-            if(is_dir($path))
-            {
-            $files_count= count(glob("$path./*"));
-
-  ?>
-<div id="container">
-  <ul>
-
-      <?php
-            if($dir_list=@opendir($path))
-            {
-              while (($filename = readdir($dir_list)) !== false) {
-              $ex=strtolower(end(explode('.', $filename)));
-
-              if(in_array($ex, $file_display)==true)
-              {
-
-            echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
-              }
-            }
-          }
-       
+            <form name="form3" method="post" action="Fund.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_REQUEST['or']?>" onsubmit="return valf();">
             
-            ?>
-      </ul>
-      <span class="button prevButton"></span>
-      <span class="button nextButton"></span></div>
+                <textarea rows="4" cols="50" name="MD_comment" placeholder="Comment here">
+                
+                </textarea><br>
+                
+                <input name="approval" type="submit" class="style3" value="Approval" />
+                
+                <input name="reject" type="submit" class="style3" value="Reject" />
+            
+            </form>
 <?php
+
+            
+     }
+
+      ############################################## FUNDS OVER ######################################################
+
+      ############################################## STAGES ######################################################
+
+    if(@$_REQUEST['status']=='stage')
+    {
+?>
+                <table border='2'  width='500px'>
+                  
+                  <tr>
+                    <th>
+                      S.No.
+                    </th>
+                    <th>
+                        Authority
+                    </th>
+                    <th>
+                      Comment
+                    </th>   
+                  </tr>
+                  <?php include 'st_comment.php'; ?>
+                </table>
+                <br>
+                <br>
+
+
+              <form name="form4" method="post" action="ap_st_com.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_REQUEST['or']?>" onsubmit="return val1();">
+                  
+                  <textarea rows="4" cols="50" name="St_comment" placeholder="Comment here">
+                  </textarea>
+
+                  <br>
+                  
+                  <input name="approval" type="submit" class="style3" value="Approval" />
+                  
+                  <input name="reject" type="submit" class="style3" value="Reject" />
+              
+              </form>
+<?php
+
+    }
+
+############################################## STAGES OVER ######################################################
+
 }
-else
-{
-  echo "<script>alert('No images for this project')</script>";
-}
+
+############################################################### APPROVAL CLICK OVER ######################################################################
+
 ?>
 
-
-<p>&nbsp;</p>
-
-  </center>
-<br>
-<table border=1  width=500px>
-  
-  <tr>
-    <th>
-      S.No.
-    </th>
-    <th>
-        Authority
-    </th>
-    <th>
-      Comment
-    </th>   
-  </tr>
-  <?php include'comment.php'; ?>
-</table>
-<br>
-<br>
-
-<form name="form4" method="post" action="ap_st_com.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_REQUEST['or']?>" onsubmit="return val1();">
-<textarea rows="4" cols="50" name="St_comment" placeholder="Comment here">
-</textarea><br>
-<input name="approval" type="submit" class="style3" value="Approval" />
-<input name="reject" type="submit" class="style3" value="Reject" />
-</form>
-<?php
-//here the code for stages.................
-}
-?>
 </div>
 </div>
-</div></div>
+</div>
+
 </body>
 <script type="text/javascript">
-function val () {
-  // body...
-  if(document.form3.MD_comment.value=='')
+function valf() 
+{
+   
+ if(document.form3.MD_comment.value=='')
   {
     alert('Please enter the comment');
     return false;
   }
 else
-  return true;
+    return true;
+  
 }
-
-function val1() {
+function val1() 
+{
   // body...
   if(document.form4.St_comment.value=='')
   {
