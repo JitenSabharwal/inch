@@ -225,8 +225,9 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
   ######################################################################### Approval ############################################################################
 
 if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
-  {//here ...............
-        $pid=$_REQUEST['pn'];
+  {
+    
+          $pid=$_REQUEST['pn'];
             $path="../si/uploaded_files/$pid";
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
             if(is_dir($path))
@@ -234,31 +235,31 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
             $files_count= count(glob("$path./*"));
 
 ?>
-<div id="container">
-  <ul>
-      
-          <?php
-            if($dir_list=opendir($path))
-            {
-              while (($filename = readdir($dir_list)) !== false) {
-              $ex=strtolower(end(explode('.', $filename)));
+        <div id="container">
+          <ul>
+              
+     <?php
+                    if($dir_list=opendir($path))
+                    {
+                      while (($filename = readdir($dir_list)) !== false) {
+                      $ex=strtolower(end(explode('.', $filename)));
 
-              if(in_array($ex, $file_display)==true)
-              {
+                      if(in_array($ex, $file_display)==true)
+                      {
 
-            echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
-              }
-            }
-          }
-       
-            
-            ?>
-      </ul>
-      <span class="button prevButton"></span>
-      <span class="button nextButton"></span></div>
-      <?php
+                    echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
+                      }
+                    }
+                  }
+               
+                    
+     ?>
+              </ul>
+              <span class="button prevButton"></span>
+              <span class="button nextButton"></span></div>
+              <?php
 
-}
+    }
 ?>
 
 <br>
