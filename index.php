@@ -32,7 +32,9 @@
 		</div>
 		</form>
 		<div class="change">
+			<div><a href="register/"><span>New User?</span></a></div><br>
 		<div><a href="index.php?set=change">change <span>Password?</span></a></div>
+
 </div>
 
 <div class="error">

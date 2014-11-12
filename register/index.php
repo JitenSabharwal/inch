@@ -18,12 +18,21 @@
                 $(document.register.fname.parentNode).addClass('has-error');
                 return false;
               }
+              else
+              {
+                 $(document.register.fname.parentNode).removeClass('has-error');
+
+              }
 
           if(document.register.type_of_user.value=="Select")
               {
                 alert("please select type of user");
                 $(document.register.type_of_user.parentNode).addClass('has-error');
                 return false;
+              }
+              else
+              {
+                 $(document.register.type_of_user.parentNode).removeClass('has-error');
               }
 
         if(document.register.us_name.value=="")
@@ -32,7 +41,10 @@
                 $(document.register.us_name.parentNode).addClass('has-error');
                 return false;
               }
-
+              else
+              {
+                 $(document.register.us_name.parentNode).removeClass('has-error');
+              }
            if(document.register.pwd.value=="")
               {
                 alert("please fill the password");
@@ -87,8 +99,7 @@
               }
             
            return true;
-          
-           
+                     
             }
 
         </script>
