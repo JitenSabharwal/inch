@@ -186,21 +186,18 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
 
                   <form name="form4" method="post" action="ap_ho.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create" onsubmit="return confirm1();">
                     <p>
-                      Vendor Name :<?php echo "<b>".@$_SESSION['name']."</b>";?>  
-                      Contact No : <?php echo "<b>".@$_SESSION['contact']."</b>";?>
+                      <?php include 'quote_table.php';//this tale is for vendor details ?> 
                     </p>
                 	
-                	<table width="700" class="table-bordered">
-                  <tr>
-                    <td>Sno</td>
-                    <td>Description</td>
-                    <td>Quantity</td>
-                    <td>Rate</td>
-                    <td>Total</td>
-                  </tr>
-<?php include 'description.php' ?>
-                  </table>
+<?php 
+                    include 'description.php'//this table gives details of rate ,quan,total  
 
+                  if($w=='W')
+                   { 
+                       include 'stage_table.php';//this gives us details about stages in that wok_order; 
+                   }
+       
+ ?>
                     <p>
                       <textarea name="FS_comment" cols="50" rows="4" maxlength="200" placeholder="Comment Here"></textarea>
                     </p>
