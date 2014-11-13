@@ -2,8 +2,8 @@
 include 'connection.php';
 $wo=$_REQUEST['or'];
 $com=$_REQUEST['St_comment'];
-
-$in=mysqli_query($con,"UPDATE stg_stage SET st_picomment='$com' WHERE st_woid='$wo'");
+$st=$_REQUEST['st'];
+$in=mysqli_query($con,"UPDATE stg_stage SET st_picomment='$com' WHERE st_stid='$st'");
 if(empty($in))
 {
 	echo "ERROR";

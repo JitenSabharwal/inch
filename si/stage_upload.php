@@ -16,7 +16,7 @@ $c=mysqli_query($con,"SELECT * from stg_stage");
 <?php
 $x=1;
 while ($row=mysqli_fetch_array($c)) {
-	if (strcmp($row['st_woid'],@$_REQUEST['or'])==0) {
+	if (strcmp($row['st_stid'],@$_REQUEST['st'])==0) {
 		
 		?>
 	<tr>

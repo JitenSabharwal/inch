@@ -212,8 +212,14 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval' )
   </div>
   <br>
   <?php include 'wo_desc.php'; ?>
-  
-<?php include 'stage_upload.php';?>
+  <br/>
+  <?php include 'stage_table.php';?>
+<br>
+
+<?php 
+        if(@$_REQUEST['st_click']=='click')
+          include 'stage_upload.php';
+?>
 
 <div class="file_boxes">
 
@@ -232,7 +238,8 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval' )
 
 if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click'  && @$_REQUEST['po']=='click' && @$_REQUEST['wo']=='create')
 {
-   include 'stage.php'; 
+   include 'stage.php';
+    
     if(empty($insert))
       {
         echo "failed";
@@ -284,7 +291,7 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click'  && @$_REQUEST[
 ?>
 
  
-<form method="POST" name="comment" action="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&com=comment " onsubmit="return val() ">
+<form method="POST" name="comment" action="si_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&com=comment " onsubmit="return val() ">
      <p>
       <textarea name="St_comment" cols="50" rows="4" maxlength="200" placeholder="Comment Here"></textarea>
     </p>

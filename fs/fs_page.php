@@ -132,7 +132,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
       <td>Project Name </td>
       <td>Project ID </td>
       <td>Status</td>
-      
+      <td>Date</td>
       <td>Order </td>
     </tr>
           
@@ -151,7 +151,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
       }
       if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
       {
-          include 'approval_click.php';
+          include 'Approval_click.php';
       }
 
       ?> 
@@ -190,8 +190,8 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
                     </p>
                 	
 <?php 
-                    include 'description.php'//this table gives details of rate ,quan,total  
-
+                    include 'description.php';//this table gives details of rate ,quan,total  
+                  $w=substr($_REQUEST['or'],0,1);  
                   if($w=='W')
                    { 
                        include 'stage_table.php';//this gives us details about stages in that wok_order; 
@@ -220,10 +220,13 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
   ######################################################################### Overview  OVER ############################################################################
 
   ######################################################################### Approval ############################################################################
-
-if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
+if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click'&& @$_REQUEST['st_click']!='click')
   {
-    
+      include 'stg_status.php';
+  }
+if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click' && @$_REQUEST['st_click']=='click')
+  {
+         include 'stg_status_click.php';      
           $pid=$_REQUEST['pn'];
             $path="../si/uploaded_files/$pid";
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
@@ -280,7 +283,7 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
 <br>
 <br>
 
-<form method="POST"  name="comment" action="ap_st_com.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&com=comment " onsubmit="return val()">
+<form method="POST"  name="comment" action="ap_st_com.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&com=comment&st=<?php echo $_SESSION['stg_id'];?>&st_click=click" onsubmit="return val()">
      <p>
       <textarea name="St_comment" cols="50" rows="4" maxlength="200" placeholder="Comment Here"></textarea>
     </p>

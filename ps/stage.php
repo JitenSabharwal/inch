@@ -45,6 +45,11 @@ $id_search=mysqli_query($con,"SELECT max(st_stid) as maximum from stg_stage");
         echo "Error";
         $x=-100;
     }
+    else
+    {
+      $in="INSERT INTO stg_status(st_stageid,st_woid,st_status) VALUES('$id_no','$wo','SI')";    
+      mysqli_query($con,$in);
+    }
     }
     
 }     

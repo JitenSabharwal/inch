@@ -21,7 +21,7 @@ $result1=mysqli_query($con,"SELECT * from orders");
         <tr>
           <td>
             <?php 
-            if($_SESSION['status']=='Site Survey(MD)')
+            if($_SESSION['status']=='Site Survey')
                 {
             ?>
                 <a href="md_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_SESSION['order']?>&po=click&status=stage">
@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                               $_SESSION['order']       =$row1['or_wopo_cid'];
                               display_project();
                      			}
-                          elseif(strcmp($row1['or_status'],'Site Survey(MD)')==0)
+                          elseif(strcmp($row1['or_status'],'Site Survey')==0)
                           {
                                $_SESSION['project_name'] =$row1['or_prjname'];     
                               $_SESSION['project_id']   =$row1['or_prid'];
@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                               $_SESSION['order']       =$row1['or_wopo_cid'];
                               display_project();
                      			}
-                           elseif(strcmp($row1['or_status'],'Site Survey(MD)')==0)
+                           elseif(strcmp($row1['or_status'],'Site Survey')==0)
                           {
                                $_SESSION['project_name'] =$row1['or_prjname'];     
                               $_SESSION['project_id']   =$row1['or_prid'];

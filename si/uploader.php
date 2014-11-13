@@ -20,9 +20,17 @@ if(isset($_POST) && $_SERVER['REQUEST_METHOD'] == "POST")
 
 	$file_location 	= $files_path.$pid."/".$num_files.".".$temp[1];
 	
-	if(move_uploaded_file(strip_tags($_FILES['upload_file']['tmp_name']), $file_location)){
+	if(move_uploaded_file(strip_tags($_FILES['upload_file']['tmp_name']), $file_location))
+	{
 		include 'connection.php';
-		mysqli_query($con,"update orders set or_status='Site Survey(Pi)' where or_prjname='$pid'");
+		$st=$_REQUEST['st'];
+		echo $st."error";
+		mysqli_query($con,"UPDATE orders set or_status='Site Survey' where or_prjname='$pid'");
+		$in=mysqli_query($con,"UPDATE stg_status set st_status='PI' where st_stid=$st");
+		if(empty($in))
+		{
+			echo "error";
+		}
 		echo $file_id;
 	}else{
 		echo 'system_error';
