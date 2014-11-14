@@ -46,7 +46,7 @@ function display()
     
     <td id='<?php echo "quantity".$_SESSION['j']; ?>'><?php echo $_SESSION['quantity']?></td>
     
-    <td><input type="text" name="<?php echo "rate".$_SESSION['j'];?>" id="<?php echo "i".$_SESSION['j'];?>" onchange="change(<?php echo $_SESSION['j']; ?>)"></td>
+    <td><input type="number" name="<?php echo "rate".$_SESSION['j'];?>" id="<?php echo "i".$_SESSION['j'];?>" onchange="change(<?php echo $_SESSION['j']; ?>)"></td>
 
     <td id="total<?php echo $_SESSION['j']; ?>"></td>
   </tr>

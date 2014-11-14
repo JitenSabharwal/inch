@@ -3,6 +3,7 @@
 <?php include 'intialize.php' ?>
 <?php
 $result=mysqli_query($con,"SELECT * from prj_project");//the query to get the whole database in one variable        
+$result1=mysqli_query($con,"SELECT * from orders");       
 function display_project1()//function to display the table values 
       {
         ?>      
@@ -26,8 +27,14 @@ while($row=mysqli_fetch_array($result))
       	//echo @$_REQUEST['pn'];
          $_SESSION['project_name'] =$row['pr_prname'];     
          $_SESSION['project_id']   =$row['pr_prid'];
-         $_SESSION['status']       =$row['pr_prnotes'];
-         $_SESSION['date']         =$row['pr_adtm'];
+         while($row1=mysqli_fetch_array($result1))
+              {
+                 if($row1['or_wopo_cid']==$_REQUEST['or'])
+                 {
+                   $_SESSION['status']       =$row1['or_status'];
+                 }
+              }
+              $_SESSION['date']         =$row['pr_adtm'];
          $_SESSION['initiated_by'] =$row['pr_md'];
          display_project1();//calling the function diaplay                          
       }

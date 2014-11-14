@@ -31,7 +31,13 @@ while($row=mysqli_fetch_array($result))
         //echo @$_REQUEST['pn'];
               $_SESSION['project_name'] =$_REQUEST['pn'];
               $_SESSION['project_id']   =$row['pr_prid'];
-              $_SESSION['status']       =$row['pr_prnotes'];
+              while($row1=mysqli_fetch_array($result1))
+              {
+                 if($row1['or_wopo_cid']==$_REQUEST['or'])
+                 {
+                   $_SESSION['status']       =$row1['or_status'];
+                 }
+              }
               $_SESSION['date']         =$row['pr_adtm'];
               $_SESSION['order']        =$_REQUEST['or'];
               display_project(); 
@@ -39,56 +45,4 @@ while($row=mysqli_fetch_array($result))
                                
       }
   }
-/*while($row=mysqli_fetch_array($result3))
-{
-  if($row['wo_wocid']==$_SESSION['order'])
-  {
-    //echo "wrking";
-    while($row1=mysqli_fetch_array($result4))
-    {
-      if($row['wo_quoteid']==$row1['qu_quid'])
-      {
-        while($row2=mysqli_fetch_array($result5))
-        {
-          if($row2['ve_veid']==$row1['qu_venid'])
-          {
-            $_SESSION['vendorp']=$row2['ve_vname'];
-            $_SESSION['contactp']=$row2['ve_contact1'];
-          }
-        }
-      }
-    }
-  }
-
-}
-while($row=mysqli_fetch_array($result2))
-{
-  if($row['po_pocid']==$_SESSION['order'])
-  {
-    
-    while($row1=mysqli_fetch_array($result4))
-    {
-
-      if($row['po_quoteid']==$row1['qu_quid'])
-      {
-        //echo "wrking";
-        while($row2=mysqli_fetch_array($result5))
-        {
-          
-          echo $row2['ve_vname'];
-          if(strcmp($row2['ve_veid'],$row1['qu_venid'])==0)
-          {
-
-            $_SESSION['vendorp']=$row2['ve_vname'];
-
-            $_SESSION['contactp']=$row2['ve_contact1'];
-          }
-        }
-      }
-    }
-  }
-
-}
-
-*/
 ?>

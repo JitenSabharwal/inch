@@ -296,7 +296,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
                     <div class="quote" align="center">
                   <p>Quote<?php echo $quote_no; ?></p>
                     <form name="form4" method="post" action="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name'] ;?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create&quote=<?php echo $quote_no; ?>" onsubmit="return confirm1();">
-                      <p>Vendor Name : <input type="text" placeholder="Vendor Name" name="vendor_name"> Contact No : <input type="text" placeholder="Contact No" name="contact_no"></p>
+                      <p>Vendor Name : <input type="text" placeholder="Vendor Name" name="vendor_name"> Contact No : <input type="number" placeholder="Contact No" name="contact_no"></p>
                   	
                   	<table width="700" class="table-bordered table-hover" id="desc">
                     <tr>
@@ -356,7 +356,7 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po'
                   <div class="wo_po" align="center">
                   <form name="form5" method="post" action="st_in_status.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['pn'];?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create" onSubmit="return confirm2()">
                     
-                    <p>Vendor Name : <input type="text" placeholder="Vendor Name" name="vendor_name"> Contact No : <input type="text" placeholder="Contact No" name="contact_no"></p>
+                    <p><?php include 'quote_table.php';?></p>
                 	
                 	<table width="700" class="table-bordered" id="mytable">
                       <tr>
@@ -400,8 +400,13 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po'
 <?php
  ################################################################# Approval ##################################################################################
 
-if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click'  && @$_REQUEST['po']=='click')
+if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click' && @$_REQUEST['st_click']!='click')
 {
+  include 'stg_status.php';
+}
+if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click' && @$_REQUEST['st_click']=='click')
+{
+     include 'stg_status_click.php';      
 
             $pid=$_REQUEST['pn'];
             $path="../si/uploaded_files/$pid";
@@ -439,7 +444,7 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click'  && @$_REQUEST[
 ?>
 
  
-<form method="POST" action="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&com=comment " onsubmit="return val();">
+<form method="POST" action="ap_stage.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&com=comment&st=<?php echo $_SESSION['stg_id'];?>&st_click=click" onsubmit="return val();">
      <p>
       <textarea name="St_comment" cols="50" rows="4" maxlength="200" placeholder="Comment Here"></textarea>
     </p>
@@ -450,18 +455,6 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click'  && @$_REQUEST[
 <?php
 }
  ################################################################# Approval Over ##################################################################################
-
-if(@$_REQUEST['com']=='comment')
-{
-  if($_REQUEST['Approval']=='Approval')
-  {
-    include 'Approval.php';
-  }
-  else if($_REQUEST['Reject']=='Reject')
-  {
-    include 'Reject.php';
-  }
-}
 ?>
 </div>
 </div></div>

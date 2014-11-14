@@ -26,10 +26,16 @@ while($row=mysqli_fetch_array($result))
   {
       if(strcmp($row['pr_prname'],@$_REQUEST['pn'])==0)
       {
-      	//echo @$_REQUEST['pn'];
+      	
               $_SESSION['project_name'] =$_REQUEST['pn'];
               $_SESSION['project_id']   =$row['pr_prid'];
-              $_SESSION['status']       =$row['pr_prnotes'];
+             while($row1=mysqli_fetch_array($result1))
+              {
+                 if($row1['or_wopo_cid']==$_REQUEST['or'])
+                 {
+                   $_SESSION['status']       =$row1['or_status'];
+                 }
+              }
               $_SESSION['date']         =$row['pr_adtm'];
               $_SESSION['order']        =$_REQUEST['or'];
               display_project(); 

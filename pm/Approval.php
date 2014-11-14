@@ -10,7 +10,7 @@ if(empty($in))
 }
 else
 {
-	$or=mysqli_query($con,"UPDATE stg_status SET st_status='FS' WHERE st_stageid='$st'");
+	$or=mysqli_query($con,"UPDATE stg_status SET st_status='PS' WHERE st_stageid='$st'");
 	if(empty($or))
 	{
 		echo "error";
