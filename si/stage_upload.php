@@ -61,6 +61,7 @@ function disp_form(x)
 	$('#frm').fadeIn("500",function(){
 		document.getElementById('fileUpload').reset();
 		$('.file_boxes').html('');
+		//alert(st_stid);
 	//	$('#fileUpload').reset();
 	});
 	//var last_char=x.slice(-1);

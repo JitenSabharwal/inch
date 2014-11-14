@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 $pid=$_REQUEST['pid'];
 
@@ -10,6 +11,7 @@ if(isset($_REQUEST['user'])&&isset($_REQUEST['pass']))
 //echo "working";
 $x=0;
 $result=mysqli_query($con,"Select * from usx_user");
+
  
  while($row= mysqli_fetch_array($result))
             {

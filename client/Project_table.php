@@ -37,7 +37,7 @@ $result1=mysqli_query($con,"SELECT * from orders");     //the query to get the w
               
               while($row= mysqli_fetch_array($result))
                     {
-                         if(strcmp($row['client_name'],"Garvit Vijai")==0)
+                         if(strcmp($row['client_name'],$_SESSION['Employee'])==0)
                         {
                           $_SESSION['project_name'] =$row['pr_prname'];     
                           $_SESSION['project_id']   =$row['pr_prid'];

@@ -186,8 +186,8 @@ function multiple_file_uploader(configuration_settings)
 				dataString.append('upload_file',file[file_counter]);
 				dataString.append('upload_file_ids',ids);
 				var u=document.URL;
-				var pid=u.substring(u.lastIndexOf('=')+1);
-				dataString.append('project',pid)
+				var pid=u.substring(u.lastIndexOf('?')+1);
+				dataString.append('project',pid);
 					
 				$.ajax({
 					type:"POST",

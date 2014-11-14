@@ -5,6 +5,7 @@ session_start();
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
 <script type="text/javascript">
+alert(document.URL);
 function validate_form1()
 {
 if(document.forms["form1"]["project_name"].value=="")
@@ -113,11 +114,12 @@ if($_REQUEST['op']=='new_project' && @$_REQUEST['new']=='click')
  $fs=$_REQUEST['fs_list'];
  $si=$_REQUEST['si_list'];
  //$id=md5($id_no);
+ $cl_name=$_REQUEST['client_name'];
 
 
 echo "<script>alert('The Project Id is $id_no')</script>";
 
-  $sql=mysqli_query($con,"INSERT INTO prj_project(pr_prid,pr_prname,pr_odate,pr_md,pr_pm,pr_pi,pr_ps,pr_fs,pr_si) VALUES('$id_no','$p_name',CURDATE(),'$md','$pm','$pi','$ps','$fs','$si')");
+  $sql=mysqli_query($con,"INSERT INTO prj_project(pr_prid,pr_prname,pr_odate,pr_md,pr_pm,pr_pi,pr_ps,pr_fs,pr_si,client_name) VALUES('$id_no','$p_name',CURDATE(),'$md','$pm','$pi','$ps','$fs','$si','$cl_name')");
   if(empty($sql))
   {
     echo "error";
@@ -438,7 +440,13 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
 
                  ?>
               </select></td>
+
     </tr>
+    <tr>
+      <td>Client Name</td>
+               <td><input type="text" placeholder="Client Name" name="client_name"></td>
+
+    </tr> 
   </table>
   <input name="submit" type="submit" class="style3" value="Submit" />
   </form>
