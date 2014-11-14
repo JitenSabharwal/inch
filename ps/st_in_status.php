@@ -6,7 +6,7 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click'  && @$_REQUEST['po
    include 'stage.php'; 
     if(empty($insert))
       {
-        echo "failed";
+        
       }
       else
       {

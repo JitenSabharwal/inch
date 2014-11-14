@@ -182,8 +182,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval')
 <p>Quote<?php echo $quote_no; ?></p>
   <form name="form4" method="post" action="pi_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create&quote=<?php echo $quote_no; ?>" onsubmit="return val1();">
     <p>
-      Vendor Name :<b><?php echo @$_SESSION['vendor'];?></b>  
-      Contact No :<b><?php echo @$_SESSION['contact'];?></b>
+     <?php include 'quote_table.php'; ?>
     </p>
 	
 	<table width="700" class="table table-bordered">
