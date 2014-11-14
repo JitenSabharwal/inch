@@ -24,10 +24,12 @@ while($row=mysqli_fetch_array($result))
 {
 	if(strcmp($row['st_woid'],$_REQUEST['or'])==0)
 	{
-		
-		$_SESSION['pi']=$row['st_picomment'];
-		$_SESSION['pm']=$row['st_pmcomment'];
-		display();		
+		if($row['st_stid']==$_REQUEST['st'])
+		{
+			$_SESSION['pi']=$row['st_picomment'];
+			$_SESSION['pm']=$row['st_pmcomment'];
+			display();		
+		}
 	}
 }
 ?>

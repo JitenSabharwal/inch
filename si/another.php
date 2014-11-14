@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                      
                                 while($row1=mysqli_fetch_array($result1))
                                 {
-                                  if($row1['or_status']=='WO Approved')
+                                  if($row1['or_status']=='WO Approved' || $row1['or_status']=='Site Survey')
                                   {                                    
                                        
 //echo "working";

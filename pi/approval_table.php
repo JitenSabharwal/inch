@@ -1,4 +1,4 @@
-   <?php 
+<?php 
 include 'connection.php';?>
 
 <?php include_once 'intialize.php' ?>
@@ -50,18 +50,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                      
                                 while($row1=mysqli_fetch_array($result1))
                                 {
-                                  if($row1['or_status']=='Site Survey(Pi)')
+                                  if($row1['or_status']=='Site Survey')
                                   {
-                                    if(strcmp($row['pr_prname'],$row1['or_prjname'])==0)
-                                    {   
                                         $_SESSION['project_name'] =$row1['or_prjname'];
                                         $_SESSION['project_id']   =$row1['or_prid'];
                                         $_SESSION['status']       =$row1['or_status'];
                                         $_SESSION['date']         =$row['pr_adtm'];
                                         $_SESSION['order']        =$row1['or_wopo_cid'];
                                         display_project(); 
-                                     }
-                                  } 
+                                   } 
                                 }                             
                                 //$_SESSION['initiated_by'] =$row['pr_md'];
                                //callin-g the function diaplay                          
@@ -85,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                      
                                while($row1=mysqli_fetch_array($result1))
                                 {
-                                  if($row1['or_status']=='Site Survey(Pi)')
+                                  if($row1['or_status']=='Site Survey')
                                   {
                                     if(strcmp($row['pr_prname'],$row1['or_prjname'])==0)
                                     {   
@@ -118,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                      
                               while($row1=mysqli_fetch_array($result1))
                                 {
-                                  if($row1['or_status']=='Site Survey(Pi)')
+                                  if($row1['or_status']=='Site Survey')
                                   {
                                     if(strcmp($row['pr_prname'],$row1['or_prjname'])==0)
                                     {   

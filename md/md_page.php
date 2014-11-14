@@ -490,9 +490,21 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
 
       ############################################## STAGES ######################################################
 
-    if(@$_REQUEST['status']=='stage')
-    {
+            if(@$_REQUEST['status']=='stage')
+            {
 ?>
+
+<?php
+            
+            if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click' && @$_REQUEST['st_click']!='click')
+            {
+              include 'stg_status.php';
+            }
+            if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click' && @$_REQUEST['st_click']=='click')
+            {
+                 include 'stg_status_click.php';      
+ ?>
+
                 <table border='2'  width='500px'>
                   
                   <tr>
@@ -512,7 +524,7 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
                 <br>
 
 
-              <form name="form4" method="post" action="ap_st_com.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_REQUEST['or']?>" onsubmit="return val1();">
+              <form name="form4" method="post" action="ap_st_com.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_REQUEST['or']?>&st=<?php echo $_REQUEST['st'];?>&st_click=click" onsubmit="return val1();">
                   
                   <textarea rows="4" cols="50" name="St_comment" placeholder="Comment here">
                   </textarea>
@@ -527,6 +539,7 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
 <?php
 
     }
+  }
 
 ############################################## STAGES OVER ######################################################
 

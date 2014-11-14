@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                             {                                      
                                 while($row1=mysqli_fetch_array($result1))
                                 {
-                                  if($row1['or_status']=='Site Survey(FS)')
+                                  if($row1['or_status']=='Site Survey')
                                   {
                                      
                                         $_SESSION['project_name'] =$row1['or_prjname'];
@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                      
                                while($row1=mysqli_fetch_array($result1))
                                 {
-                                  if($row1['or_status']=='Site Survey(FS)')
+                                  if($row1['or_status']=='Site Survey')
                                   {
                                     if(strcmp($row['pr_prname'],$row1['or_prjname'])==0)
                                     {   
@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                      
                               while($row1=mysqli_fetch_array($result1))
                                 {
-                                  if($row1['or_status']=='Site Survey(FS)')
+                                  if($row1['or_status']=='Site Survey')
                                   {
                                     if(strcmp($row['pr_prname'],$row1['or_prjname'])==0)
                                     {   

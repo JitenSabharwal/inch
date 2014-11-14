@@ -2,15 +2,16 @@
 include 'connection.php';
 $wo=$_REQUEST['or'];
 $com=$_REQUEST['St_comment'];
+$st=$_REQUEST['st'];
 
-$in=mysqli_query($con ,"UPDATE stg_stage SET st_picomment='$com' WHERE st_woid='$wo'");
+$in=mysqli_query($con ,"UPDATE stg_stage SET st_picomment='$com' WHERE st_stid='$st'");
 if(empty($in))
 {
 	echo "ERROR";
 }
 else
 {
-	$or=mysqli_query($con,"UPDATE orders SET or_status='Site Survey(PM)' WHERE or_wopo_cid='$wo'");
+	$or=mysqli_query($con,"UPDATE stg_status SET st_status='PM' WHERE st_stageid='$st'");
 	if(empty($or))
 	{
 		echo "error";
