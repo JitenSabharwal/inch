@@ -51,6 +51,10 @@
                 $(document.register.pwd.parentNode).addClass('has-error');
                 return false;
               }
+               else
+              {
+                 $(document.register.pwd.parentNode).removeClass('has-error');
+              }
 
           if(document.register.conf_pwd.value=="" || (document.register.pwd.value).localeCompare(document.register.conf_pwd.value)!=0)
               {
@@ -58,12 +62,20 @@
                 $(document.register.pwd.parentNode).addClass('has-error');
                 return false;
               }
-              
+               else
+              {
+                 $(document.register.conf_pwd.parentNode).removeClass('has-error');
+              }
+
            if(document.register.ph1.value=="" || phone_no.test(document.register.ph1.value)==false)
               {
                 alert("please enter phone no");
                 $(document.register.ph1.parentNode).addClass('has-error');
                 return false;
+              }
+               else
+              {
+                 $(document.register.ph1.parentNode).removeClass('has-error');
               }
               
               if(document.register.email1.value=="" || filter.test(document.register.email1.value)==false)
@@ -72,6 +84,10 @@
                 $(document.register.email1.parentNode).addClass('has-error');
                 return false;
               }
+               else
+              {
+                 $(document.register.email1.parentNode).removeClass('has-error');
+              }
 
            if(document.register.addr1.value=="")
               {
@@ -79,11 +95,19 @@
                 $(document.register.addr1.parentNode).addClass('has-error');
                 return false;
               }
+               else
+              {
+                 $(document.register.addr1.parentNode).removeClass('has-error');
+              }
          if(document.register.city.value=="")
               {
                 alert("please fill name");
                 $(document.register.city.parentNode).addClass('has-error');
                 return false;
+              }
+               else
+              {
+                 $(document.register.city.parentNode).removeClass('has-error');
               }
          if(document.register.state.value=="")
               {
@@ -91,11 +115,19 @@
                 $(document.register.state.parentNode).addClass('has-error');
                 return false;
               }
+               else
+              {
+                 $(document.register.state.parentNode).removeClass('has-error');
+              }
           if(document.register.country.value=="")
               {
                 alert("please fill country name");
                 $(document.register.country.parentNode).addClass('has-error');
                 return false;
+              }
+               else
+              {
+                 $(document.register.country.parentNode).removeClass('has-error');
               }
             
            return true;
@@ -137,9 +169,10 @@
         <option>Managing Director</option>
         <option>Project Manager</option>
         <option>Site Engineer</option>
-        <option>Fs</option>
-        <option>Ps</option>
-        <option>Pi</option>
+        <option>Finance Specialist</option>
+        <option>Purchase Specialist</option>
+        <option>Project In Charge</option>
+         <option>Client</option>
 
     </select>
   </div>

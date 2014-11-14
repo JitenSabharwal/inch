@@ -16,7 +16,7 @@ $result=mysqli_query($con,"Select * from usx_user");
               if(strcmp($row['us_usid'],$_POST['user'])==0)   
               { 
 
-                if(strcmp($row['us_active'],$_POST['pass'])==0)
+                if(strcmp($row['us_password'],md5($_POST['pass']))==0)
                 {	
                 	$x=1;
                     $_SESSION['usid']=$row['us_usid']; 
@@ -52,6 +52,11 @@ $result=mysqli_query($con,"Select * from usx_user");
                       {
                           $_SESSION['role']="Pi";
                           header ("location:./pi/pi_page.php?op=quotation");
+                       }
+                        else if(isset($row['us_client']))
+                      {
+                          $_SESSION['role']="Client";
+                          header ("location:./client/client.php?op=overview");
                        }
                       else
                       header ("location:index.php?pid=err");      
