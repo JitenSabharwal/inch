@@ -36,7 +36,7 @@ while($row=mysqli_fetch_array($result))
                    $_SESSION['status']       =$row1['or_status'];
                  }
               }
-         $_SESSION['date']         =$row['pr_adtm'];
+         $_SESSION['date']         =$row['pr_odate'];
          $_SESSION['initiated_by'] =$row['pr_md'];
          display_project1();//calling the function diaplay                          
       }

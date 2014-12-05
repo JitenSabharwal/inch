@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                           $_SESSION['project_name'] =$row['pr_prname'];     
                           $_SESSION['project_id']   =$row['pr_prid'];
                           $_SESSION['status']       =$row['pr_prnotes'];
-                          $_SESSION['date']         =$row['pr_adtm'];
+                          $_SESSION['date']         =$row['pr_odate'];
                           $_SESSION['initiated_by'] =$row['pr_md'];
                           display_project();//calling the function diaplay                          
                      }               
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                           $_SESSION['project_name'] =$row['pr_prname'];     
                           $_SESSION['project_id']   =$row['pr_prid'];
                           $_SESSION['status']       =$row['pr_prnotes'];
-                          $_SESSION['date']         =$row['pr_adtm'];
+                          $_SESSION['date']         =$row['pr_odate'];
                           $_SESSION['initiated_by'] =$row['pr_md'];
                           display_project();
                         }
@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                 $_SESSION['project_name'] =$row['pr_prname'];     
                                 $_SESSION['project_id']   =$row['pr_prid'];
                                 $_SESSION['status']       =$row['pr_prnotes'];
-                                $_SESSION['date']         =$row['pr_adtm'];
+                                $_SESSION['date']         =$row['pr_odate'];
                                 $_SESSION['initiated_by'] =$row['pr_md'];
                                 display_project();
                               }
@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                     $_SESSION['project_name'] =$row['pr_prname'];     
                                     $_SESSION['project_id']   =$row['pr_prid'];
                                     $_SESSION['status']       =$row['pr_prnotes'];
-                                    $_SESSION['date']         =$row['pr_adtm'];
+                                    $_SESSION['date']         =$row['pr_odate'];
                                     $_SESSION['initiated_by'] =$row['pr_md'];
                                     display_project();
                                   
