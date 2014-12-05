@@ -3,6 +3,10 @@
 <?php 
 
 session_start();
+if(!isset($_SESSION['Employee']))
+{
+  header("location:../logout.php");
+}
 include 'connection.php' ?>
 <script src="jquery-1.4.2.min.js"></script>
 <!DOCTYPE html>
