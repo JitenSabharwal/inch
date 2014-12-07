@@ -2,7 +2,12 @@
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <?php 
 session_start();
-include 'connection.php' ?>
+include 'connection.php';
+if(!isset($_SESSION['Employee']))
+{
+  header("location:../logout.php");
+}
+ ?>
 <script src="jquery-1.4.2.min.js"></script>
 <!DOCTYPE html>
 <html>

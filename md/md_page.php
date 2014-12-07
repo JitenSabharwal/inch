@@ -1,11 +1,15 @@
 <?php
 session_start();
+if(!isset($_SESSION['Employee']))
+{
+  header("location:../logout.php");
+}
 ?>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 
 <script type="text/javascript">
-alert(document.URL);
+//alert(document.URL);
 function validate_form1()
 {
 if(document.forms["form1"]["project_name"].value=="")

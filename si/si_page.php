@@ -1,6 +1,10 @@
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <?php session_start(); 
+if(!isset($_SESSION['Employee']))
+{
+  header("location:../logout.php");
+}
 ?>
 
 <script type="text/javascript">
