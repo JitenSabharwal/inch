@@ -251,7 +251,6 @@ if(@$_REQUEST['op']=='overview')
     <tr>
       <td>Project Name </td>
       <td>Project ID </td>
-      <td>Status</td>
       <td>Date</td>
       <td>Initiated By </td>
     </tr>
@@ -308,8 +307,12 @@ if(@$_REQUEST['op']=='ST_Approval' && @$_REQUEST['search']=='click' && @$_REQUES
 
 if(@$_REQUEST['op']=='overview' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
 {
+  include 'Project_order.php';
 ?>
- 
+
+ <table width="700" class="table table-bordered table-hover">
+
+ </table>
   
   <center>
 

@@ -239,13 +239,6 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <table width="700" class="table table-hover table-bordered" >
-    <tr>
-      <td>Project Name </td>
-      <td>Project ID </td>
-      <td>Status</td>
-      <td>Date</td>
-      <td>Initiated By </td>
-    </tr>
     
     <?php
     }
