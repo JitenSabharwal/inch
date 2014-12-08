@@ -25,7 +25,6 @@ $result1=mysqli_query($con,"SELECT * from orders");//the query to get the whole 
           echo @$_SESSION['project_name']; 
           ?></a></td>
           <td><?php echo @$_SESSION['project_id'];?></td>
-          <td><?php echo @$_SESSION['status']    ;?></td>
           <td><?php echo @$_SESSION['date']      ;?></td>
           <td><?php echo @$_SESSION['initiated_by'];?></td>
         </tr>

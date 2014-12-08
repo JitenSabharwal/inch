@@ -1,3 +1,11 @@
+<tr>
+      <td>Project Name </td>
+      <td>Project ID </td>
+      <td>Status</td>
+      <td>Date</td>
+      <td>Order Id </td>
+</tr>
+    
 <?php 
 include 'connection.php';?>
 <?php include_once 'intialize.php' ?>

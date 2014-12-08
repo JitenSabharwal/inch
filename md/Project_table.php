@@ -1,3 +1,10 @@
+<tr>
+      <td>Project Name </td>
+      <td>Project ID </td>
+      <td>Date</td>
+      <td>Initiated By </td>
+    </tr>
+    
 <?php 
 //session_start();
 include 'connection.php';?>
@@ -25,7 +32,7 @@ $result1=mysqli_query($con,"SELECT * from orders");//the query to get the whole 
           echo @$_SESSION['project_name']; 
           ?></a></td>
           <td><?php echo @$_SESSION['project_id'];?></td>
-          <td><?php echo @$_SESSION['status']    ;?></td>
+          <!--td><?php echo @$_SESSION['status']    ;?></td-->
           <td><?php echo @$_SESSION['date']      ;?></td>
           <td><?php echo @$_SESSION['initiated_by'];?></td>
         </tr>
@@ -47,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                           $_SESSION['project_name'] =$row['pr_prname'];     
                           $_SESSION['project_id']   =$row['pr_prid'];
                           $_SESSION['status']       =$row['pr_prnotes'];
-                          $_SESSION['date']         =$row['pr_adtm'];
+                          $_SESSION['date']         =$row['pr_odate'];
                           $_SESSION['initiated_by'] =$row['pr_md'];
                           display_project();//calling the function diaplay                          
                      }               
@@ -66,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                           $_SESSION['project_name'] =$row['pr_prname'];     
                           $_SESSION['project_id']   =$row['pr_prid'];
                           $_SESSION['status']       =$row['pr_prnotes'];
-                          $_SESSION['date']         =$row['pr_adtm'];
+                          $_SESSION['date']         =$row['pr_odate'];
                           $_SESSION['initiated_by'] =$row['pr_md'];
                           display_project();
                         }
@@ -83,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                 $_SESSION['project_name'] =$row['pr_prname'];     
                                 $_SESSION['project_id']   =$row['pr_prid'];
                                 $_SESSION['status']       =$row['pr_prnotes'];
-                                $_SESSION['date']         =$row['pr_adtm'];
+                                $_SESSION['date']         =$row['pr_odate'];
                                 $_SESSION['initiated_by'] =$row['pr_md'];
                                 display_project();
                               }
@@ -102,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                     $_SESSION['project_name'] =$row['pr_prname'];     
                                     $_SESSION['project_id']   =$row['pr_prid'];
                                     $_SESSION['status']       =$row['pr_prnotes'];
-                                    $_SESSION['date']         =$row['pr_adtm'];
+                                    $_SESSION['date']         =$row['pr_odate'];
                                     $_SESSION['initiated_by'] =$row['pr_md'];
                                     display_project();
                                   

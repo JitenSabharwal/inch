@@ -1,4 +1,10 @@
-<?php 
+<tr>
+      <td>Project Name </td>
+      <td>Project ID </td>
+      <td>Date</td>
+      <td>Initiated By </td>
+    </tr>
+    <?php 
 include 'connection.php'
 ?>
 <?php include 'intialize.php' ?>
@@ -15,7 +21,6 @@ function display_project1()//function to display the table values
       echo @$_SESSION['project_name']; 
       ?></a></td>
       <td><?php echo @$_SESSION['project_id'];?></td>
-      <td><?php echo @$_SESSION['status']    ;?></td>
       <td><?php echo @$_SESSION['date']      ;?></td>
       <td><?php echo @$_SESSION['initiated_by'];?></td>
     </tr>
@@ -29,14 +34,7 @@ while($row=mysqli_fetch_array($result))
       	//echo @$_REQUEST['pn'];
          $_SESSION['project_name'] =$row['pr_prname'];     
          $_SESSION['project_id']   =$row['pr_prid'];
-         while($row1=mysqli_fetch_array($result1))
-              {
-                 if($row1['or_wopo_cid']==$_REQUEST['or'])
-                 {
-                   $_SESSION['status']       =$row1['or_status'];
-                 }
-              }
-         $_SESSION['date']         =$row['pr_adtm'];
+        $_SESSION['date']         =$row['pr_odate'];
          $_SESSION['initiated_by'] =$row['pr_md'];
          display_project1();//calling the function diaplay                          
       }
