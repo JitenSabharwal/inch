@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <?php session_start(); 
-if(!isset($_SESSION['Employee']))
+if(!isset($_SESSION['Employee'])|| $_COOKIE['user_role']!="si")
 {
   header("location:../logout.php");
 }
@@ -316,6 +316,7 @@ if(@$_REQUEST['com']=='comment')
     include 'Reject.php';
   }
 }
+        $_SESSION['second_login_count']=1;
 ?>
 <script type="text/javascript">
 function val () {

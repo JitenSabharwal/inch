@@ -78,6 +78,17 @@
                  $(document.register.ph1.parentNode).removeClass('has-error');
               }
               
+               if(document.register.ph2.value!="" && phone_no.test(document.register.ph2.value)==false)
+              {
+                alert("please enter correct aleternate phone no");
+                $(document.register.ph2.parentNode).addClass('has-error');
+                return false;
+              }
+               else
+              {
+                 $(document.register.ph2.parentNode).removeClass('has-error');
+              }
+
               if(document.register.email1.value=="" || filter.test(document.register.email1.value)==false)
               {
                 alert("please enter valid email id");

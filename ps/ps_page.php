@@ -2,26 +2,45 @@
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <?php
 session_start();
-if(!isset($_SESSION['Employee']))
+if(!isset($_SESSION['Employee']) || $_COOKIE['user_role']!="ps")
 {
   header("location:../logout.php");
 }
+
 include "connection.php";
 ?>
 
 <script>
 function confirm1()
 {
+   var phone_no=/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
+   var quote1=document.getElementById('quote_table').rows.length;
+
   if(document.form4.vendor_name.value=='')
   {
     alert('Please Fill the name...');
     return false;
   }
-  if(document.form4.contact_no.value=='')
+  if(document.form4.contact_no.value=='' || phone_no.test(document.form4.contact_no.value)==false)
   {
     alert('Please Fill the contact no...');
     return false;
   }
+  if(1)
+  {
+    for (i=1;i<quote1;i++)
+ {
+  
+if(document.forms["form4"]["rate"+i].value=="")
+{
+alert("Please Enter rate in row "+i);
+return false;
+}
+}
+
+  }
+ 
+
   else 
   {
     if(confirm("Are you Sure You want to continue!"))
@@ -33,6 +52,7 @@ function confirm1()
       return false;
     }
   }
+
 }
 function confirm2()
 {
@@ -299,10 +319,10 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
                     
                     <div class="quote" align="center">
                   <p>Quote<?php echo $quote_no; ?></p>
-                    <form name="form4" method="post" action="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name'] ;?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create&quote=<?php echo $quote_no; ?>" onsubmit="return confirm1();">
+                    <form name="form4"  method="post" action="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name'] ;?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create&quote=<?php echo $quote_no; ?>" onsubmit="return confirm1();">
                       <p>Vendor Name : <input type="text" placeholder="Vendor Name" name="vendor_name"> Contact No : <input type="number" placeholder="Contact No" name="contact_no"></p>
                   	
-                  	<table width="700" class="table-bordered table-hover" id="desc">
+                  	<table width="700" id="quote_table" class="table-bordered table-hover" id="desc">
                     <tr>
                       <td>Sno</td>
                       <td>Description</td>
@@ -329,7 +349,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
 
                   <div class="upload_box">
                   <form name="fileUpload" id="fileUpload" action="javascript:void(0);" enctype="multipart/form-data">
-                  <div class="file_browser"><input type="file" name="multiple_files[]" id="_multiple_files" class="hide_broswe"  /></div>
+                  <div class="file_browser"><input type="file" name="multiple_files[]" id="_multiple_files" class="hide_broswe" multiple  /></div>
                   <div class="file_upload"><input type="submit" value="Upload" class="upload_button" /> </div>
                   </form>
                   </div>	
@@ -477,6 +497,8 @@ else
 
 </script>
 </html>
-
+<?php
+  //  $_SESSION['second_login_count']=1;
+?>
 
 

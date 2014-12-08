@@ -4,7 +4,7 @@
 <?php 
 session_start();
 include 'connection.php';
-if(!isset($_SESSION['Employee']))
+if(!isset($_SESSION['Employee'])||$_COOKIE['user_role']!="client")
 {
   header("location:../logout.php");
 }

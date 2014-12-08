@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['Employee']))
+if(!isset($_SESSION['Employee']) || $_COOKIE['user_role']!="md")
 {
   header("location:../logout.php");
 }
