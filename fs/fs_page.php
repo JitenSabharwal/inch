@@ -337,6 +337,3 @@ else
 </script>
 </html>
 
-<?php
-$_SESSION['second_login_count']=1;
-?>

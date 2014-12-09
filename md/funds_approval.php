@@ -19,8 +19,13 @@ while($row=mysqli_fetch_array($result))
 			echo "error";
 		}
 		else
-		{		
+		{	
 			$upo=mysqli_query($con,"UPDATE orders SET or_status='WO Approved' WHERE or_wopo_cid='$cid'");
+			$msg = wordwrap($mdcom,70);
+			$head='From:noreply@auricktech.com';
+// send email
+			mail("garvit1608@gmail.com","PM Comment",$msg,$head);
+
 		}
 	
 	}	
@@ -39,6 +44,11 @@ while($row=mysqli_fetch_array($result1))
 		else
 		{
 			$upo=mysqli_query($con,"UPDATE orders SET or_status='PO Approved' WHERE or_wopo_cid='$cid'");
+			$msg = wordwrap($mdcom,70);
+$head='From:noreply@auricktech.com';
+// send email
+mail("garvit1608@gmail.com","PM Comment",$msg,$head);
+
 		}
 	
 	}	

@@ -12,6 +12,11 @@ if(empty($in))
 else
 {
 	$or=mysqli_query($con,"UPDATE stg_status SET st_status='PM' WHERE st_stageid='$st'");
+	$msg = wordwrap($com,70);
+$head='From:noreply@auricktech.com';
+// send email
+mail("garvit1608@gmail.com","PI Comment",$msg,$head);
+
 	if(empty($or))
 	{
 		echo "error";
