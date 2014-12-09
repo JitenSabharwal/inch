@@ -3,7 +3,7 @@
 <?php 
 session_start();
 include 'connection.php';
-if(!isset($_SESSION['Employee']))
+if(!isset($_SESSION['Employee']) || $_COOKIE['user_role']!="fs")
 {
   header("location:../logout.php");
 }
@@ -336,3 +336,7 @@ else
 
 </script>
 </html>
+
+<?php
+$_SESSION['second_login_count']=1;
+?>

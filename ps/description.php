@@ -5,6 +5,7 @@ var total;
 function change(a)
 {
   i=1;
+
   
   while(i<=a)
   {
@@ -19,15 +20,16 @@ if(tbl==null)
         alert(tbl.rows[i].cells[2].innerHTML);
     
   }
-}
 
-     // alert(document.getElementById(q).innerHTML);
+}
+    // alert(document.getElementById(q).innerHTML);
       //alert(document.getElementById('x'));
      total=parseInt(document.getElementById(q).innerHTML)*parseInt(document.getElementById('i'+i).value);
       document.getElementById(x).innerHTML=total;
     i++;
 }
 }
+
 </script>
 
 

@@ -19,7 +19,23 @@
 						$country=$_REQUEST['country'];
 
 						include 'connection.php';
+
+
 						$sql_query=null;
+						$sql_query=mysqli_query($con,"SELECT us_usid from usx_user");
+						while ($row=mysqli_fetch_array($sql_query)) {
+							if(strcasecmp($row['us_usid'],$user)==0)
+								{
+									
+									echo "<script>alert('This Username is not available');</script>";
+									echo "<script>setTimeout(function redirect_url()
+									{
+										window.history.back();
+									},2000);</script>";
+								}
+						
+						}
+
 						if(strcasecmp($tou,"managing director")==0)
 {
 				$sql_query="INSERT INTO usx_user(us_usid,us_password,us_fname,us_mname,us_lname,us_phone1,us_phone2,us_email1,us_email2,us_fax1,us_fax2,us_addr1,us_addr2,us_city,us_state,us_country,us_md) VALUES('$user','$pwd','$fname','$mname','$lname','$ph1','$ph2','$email','$alter_email','$fax1','$fax2','$addr_line1','$addr_line2','$city','$state','$country','yes')";
@@ -60,15 +76,23 @@ else if(strcasecmp($tou,"client")==0)
 	if(empty($insert))
 	{
 		echo "error";
-	//	echo $pwd;
+	
 	} 
 	else
 	{
-		echo "done";
+		
 		if(strcasecmp($tou,"client")==0)
 			header("location:../client.php");
 		else
-		header("location:../index.php");
+		{
+			echo "<script>alert('You have registered successfully');";
+			echo "setTimeout(function redirect_login()
+			{
+				window.location='../index.php';
+
+			},2000);</script>";
+		}
 	}
 			
 ?>
+

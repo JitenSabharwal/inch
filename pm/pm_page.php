@@ -3,7 +3,7 @@
 <!--connecting to the dtabase-->
 <?php 
 session_start();
-if(!isset($_SESSION['Employee']))
+if(!isset($_SESSION['Employee']) || $_COOKIE['user_role']!="pm")
 {
   header("location:../logout.php");
 }
@@ -517,3 +517,9 @@ $('#add').click(function(){
 });
 </script>
 </html>
+
+<?php
+//$_SESSION['second_login_count']=1;
+//$v=$_SERVER['PHP_SELF'];
+//echo "<script>alert($v)</script>";
+?>

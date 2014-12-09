@@ -3,7 +3,7 @@
 <?php 
 
 session_start();
-if(!isset($_SESSION['Employee']))
+if(!isset($_SESSION['Employee']) || $_COOKIE['user_role']!="pi")
 {
   header("location:../logout.php");
 }
@@ -279,6 +279,8 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
 </form>  
 <?php
 }
+
+$_SESSION['second_login_count']=1;
 ?>
 
 </div>
