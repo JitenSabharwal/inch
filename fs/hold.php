@@ -18,6 +18,11 @@ while($row=mysqli_fetch_array($result))
 		{	
 			$cid=$_REQUEST['or'];		
 			$upo=mysqli_query($con,"UPDATE orders SET or_status='No Funds' WHERE or_wopo_cid='$cid'");
+			$msg = wordwrap($fscom,70);
+$head='From:noreply@auricktech.com';
+// send email
+mail("garvit1608@gmail.com","FS Comment",$msg,$head);
+
 		}
 	
 	}	
@@ -33,6 +38,11 @@ while($row=mysqli_fetch_array($result1))
 		{	
 			$cid=$_REQUEST['or'];		
 			$upo=mysqli_query($con,"UPDATE orders SET or_status='No Funds' WHERE or_wopo_cid='$cid'");
+			$msg = wordwrap($fscom,70);
+$head='From:noreply@auricktech.com';
+// send email
+mail("garvit1608@gmail.com","FS Comment",$fscom,$head);
+
 		}
 	
 	}	

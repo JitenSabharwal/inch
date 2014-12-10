@@ -280,7 +280,7 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
 <?php
 }
 
-$_SESSION['second_login_count']=1;
+
 ?>
 
 </div>

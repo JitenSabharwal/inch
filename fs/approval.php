@@ -13,6 +13,11 @@ while($row=mysqli_fetch_array($result))
 		if(!empty($upa))
 		{			
 			$upo=mysqli_query($con,"UPDATE orders SET or_status='WO(MD Approval)' WHERE or_wopo_cid='$cid'");
+			$msg = wordwrap($fscom,70);
+$head='From:noreply@auricktech.com';
+// send email
+mail("garvit1608@gmail.com","FS Comment",$msg,$head);
+
 		}
 	
 	}	
@@ -26,6 +31,11 @@ while($row=mysqli_fetch_array($result1))
 		if(!empty($upa))
 		{
 			$upo=mysqli_query($con,"UPDATE orders SET or_status='PO(MD Approval)' WHERE or_wopo_cid='$cid'");
+			$msg = wordwrap($fscom,70);
+$head='From:noreply@auricktech.com';
+// send email
+mail("garvit1608@gmail.com","PM Comment",$msg,$head);
+
 		}
 	
 	}	

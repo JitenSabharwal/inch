@@ -36,7 +36,7 @@ var html = '<table width="200" border="1"><tr><th scope="col">Sno</th><th scope=
   cell4.id="myRow";
     cell1.innerHTML = intTextBox;
     cell2.innerHTML = "<input type='text' id='" + intTextBox + "' name='description-" + intTextBox + "'/>";
-  cell3.innerHTML = "<input type='text' id='" + intTextBox + "' name='quantity-" + intTextBox + "'/>";
+  cell3.innerHTML = "<input type='number' id='" + intTextBox + "' name='quantity-" + intTextBox + "'/>";
   cell4.innerHTML = "<select name='work_type-"+ intTextBox +"' id='work_type"+ intTextBox +"'><option value='carpenter'>carpenter</option><option value='painter'>painter</option><option value='civil'>civil</option><option value='tiles'>tiles</option></select>";
 
 /*  newTBDiv.innerHTML = "<table width='200' border='1'><tr><th scope='col'>Sno</th><th scope='col'>Description</th><th scope='col'>Quality</th><th scope='col'>Type</th></tr><tr><td>"+intTextBox+"</td><td><input type='text' id='" + intTextBox + "' name='description-" + intTextBox + "'/></td><td><input type='text' id='" + intTextBox + "' name='quantity-" + intTextBox + "'/></td><td><select name='work_type-"+ intTextBox +"' id='work_type"+ intTextBox +"'><option value='carpenter'>carpenter</option><option value='painter'>painter</option><option value='civil'>civil</option><option value='tiles'>tiles</option></select></td></tr>";*/
@@ -517,9 +517,3 @@ $('#add').click(function(){
 });
 </script>
 </html>
-
-<?php
-//$_SESSION['second_login_count']=1;
-//$v=$_SERVER['PHP_SELF'];
-//echo "<script>alert($v)</script>";
-?>
