@@ -1,9 +1,11 @@
 <?php
 $x=1;
+//echo "workibg";
 include 'connection.php';
     $count=1;
-if($_SESSION['order']=="wo")
+//if($_SESSION['order']=="wo")
 {
+  echo "workibg";
     while (isset($_REQUEST['description-'.$count]))
      {
 
@@ -37,13 +39,15 @@ $id_search=mysqli_query($con,"SELECT max(st_stid) as maximum from stg_stage");
                 }
    
     $wo=$_REQUEST['or'];
+      echo $id_no;
       $insert="INSERT INTO stg_stage(st_stid,st_stdesc,st_woid,st_strate) VALUES('$id_no','$desc','$wo','$per')";
-      mysqli_query($con,$insert);
+      $ino=mysqli_query($con,$insert);
     $count++;
-    if(empty($insert))
+    if(empty($ino))
     {
         echo "Error";
         $x=-100;
+        echo $x;
     }
     else
     {

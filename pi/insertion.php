@@ -1,9 +1,10 @@
 <?php
 include 'connection.php';
-
+$or=$_REQUEST['or'];
 //#################################################
 $result=mysqli_query($con,"SELECT * from qut_quote");
 $result1=mysqli_query($con,"SELECT * from prj_project");
+$result2=mysqli_query($con,"SELECT * from wok_order where wo_wocid='$or'");
 //###################################################
 while($row=mysqli_fetch_array($result1))
   {
@@ -30,21 +31,30 @@ while($row=mysqli_fetch_array($result))
 	if(strcmp($_REQUEST['quote'],'1')==0)
 		{
 			$comment=$_REQUEST['Quote_comment'];
-			$id=@$quoteid[0];			
+			while($qid=mysqli_fetch_array($result2))
+			{
+				$id=$qid['wo_quoteid1'];
+			}			
 			$insert=mysqli_query($con,"UPDATE qut_quote SET qu_picomment='$comment' WHERE qu_quid='$id'");
 			
 		}
 else if(strcmp($_REQUEST['quote'],'2')==0)
 		{
 			$comment=$_REQUEST['Quote_comment'];
-			$id=@$quoteid[1];			
+			while($qid=mysqli_fetch_array($result2))
+			{
+				$id=$qid['wo_quoteid2'];
+			}
 			$insert=mysqli_query($con,"UPDATE qut_quote SET qu_picomment='$comment' WHERE qu_quid='$id'");
 			
 		}
 else if(strcmp($_REQUEST['quote'],'3')==0)
 		{
 			$comment=$_REQUEST['Quote_comment'];
-			$id=@$quoteid[2];
+			while($qid=mysqli_fetch_array($result2))
+			{
+				$id=$qid['wo_quoteid3'];
+			}
 			$wo=$_REQUEST['or'];
 			//echo $id;
 			//echo $comment;			
