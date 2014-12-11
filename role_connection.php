@@ -1,5 +1,4 @@
 <?php
-
 $a=mysqli_connect("localhost","root","","user");
 
   $sq="SELECT * from table1";
@@ -8,8 +7,5 @@ $a=mysqli_connect("localhost","root","","user");
   $result1=mysqli_query($a,$sq);
    
  
-
-
-
-
+ 
   ?>

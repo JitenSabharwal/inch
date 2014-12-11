@@ -9,7 +9,7 @@ function display_stage()
 {
 ?>
 		<tr>
-			<td><a href="si_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&or=<?php echo $_SESSION['order'];?>&po=click&st=<?php echo $_SESSION['st_stid'];?>&st_click=click&pn=<?php echo $_SESSION['project_name'];?>"><?php echo $_SESSION['st_stid'];?></a></td>
+			<td><a href="si_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&or=<?php echo $_SESSION['order'];?>&po=click&st=<?php echo $_SESSION['st_stid'];?>&st_click=click&pn=<?php echo $_SESSION['project_name'];?>"></a></td>
 			<td><?php echo $_SESSION['desc'];?></td>
 			<td><?php echo $_SESSION['rate'];?></td>
 		</tr>
