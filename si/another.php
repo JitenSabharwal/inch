@@ -7,7 +7,7 @@ $name =$_SESSION['Employee'];
 
 //#####################################################
 $result=mysqli_query($con,"SELECT * from prj_project");//the query to get the whole database in one variable 
-$result1=mysqli_query($con,"SELECT * from orders");       
+$result1=mysqli_query($con,"SELECT * from orders join stg_status on(st_woid=or_wopo_cid) where st_status='SI' group by or_prjname ");       
 //######################################################
       
       function test_input($data)//this is to set the value porperly removing all the extra sapces and other things ... 
@@ -44,20 +44,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                
                 while($row= mysqli_fetch_array($result))
                       {
+                                        $_SESSION['date']         =$row['pr_odate'];
+                        
                             if(strcmp($row['pr_si'],$name)==0)
                             {  
                                 
-                                     
                                 while($row1=mysqli_fetch_array($result1))
                                 {
-                                  if($row1['or_status']=='WO Approved' || $row1['or_status']=='Site Survey')
+                                 //echo $row1['or_status'].$row1['st_status']."<br>";    
+                                  
+                                  if($row1['or_status']=='WO Approved' || $row1['st_status']=="SI")
                                   {                                    
-                                       
-//echo "working";
                                         $_SESSION['project_name'] =$row1['or_prjname'];
                                         $_SESSION['project_id']   =$row1['or_prid'];
                                         $_SESSION['status']       =$row1['or_status'];
-                                        $_SESSION['date']         =$row['pr_adtm'];
                                         $_SESSION['order']        =$row1['or_wopo_cid'];
                                         display_project(); 
                                      
@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                         $_SESSION['project_name'] =$row1['or_prjname'];
                                         $_SESSION['project_id']   =$row1['or_prid'];
                                         $_SESSION['status']       =$row1['or_status'];
-                                        $_SESSION['date']         =$row['pr_adtm'];
+                                        $_SESSION['date']         =$row['pr_odate'];
                                         $_SESSION['order']        =$row1['or_wopo_cid'];
                                         display_project(); 
                                      }

@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                              // echo  $_SESSION['project_name'];    
 			                        $_SESSION['project_id']   =$row1['or_prid'];
 			                        $_SESSION['status']       =$row1['or_status'];
-			                        $_SESSION['date']         =$row['pr_adtm'];
+			                        $_SESSION['date']         =$row['pr_odate'];
 			                        $_SESSION['order'] 		   =$row1['or_wopo_cid'];
 			                        display_project();//calling the function diaplay                          
                      		  }
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                              // echo  $_SESSION['project_name'];    
                               $_SESSION['project_id']   =$row1['or_prid'];
                               $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_adtm'];
+                              $_SESSION['date']         =$row['pr_odate'];
                               $_SESSION['order']       =$row1['or_wopo_cid'];
                               display_project();//calling the function diaplay                          
                           }
@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                      				   $_SESSION['project_name'] =$row1['or_prjname'];     
                               $_SESSION['project_id']   =$row1['or_prid'];
                               $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_adtm'];
+                              $_SESSION['date']         =$row['pr_odate'];
                               $_SESSION['order']       =$row1['or_wopo_cid'];
                               display_project();
                      			}
@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                $_SESSION['project_name'] =$row1['or_prjname'];     
                               $_SESSION['project_id']   =$row1['or_prid'];
                               $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_adtm'];
+                              $_SESSION['date']         =$row['pr_odate'];
                               $_SESSION['order']       =$row1['or_wopo_cid'];
                               display_project();
                           }
@@ -126,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
 		                             $_SESSION['project_name'] =$row1['or_prjname'];     
                               $_SESSION['project_id']   =$row1['or_prid'];
                               $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_adtm'];
+                              $_SESSION['date']         =$row['pr_odate'];
                               $_SESSION['order']       =$row1['or_wopo_cid'];
                               display_project();// the function diaplay                          
                      		  }
@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                      				  $_SESSION['project_name'] =$row1['or_prjname'];     
                               $_SESSION['project_id']   =$row1['or_prid'];
                               $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_adtm'];
+                              $_SESSION['date']         =$row['pr_odate'];
                               $_SESSION['order']       =$row1['or_wopo_cid'];
                               display_project();
                      			}
@@ -144,7 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                $_SESSION['project_name'] =$row1['or_prjname'];     
                               $_SESSION['project_id']   =$row1['or_prid'];
                               $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_adtm'];
+                              $_SESSION['date']         =$row['pr_odate'];
                               $_SESSION['order']       =$row1['or_wopo_cid'];
                               display_project();
                           }
@@ -164,7 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
 		                             $_SESSION['project_name'] =$row1['or_prjname'];     
                               $_SESSION['project_id']   =$row1['or_prid'];
                               $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_adtm'];
+                              $_SESSION['date']         =$row['pr_odate'];
                               $_SESSION['order']       =$row1['or_wopo_cid'];
                               display_project();                      
                      		  }
@@ -173,7 +173,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                      				  $_SESSION['project_name'] =$row1['or_prjname'];     
                               $_SESSION['project_id']   =$row1['or_prid'];
                               $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_adtm'];
+                              $_SESSION['date']         =$row['pr_odate'];
                               $_SESSION['order']       =$row1['or_wopo_cid'];
                               display_project();
                      			}
@@ -182,7 +182,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                $_SESSION['project_name'] =$row1['or_prjname'];     
                               $_SESSION['project_id']   =$row1['or_prid'];
                               $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_adtm'];
+                              $_SESSION['date']         =$row['pr_odate'];
                               $_SESSION['order']       =$row1['or_wopo_cid'];
                               display_project();
                           }
@@ -203,7 +203,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
 		                              $_SESSION['project_name'] =$row1['or_prjname'];     
                               $_SESSION['project_id']   =$row1['or_prid'];
                               $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_adtm'];
+                              $_SESSION['date']         =$row['pr_odate'];
                               $_SESSION['order']       =$row1['or_wopo_cid'];
                               display_project();                       
                      		  }
@@ -212,7 +212,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                      				  $_SESSION['project_name'] =$row1['or_prjname'];     
                               $_SESSION['project_id']   =$row1['or_prid'];
                               $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_adtm'];
+                              $_SESSION['date']         =$row['pr_odate'];
                               $_SESSION['order']       =$row1['or_wopo_cid'];
                               display_project();
                      			}
@@ -221,7 +221,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                 $_SESSION['project_name'] =$row1['or_prjname'];     
                               $_SESSION['project_id']   =$row1['or_prid'];
                               $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_adtm'];
+                              $_SESSION['date']         =$row['pr_odate'];
                               $_SESSION['order']       =$row1['or_wopo_cid'];
                               display_project();
                           }

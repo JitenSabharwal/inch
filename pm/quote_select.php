@@ -24,6 +24,7 @@ function displayq()
 		<td><?php echo $_SESSION['q2'];?></td>
 		<td><?php echo $_SESSION['q3'];?></td>
 		</tr>
+
 <?php
 }
 #########################
@@ -120,7 +121,6 @@ $_SESSION['j']=1;
 	}
 	while($row=mysqli_fetch_array($result))
 	{
-	
 			if($row['qu_quid']==$_SESSION['id1'])
 			{
 				$_SESSION['c']=$row['qu_picomment'];

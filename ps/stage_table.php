@@ -7,7 +7,7 @@ $name =$_SESSION['Employee'];
 
 //#####################################################
 $result=mysqli_query($con,"SELECT * from prj_project");//the query to get the whole database in one variable 
-$result1=mysqli_query($con,"SELECT * from orders");       
+$result1=mysqli_query($con,"SELECT * from orders join stg_status on(st_woid=or_wopo_cid) where st_status='PS' group by or_prjname ");       
 //######################################################
       
       function test_input($data)//this is to set the value porperly removing all the extra sapces and other things ... 

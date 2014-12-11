@@ -6,7 +6,7 @@ $_SESSION['quote']=$_REQUEST['quote'];
 $resultw=mysqli_query($con,"SELECT * from wok_order");
 $resultp=mysqli_query($con,"SELECT * from  pod_order");
 ########################################
-$com=$_REQUEST['A_comment'];
+$com=@$_REQUEST['A_comment'];
 echo $com;
 while ($row=mysqli_fetch_array($resultw))
 {
@@ -126,6 +126,15 @@ while($row=mysqli_fetch_array($resultp))
 if(strcmp($_SESSION['quote'],"Reject All")==0)
 {
 	$x=$_REQUEST['or'];
+	$del=mysqli_query($con,"DELETE from qu_quote where qu_quid IN (SELECT wo_quoteid1 from wok_order WHERE wo_wocid='$x')");
+				//$del=mysqli_query($con,"DELETE from qu_quote where qu_quid = (SELECT wo_quoteid2 from wok_order WHERE wo_wocid='$x')");
+				//$del=mysqli_query($con,"DELETE from qu_quote where qu_quid = (SELECT wo_quoteid3 from wok_order WHERE wo_wocid='$x')");
+			if(empty($del))
+			{
+				echo "not working";
+			}	
+				echo "working";
+				
 	$up_status=mysqli_query($con,"UPDATE orders SET or_status='Request for quotes' WHERE or_wopo_cid='$x'");
 	
 }
