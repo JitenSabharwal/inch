@@ -7,7 +7,7 @@ $name =$_SESSION['Employee'];
 
 //#####################################################
 $result=mysqli_query($con,"SELECT * from prj_project");//the query to get the whole database in one variable 
-$result1=mysqli_query($con,"SELECT * from orders,stg_status  where st_status='PI' group by or_prjname ");       
+$result1=mysqli_query($con,"SELECT * from orders join stg_status on(st_woid=or_wopo_cid)  where st_status='PI' group by or_prjname ");       
 //######################################################
       
       function test_input($data)//this is to set the value porperly removing all the extra sapces and other things ... 
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                      
                                 while($row1=mysqli_fetch_array($result1))
                                 {
-                                  if($row1['or_status']=='Site Survey')
+                                  if($row1['st_status']=='PI')
                                   {
                                         $_SESSION['project_name'] =$row1['or_prjname'];
                                         $_SESSION['project_id']   =$row1['or_prid'];
