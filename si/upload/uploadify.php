@@ -1,4 +1,6 @@
 <?php
+session_start();
+include '../connection.php';
 /*
 Uploadify
 Copyright (c) 2012 Reactive Apps, Ronnie Garcia
@@ -27,8 +29,14 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	if (in_array($fileParts['extension'],$fileTypes)) {
 		move_uploaded_file($tempFile,$targetFile);
 		echo '1';
+	$id=$_SESSION['st_upload'];	
+	$ido=$_SESSION['or_upload'];
+	$inserto=mysqli_query($con,"UPDATE orders SET or_status='Site Survey' where or_wopo_cid='$ido'");
+	$inserts=mysqli_query($con,"UPDATE stg_status SET st_status='PI' where st_stageid='$id'");
 	} else {
 		echo 'Invalid file type.';
 	}
+
 }
+
 ?>

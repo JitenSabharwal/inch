@@ -103,7 +103,7 @@ $(window).load(function(){
 
 <meta charset="UTF-8">
 
-<title>PS page</title>
+<title>SI page</title>
 </head>
 
 <body>
