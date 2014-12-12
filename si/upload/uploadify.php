@@ -1,6 +1,9 @@
 <?php
 session_start();
 include '../connection.php';
+include 'idgen.php';
+	//	echo "wokin";
+
 /*
 Uploadify
 Copyright (c) 2012 Reactive Apps, Ronnie Garcia
@@ -33,7 +36,7 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	$fileParts = pathinfo($_FILES['Filedata']['name']);
 
 	$temp=explode('.',$_FILES['Filedata']['name']);
-	$temp[0]="hello";
+	$temp[0]=$id_no;
 	$targetFile = rtrim($targetPath,'/') . '/' .$temp[0].'.'.$temp[1];
 	if (in_array($fileParts['extension'],$fileTypes)) {
 		move_uploaded_file($tempFile,$targetFile);
@@ -44,13 +47,24 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 
 	$inserto=mysqli_query($con,"UPDATE orders SET or_status='Site Survey' where or_wopo_cid='$ido'");
 	$inserts=mysqli_query($con,"UPDATE stg_status SET st_status='PI' where st_stageid='$id'");
-	} else {
+	include 'filedetails.php';
+	$updfile=mysqli_query($con,"INSERT INTO fid_file(fi_fiid,fi_prid,fi_woid,fi_stid,fi_usid,fi_quid,fi_path,fi_edtm) VALUES('$a','$b','$c','$d','$e','$f','$g',CURDATE())");
+
+	}
+	 else {
 		echo 'Invalid file type.';
 	}
 
 }
-}
+		}
+
 else
 	echo "Only 5 files are allowed for this stage ID";
+
+
+if(empty($updfile))
+			{
+				echo "<script>alert('file table not updated');</script>";
+			}
 
 ?>
