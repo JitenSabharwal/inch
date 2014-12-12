@@ -12,26 +12,34 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 
 // Define a destination
 $targetFolder = 'uploads/'; // Relative to the root
-mkdir($targetFolder.$_SESSION['pr_upload'],0777,true);
-mkdir($targetFolder. '/'.$_SESSION['pr_upload']. '/' .$_SESSION['or_upload'],0777,true);
-mkdir($targetFolder.'/'.$_SESSION['pr_upload']. '/' .$_SESSION['or_upload']. '/' .$_SESSION['st_upload'],0777,true);
-
-
+				if(!is_dir($targetFolder.$_SESSION['pr_upload']))
+					mkdir($targetFolder.$_SESSION['pr_upload'],0777,true);
+				if(!is_dir($targetFolder. '/'.$_SESSION['pr_upload']. '/' .$_SESSION['or_upload']))
+					mkdir($targetFolder. '/'.$_SESSION['pr_upload']. '/' .$_SESSION['or_upload'],0777,true);
+				if(!is_dir($targetFolder.'/'.$_SESSION['pr_upload']. '/' .$_SESSION['or_upload']. '/' .$_SESSION['st_upload']))
+					mkdir($targetFolder.'/'.$_SESSION['pr_upload']. '/' .$_SESSION['or_upload']. '/' .$_SESSION['st_upload'],0777,true);
+//$v=count($_FILES);
+//echo "<script>alert('$v')</script>";
+$targetPath =  $targetFolder.$_SESSION['pr_upload']. '/' . $_SESSION['or_upload']. '/' . $_SESSION['st_upload'];
+if(count(glob($targetPath.'/'.'*'))<6)
+{
 
 $verifyToken = md5('unique_salt' . $_POST['timestamp']);
 
 if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
+
+
 	$tempFile = $_FILES['Filedata']['tmp_name'];
-	$targetPath =  $targetFolder.$_SESSION['pr_upload']. '/' . $_SESSION['or_upload']. '/' . $_SESSION['st_upload'];
+	
 	$targetFile = rtrim($targetPath,'/') . '/' . $_FILES['Filedata']['name'];
 	
 	// Validate the file type
-	$fileTypes = array('jpg','jpeg','gif','png','pdf','doc','docx','txt'); // File extensions
+	$fileTypes = array('jpg','jpeg','gif','png'); // File extensions
 	$fileParts = pathinfo($_FILES['Filedata']['name']);
 	
 	if (in_array($fileParts['extension'],$fileTypes)) {
 		move_uploaded_file($tempFile,$targetFile);
-		echo '1';
+		echo 'File Upload Successfull';
 	$id=$_SESSION['st_upload'];	
 	$ido=$_SESSION['or_upload'];
 	$inserto=mysqli_query($con,"UPDATE orders SET or_status='Site Survey' where or_wopo_cid='$ido'");
@@ -43,7 +51,14 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	}
 
 }
+<<<<<<< HEAD
 			//$updfile=mysqli_query($con,"INSERT INTO fid_file(fi_fiid,fi_prid,fi_woid,fi_stid,fi_usid,fi_quid,fi_path,fi_edtm) VALUES('$a','$b','$c','$d','$e','$f','$g',CURDATE())");
+=======
+}
+else
+	echo "Only 5 files are allowed for this stage ID";
+
+>>>>>>> 9f41df3fb521ad2217341eda740018e599b2803b
 
 if(empty($updfile))
 			{
