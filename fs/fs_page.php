@@ -263,7 +263,10 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
             echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
               }
             }
-          }   
+          } 
+           $arr = explode(".", $filename, 2);  
+                    $_SESSION['filename'] = $arr[0];
+                      
           }
        
             

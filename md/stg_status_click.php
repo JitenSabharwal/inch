@@ -48,6 +48,7 @@ $result=mysqli_query($con,"SELECT * from stg_status");
             {
             $files_count= count(glob($path.'/'.'*'));
          //   echo "<script>alert('lol')</script>";
+
             ?>
 <center>
 <div id="container">
@@ -70,6 +71,9 @@ $result=mysqli_query($con,"SELECT * from stg_status");
               }
             }
           }   
+           $arr = explode(".", $filename, 2);  
+                    $_SESSION['filename'] = $arr[0];
+                    
           }
        
             

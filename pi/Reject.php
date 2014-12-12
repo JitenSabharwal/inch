@@ -10,10 +10,16 @@ if(empty($in))
 }
 else
 {
-	$or=mysqli_query($con,"UPDATE orders SET or_status='Check for stages' WHERE or_wopo_cid='$wo'");
+	$or=mysqli_query($con,"UPDATE stg_status SET st_status='SI' WHERE st_stageid='$st'");
 	if(empty($or))
 	{
 		echo "error";
+	}
+	else
+	{
+		$f=$_SESSION['filename'];
+		$del=mysqli_query($con,"DELETE from fid_file where fi_fiid='$f'");
+
 	}
 }
 ?>
