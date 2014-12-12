@@ -1,0 +1,16 @@
+<body style="background-color:#E6E6FA">
+    <form id="form1" runat="server">
+    <div>
+        </div>
+        <h1>ABOUT - US<BR /><BR /><BR /><BR />This web application is developed by</H1><br />
+        <h2>Our vision, at Student Complain management, is to be University's most student friendly service;
+         to build a place where student can come to lodge any complain of hostel and can communicate directly with higher authorities  .. </h2>
+        THANK YOU<br />
+        DESIGNED AND DEVELOPED BY:<br />
+        JITEN SABHARWAL 1081210007<BR />
+        RISHABH KHANDELWAL 1081210078
+
+
+
+    </form>
+</body>
