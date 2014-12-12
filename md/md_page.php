@@ -278,48 +278,15 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
         <?php include 'know_status.php'; ?>  
           </div>  
 
-          <center>
-          <?php
-                    $pid=$_REQUEST['pn'];
-                    $path="../si/uploaded_files/$pid";
-                    $file_display = array('jpg', 'jpeg', 'png', 'gif');
-          if(is_dir($path))
-           {
-                    $files_count= count(glob("$path./*"));
+       <center>
+<div id="container">
 
-          ?>
-        
-        <div id="container">
-          <ul>
+<ul>
+                <?php
+}
 
-              <?php
-                    if($dir_list=@opendir($path))
-                    {
-                      while (($filename = readdir($dir_list)) !== false) {
-                      $ex=strtolower(end(explode('.', $filename)));
-
-                      if(in_array($ex, $file_display)==true)
-                      {
-
-                    echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
-                      }
-                    }
-                  }
-               
-                    
-                    ?>
-          </ul>
-              
-              <span class="button prevButton"></span>
-              <span class="button nextButton"></span></div>
-        <?php
-        }
-
-        else
-        {
-          //echo "<script>alert('No images for this project')</script>";
-        }
-        ?>
+?>
+<br>
 
 
         <p>&nbsp;</p>
@@ -327,7 +294,7 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
           </center>
 
 <?php
-}
+
   
 ############################################################### OVERVIEW CLICK OVER ######################################################################
     
@@ -452,7 +419,7 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
 	}
 	?>
   <p>&nbsp;</p>
-  <p>&nbsp;</p>
+ 
 
 
 <?php  

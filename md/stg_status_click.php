@@ -37,48 +37,49 @@ $result=mysqli_query($con,"SELECT * from stg_status");
 <br>
 <p>
 <center>
- <?php
- 
-            $pid=$_REQUEST['pn'];
-            $path="../si/uploaded_files/$pid";
+<?php
+  $pid=$_REQUEST['pn']. '/' . $_REQUEST['or']. '/' . $_REQUEST['st'];
+
+
+            $path="../si/upload/uploads/$pid";
+           //  echo "<script>alert('$path')</script>";
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
             if(is_dir($path))
             {
-                 $files_count= count(glob("$path./*"));
-
-  ?>
+            $files_count= count(glob($path.'/'.'*'));
+         //   echo "<script>alert('lol')</script>";
+            ?>
+<center>
 <div id="container">
-  <ul>
 
-      <?php
-              if($dir_list=@opendir($path))
+<ul>
+          <?php
+            if($dir_list=@opendir($path))
+            {
+              while (($filename = readdir($dir_list)) !== false) {
+                
+              $ex=explode('.', $filename);
+             @include '../file_search.php';
+              if(@$valid==1)
               {
-                    while (($filename = readdir($dir_list)) !== false) {
-                    $ex=strtolower(end(explode('.', $filename)));
 
-                    if(in_array($ex, $file_display)==true)
-                    {
+              if(in_array($ex[1], $file_display)==true)
+              {
 
-                  echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
-                    }
-                   }
-                  }
+            echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
+              }
+            }
+          }   
+          }
        
             
             ?>
       </ul>
       <span class="button prevButton"></span>
       <span class="button nextButton"></span></div>
-<?php
-              }
-              else
-              {
-                echo "<script>alert('No images for this project')</script>";
-              }
+      <?php
+}
+
 ?>
-
-
-<p>&nbsp;</p>
-
-  </center>
+</center>
 </p>

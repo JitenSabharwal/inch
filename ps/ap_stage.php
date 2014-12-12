@@ -11,4 +11,5 @@ if(@$_REQUEST['com']=='comment')
     include 'Reject.php';
   }
 }
+header("location:ps_page.php?op=approval&search=click");
 ?>

@@ -35,4 +35,3 @@ $result=mysqli_query($con,"SELECT * from stg_status");
 
 ?>
 </table>
-<br>

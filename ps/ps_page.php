@@ -421,6 +421,7 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po'
  ################################################################# Wo/Po Over ##################################################################################
 
 ?>
+<center>
 <?php
  ################################################################# Approval ##################################################################################
 
@@ -432,29 +433,38 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
 {
      include 'stg_status_click.php';      
 
-            $pid=$_REQUEST['pn'];
-            $path="../si/uploaded_files/$pid";
+  $pid=$_REQUEST['pn']. '/' . $_REQUEST['or']. '/' . $_REQUEST['st'];
+
+
+            $path="../si/upload/uploads/$pid";
+           //  echo "<script>alert('$path')</script>";
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
             if(is_dir($path))
             {
-            $files_count= count(glob("$path./*"));
+            $files_count= count(glob($path.'/'.'*'));
+         //   echo "<script>alert('lol')</script>";
+            ?>
 
-?>
 <div id="container">
-  <ul>
-      
+
+<ul>
           <?php
-            if($dir_list=opendir($path))
+            if($dir_list=@opendir($path))
             {
               while (($filename = readdir($dir_list)) !== false) {
-              $ex=strtolower(end(explode('.', $filename)));
+                
+              $ex=explode('.', $filename);
+             @include '../file_search.php';
+              if(@$valid==1)
+              {
 
-              if(in_array($ex, $file_display)==true)
+              if(in_array($ex[1], $file_display)==true)
               {
 
             echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
               }
             }
+          }   
           }
        
             
@@ -463,11 +473,11 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
       <span class="button prevButton"></span>
       <span class="button nextButton"></span></div>
       <?php
-
 }
-?>
 
- 
+?>
+ <br>
+ <br>
 <form method="POST" action="ap_stage.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&com=comment&st=<?php echo $_SESSION['stg_id'];?>&st_click=click" onsubmit="return val();">
      <p>
       <textarea name="St_comment" cols="50" rows="4" maxlength="200" placeholder="Comment Here"></textarea>

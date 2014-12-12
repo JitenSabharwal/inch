@@ -316,44 +316,6 @@ if(@$_REQUEST['op']=='overview' && @$_REQUEST['search']=='click' && @$_REQUEST['
   
   <center>
 
-      <?php
-            $pid=$_REQUEST['pn'];
-            $path="../si/uploaded_files/$pid";
-            $file_display = array('jpg', 'jpeg', 'png', 'gif');
-            if(is_dir($path))
-            {
-                 $files_count= count(glob("$path./*"));
-
-  ?>
- 
-                  <div id="container">
-                  <ul>
-<?php
-                              if($dir_list=@opendir($path))
-                              {
-                                while (($filename = readdir($dir_list)) !== false) {
-                                $ex=strtolower(end(explode('.', $filename)));
-
-                                if(in_array($ex, $file_display)==true)
-                                {
-
-                              echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
-                                }
-                              }
-                            }
-                         
-                              
-?>
-                        </ul>
-                        <span class="button prevButton"></span>
-                        <span class="button nextButton"></span></div>
-<?php
-            }
-
-?>
-
-<p>&nbsp;</p>
-
   <form name="form4" method="post" action="pm_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&po=click&wo=create" onSubmit="return validate_form1()">
     <p><label> Type :
               <select name="typetb" id="type">
@@ -422,43 +384,53 @@ if(@$_REQUEST['op']=='ST_Approval' && @$_REQUEST['search']=='click' && @$_REQUES
 {
      include 'stg_status_click.php';      
  ?>
-   <center>
-
+<center>
       <?php
-            $pid=$_REQUEST['pn'];
-            $path="../si/uploaded_files/$pid";
+  $pid=$_REQUEST['pn']. '/' . $_REQUEST['or']. '/' . $_REQUEST['st'];
+
+
+            $path="../si/upload/uploads/$pid";
+          //  echo "<script>alert('$path')</script>";
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
             if(is_dir($path))
             {
-            $files_count= count(glob("$path./*"));
-
-  ?>
- 
+            $files_count= count(glob($path.'/'.'*'));
+         //   echo "<script>alert('lol')</script>";
+            ?>
 <div id="container">
+
 <ul>
           <?php
             if($dir_list=@opendir($path))
             {
               while (($filename = readdir($dir_list)) !== false) {
-              $ex=strtolower(end(explode('.', $filename)));
+                
+              $ex=explode('.', $filename);
+             @include '../file_search.php';
+              if(@$valid==1)
+              {
 
-              if(in_array($ex, $file_display)==true)
+              if(in_array($ex[1], $file_display)==true)
               {
 
             echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
               }
             }
+          }   
           }
        
             
-            ?>></span>
-      <span class="button nextButton
+            ?>
       </ul>
-      <span class="button prevButton""></span></div>
+      <span class="button prevButton"></span>
+      <span class="button nextButton"></span></div>
       <?php
 }
 
-?>
+?><br>
+<br>
+
+<p>&nbsp;</p>
 </center> 
 <br>
 <br>

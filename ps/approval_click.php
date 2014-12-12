@@ -29,8 +29,12 @@ while($row=mysqli_fetch_array($result))
       	//echo @$_REQUEST['pn'];
               $_SESSION['project_name'] =$_REQUEST['pn'];
               $_SESSION['project_id']   =$row['pr_prid'];
-              $_SESSION['status']       =$row['pr_prnotes'];
-              $_SESSION['date']         =$row['pr_adtm'];
+              while($row1=mysqli_fetch_array($result1))
+              {
+                 if($_REQUEST['or']==$row1['or_wopo_cid'])
+                  $_SESSION['status']       =$row1['or_status'];
+              }
+              $_SESSION['date']         =$row['pr_odate'];
               $_SESSION['order']        =$_REQUEST['or'];
               display_project(); 
          

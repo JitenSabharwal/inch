@@ -48,7 +48,7 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	$inserto=mysqli_query($con,"UPDATE orders SET or_status='Site Survey' where or_wopo_cid='$ido'");
 	$inserts=mysqli_query($con,"UPDATE stg_status SET st_status='PI' where st_stageid='$id'");
 	include 'filedetails.php';
-	$updfile=mysqli_query($con,"INSERT INTO fid_file(fi_fiid,fi_prid,fi_woid,fi_stid,fi_usid,fi_quid,fi_path,fi_edtm) VALUES('$a','$b','$c','$d','$e','$f','$g',CURDATE())");
+	//$updfile=mysqli_query($con,"INSERT INTO fid_file(fi_fiid,fi_prid,fi_woid,fi_stid,fi_usid,fi_quid,fi_path,fi_edtm) VALUES('$a','$b','$c','$d','$e','$f','$g',CURDATE())");
 
 	}
 	 else {
