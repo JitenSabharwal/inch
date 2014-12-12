@@ -344,24 +344,13 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
                   }
                   if($quote_no==4)
                   {
+                     $_SESSION['or_upload']=$_REQUEST['or'];
+                     $_SESSION['pr_upload']=$_REQUEST['pn'];
+                    @include 'upload/index.php';
 
    ?>
 
-                  <div class="upload_box">
-                  <form name="fileUpload" id="fileUpload" action="javascript:void(0);" enctype="multipart/form-data">
-                  <div class="file_browser"><input type="file" name="multiple_files[]" id="_multiple_files" class="hide_broswe" multiple  /></div>
-                  <div class="file_upload"><input type="submit" value="Upload" class="upload_button" /> </div>
-                  </form>
-                  </div>	
-
-
-                  <div class="file_boxes">
-
-                  </div>
-                  <span id="removed_files"></span>
-                  <br>
-                  <p>&nbsp;</p>
-                  <p>&nbsp;</p>
+                 
 
 
 

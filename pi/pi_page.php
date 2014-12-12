@@ -233,10 +233,10 @@ include 'stg_status.php';
 if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click' && @$_REQUEST['st_click']=='click')
 {            
             include 'stg_status_click.php';
-            $pid=$_REQUEST['pn']. '/' . $_REQUEST['or']. '/' . $_REQUEST['st'];
+            $pid=$_REQUEST['pn']. '/' . $_REQUEST['or'];
 
 
-            $path="../si/upload/uploads/$pid";
+            $path="../ps/upload/uploads/$pid";
            //  echo "<script>alert('$path')</script>";
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
             if(is_dir($path))
