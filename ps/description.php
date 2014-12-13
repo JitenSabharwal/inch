@@ -23,7 +23,7 @@ if(tbl==null)
 
 }
     // alert(document.getElementById(q).innerHTML);
-      //alert(document.getElementById('x'));
+      alert(document.getElementById('x'));
      total=parseInt(document.getElementById(q).innerHTML)*parseInt(document.getElementById('i'+i).value);
       document.getElementById(x).innerHTML=total;
     i++;
