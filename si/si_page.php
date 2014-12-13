@@ -233,17 +233,6 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval' )
         }
 
 ?>
-<!--
-
-<div class="file_boxes">
-
-</div>
-<span id="removed_files"></span>
-<br>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
--->
-
 
 <?php
 }
