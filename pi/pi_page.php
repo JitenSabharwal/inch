@@ -165,6 +165,8 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval')
   <?php
   if($_REQUEST['op']=='quotation' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click')
   {
+
+
   if(isset($_REQUEST['quote']))
   {
       $quote_no=$_REQUEST['quote']+1;
@@ -180,6 +182,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval')
   }
   if($quote_no!=4)
   {
+  include 'file.php';
   ?>
   
   <div class="quote" align="center">
@@ -233,18 +236,21 @@ include 'stg_status.php';
 if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click' && @$_REQUEST['st_click']=='click')
 {            
             include 'stg_status_click.php';
-            $pid=$_REQUEST['pn']. '/' . $_REQUEST['or'];
+           
+?>
+<center>
+      <?php
+  $pid=$_REQUEST['pn']. '/' . $_REQUEST['or']. '/' . $_REQUEST['st'];
 
 
-            $path="../ps/upload/uploads/$pid";
-           //  echo "<script>alert('$path')</script>";
+            $path="../si/upload/uploads/$pid";
+          //  echo "<script>alert('$path')</script>";
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
             if(is_dir($path))
             {
             $files_count= count(glob($path.'/'.'*'));
          //   echo "<script>alert('lol')</script>";
             ?>
-<center>
 <div id="container">
 
 <ul>
@@ -262,12 +268,12 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
               {
 
             echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
-            $arr = explode(".", $filename, 2);  
-                    $_SESSION['filename'] = $arr[0];
-                    
               }
             }
-          }   
+          } 
+           $arr = explode(".", $filename, 2);  
+                    $_SESSION['filename'] = $arr[0];
+                      
           }
        
             
@@ -278,7 +284,12 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
       <?php
 }
 
-?>
+?><br>
+<br>
+
+<p>&nbsp;</p>
+</center> 
+
 <br>
 <br>
 <form name='form5' method="POST" action="ap_com.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&com=comment&st=<?php echo $_SESSION['stg_id'];?>&st_click=click" onsubmit='return val2()'>

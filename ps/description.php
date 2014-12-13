@@ -5,7 +5,6 @@ var total;
 function change(a)
 {
   i=1;
-
   
   while(i<=a)
   {
@@ -20,16 +19,15 @@ if(tbl==null)
         alert(tbl.rows[i].cells[2].innerHTML);
     
   }
-
 }
-    // alert(document.getElementById(q).innerHTML);
-      alert(document.getElementById('x'));
+
+     // alert(document.getElementById(q).innerHTML);
+      //alert(document.getElementById('x'));
      total=parseInt(document.getElementById(q).innerHTML)*parseInt(document.getElementById('i'+i).value);
       document.getElementById(x).innerHTML=total;
     i++;
 }
 }
-
 </script>
 
 
@@ -41,14 +39,14 @@ $_SESSION['j']=1;
 function display()
 {//echo "<td>".$_SESSION['j']
 ?>
-	<tr>
+  <tr>
     <td><?php echo $_SESSION['j'];?></td>
     
     <td><?php echo $_SESSION['desc']; ?></td>
     
     <td id='<?php echo "quantity".$_SESSION['j']; ?>'><?php echo $_SESSION['quantity']?></td>
     
-    <td><input type="number" name="<?php echo "rate".$_SESSION['j'];?>" id="<?php echo "i".$_SESSION['j'];?>" onchange="change(<?php echo $_SESSION['j']; ?>)"></td>
+    <td><input type="text" name="<?php echo "rate".$_SESSION['j'];?>" id="<?php echo "i".$_SESSION['j'];?>" onchange="change(<?php echo $_SESSION['j']; ?>)"></td>
 
     <td id="total<?php echo $_SESSION['j']; ?>"></td>
   </tr>
@@ -62,10 +60,10 @@ $result=mysqli_query($con,"SELECT * from prj_project");
 while($row=mysqli_fetch_array($result))
   {
     
-  	if(strcmp($row['pr_prname'],$_REQUEST['pn'])==0)
-  	{
-  		$_SESSION['prid']=$row['pr_prid'];      
-  	}
+    if(strcmp($row['pr_prname'],$_REQUEST['pn'])==0)
+    {
+      $_SESSION['prid']=$row['pr_prid'];      
+    }
     
   }
   
@@ -73,17 +71,17 @@ while($row=mysqli_fetch_array($result))
   $result2=mysqli_query($con,"SELECT * from pod_order");
 
 while($row=mysqli_fetch_array($result1))
-  	{
+    {
       if(strcmp($_REQUEST['or'],$row['wo_wocid'])==0)
       {
-      		if(strcmp($row['wo_prid'], $_SESSION['prid'])==0)
-      		{
-      			$_SESSION['desc']=$row['wo_wodesc'];
-      			$_SESSION['quantity']=$row['wo_woquantity'];
+          if(strcmp($row['wo_prid'], $_SESSION['prid'])==0)
+          {
+            $_SESSION['desc']=$row['wo_wodesc'];
+            $_SESSION['quantity']=$row['wo_woquantity'];
             $_SESSION['order']=$_REQUEST['or'];
             display();
-      		}	
-  	  }
+          } 
+      }
    } 
 
 while($row=mysqli_fetch_array($result2))
@@ -99,6 +97,6 @@ while($row=mysqli_fetch_array($result2))
             }
         }
     }  
-  	
+    
   
 ?>

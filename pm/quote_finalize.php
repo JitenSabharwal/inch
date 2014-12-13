@@ -68,13 +68,12 @@ while($row=mysqli_fetch_array($resultp))
 {
 	if(strcmp($row['po_pocid'],$_REQUEST['or'])==0)
 	{
-
 		if(strcmp($_SESSION['quote'],"Quote1")==0)
 		{
 			
 			$x=$_REQUEST['or'];
 			$upp=mysqli_query($con,"UPDATE pod_order SET po_porate=po_rateq1,po_quoteid=po_quoteid1 WHERE po_pocid='$x'");
-			if(empty($upw))
+			if(empty($upp))
 			{
 				echo "error";
 			}
@@ -87,7 +86,7 @@ while($row=mysqli_fetch_array($resultp))
 		 {
 			$x=$_REQUEST['or'];
  			$upp=mysqli_query($con,"UPDATE pod_order SET po_porate=po_rateq2,po_quoteid=po_quoteid2 WHERE po_pocid='$x'");
-			if(empty($upw))
+			if(empty($upp))
 			{
 				echo "error";
 			}
@@ -100,7 +99,7 @@ while($row=mysqli_fetch_array($resultp))
 		{
 			$x=$_REQUEST['or'];
 			$upp=mysqli_query($con,"UPDATE pod_order SET po_porate=po_rateq3,wo_quoteid=wo_quoteid3 WHERE po_pocid='$x'");			
-			if(empty($upw))
+			if(empty($upp))
 			{
 				echo "error";
 			}
@@ -112,7 +111,7 @@ while($row=mysqli_fetch_array($resultp))
 	}
 	if(empty($upp))
 	{
-		//echo "workingp";
+		echo "workingp";
 
 	}
 	else
