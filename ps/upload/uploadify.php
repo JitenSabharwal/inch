@@ -29,7 +29,7 @@ if (!empty($_FILES) && $_POST['token'] == $verifyToken) {
 	$tempFile = $_FILES['Filedata']['tmp_name'];
 		
 	// Validate the file type
-	$fileTypes = array('jpg','jpeg','gif','png'); // File extensions
+	$fileTypes = array('jpg','jpeg','gif','png','pdf','doc','docx','txt','rtf'); // File extensions
 	$fileParts = pathinfo($_FILES['Filedata']['name']);
 
 	$temp=explode('.',$_FILES['Filedata']['name']);
