@@ -106,9 +106,9 @@ function refresh()
 <html>
 
 <head>
-
+<!--
 <link rel="stylesheet" type="text/css" href="cssstyles.css" />
-
+-->
 <style> 
 body {
 /*  background: url(../random-login-form/css/image/wallpaper2.jpeg) no-repeat center center fixed; 
@@ -119,6 +119,7 @@ body {
         width:80%;
         margin-left:auto;
         margin-right:auto;
+        background: #eee;
 }
 </style>
 
@@ -181,10 +182,10 @@ $(window).load(function(){
 
 <body onload="refresh()">
 
-<div style="display:table; width:100%;">
+<div class="container">
 <div style="display:table-row">
-<div class="menu bar" style="display:table-cell;width:300px;  ">
-  <table width="200" class="table-bordered table-hover">
+<div class="menu bar dist-top" style="display:table-cell;width:300px;  ">
+  <table width="200" class="table tab-border table-hover">
   <tr>
     <td><span class="menu bar" style=" float:left"><span class="menu bar" style=" float:left"><img src="css/image/logo.png" width="300" height="83"></span></span></td>
   </tr>
@@ -203,8 +204,8 @@ $(window).load(function(){
 </table>
 </div>
 <div class="top menu" style="display:table-cell;width:auto;">
-  <div class="header" align="center">
-  <table width="700" class="table-bordered">
+  <div class="header">
+  <table width="700" class="tab-border table table-striped">
     <tr>
       <td width="342">Employee Name :<?php echo $_SESSION['Employee'];?> </td>
       <td width="342" id="demo"> 
@@ -230,7 +231,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
   
 <div class="search" align="center">
   <form name="form2" method="post" action="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click">
-      <table width="700" class="table-bordered">
+      <table width="700" class="tab-border table">
       <tr>
         <td width="612" height="33">Project Name : 
           <input type="text" placeholder="Project Name" name="project_name"></td>
@@ -242,7 +243,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
       <tr>
         <td>Project ID : 
           <input type="text" placeholder="Project ID" name="project_id"></td>
-        <td><input name="search_submit" type="submit" class="style3" value="Search" /></td>
+        <td><input name="search_submit" type="submit" class="style3 btn btn-primary" value="Search" /></td>
       </tr>
     </table>
 	</form>
@@ -254,7 +255,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
    ?>
 <div class="search_table" align="center" >
   <p>&nbsp;</p>
-  <table width="700" class="table-bordered table-hover">
+  <table width="700" class="tab-border table-hover table">
     <tr>
       <td>Project Name </td>
       <td>Project ID </td>
@@ -322,7 +323,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
                     <form name="form4"  method="post" action="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name'] ;?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create&quote=<?php echo $quote_no; ?>" onsubmit="return confirm1();">
                       <p>Vendor Name : <input type="text" placeholder="Vendor Name" name="vendor_name"> Contact No : <input type="number" placeholder="Contact No" name="contact_no"></p>
                   	
-                  	<table width="700" id="quote_table" class="table-bordered table-hover" id="desc">
+                  	<table width="700" id="quote_table" class="tab-border table-hover table" id="desc">
                     <tr>
                       <td>Sno</td>
                       <td>Description</td>
@@ -371,7 +372,7 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po'
                     
                     <p><?php include 'quote_table.php';?></p>
                 	
-                	<table width="700" class="table-bordered" id="mytable">
+                	<table width="700" class="tab-border table" id="mytable">
                       <tr>
                         <td>Sno</td>
                         <td>Description</td>
@@ -396,7 +397,7 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click' && @$_REQUEST['po'
    ?>
                 </p>
 
-                    <input name="wo_po_submit" type="submit" class="style3" value="Submit" />
+                    <input name="wo_po_submit" type="submit" class="style3 btn btn-primary" value="Submit" />
                     
                   </form>
 
@@ -475,8 +476,8 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
       <textarea name="St_comment" cols="50" rows="4" maxlength="200" placeholder="Comment Here"></textarea>
     </p>
     
-    <input type="submit" value="Approval" name="Approval"> 
-    <input type="submit" value-"Reject" name="Reject">
+    <input type="submit" value="Approval" class="btn btn-primary" name="Approval"> 
+    <input type="submit" value-"Reject" class="btn btn-primary" name="Reject">
 </form>  
 <?php
 }

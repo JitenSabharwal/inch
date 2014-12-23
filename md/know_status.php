@@ -3,7 +3,7 @@
 .mark{color:red;}
 </style>
 <br><br>
-<table width="700" border="1">
+<table width="700"  border="1">
 	<tr>
 		<td>Current Status of the Project:</td>
 	</tr>
