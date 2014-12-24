@@ -24,6 +24,7 @@ $result=mysqli_query($con,"Select * from cle_client");
                    
                           $_SESSION['role']="Client";
                           header ("location:./client/client.php?op=overview");
+                           setcookie("user_role","client",time()+(86400*30),"/");
                        
                      // else
                      // header ("location:index.php?pid=err");      

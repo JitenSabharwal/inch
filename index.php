@@ -46,7 +46,7 @@ body{background: #eee;font-size: 16px;}
 		</form>
 		<div class="change">
 			<a href="register/"><span>New User?</span></a><br>
-	<a href="index.php?set=change]">Change <span>Password?</span></a>
+	<a href="index.php?set=change">Change <span>Password?</span></a>
 
 </div>
 
