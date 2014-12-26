@@ -4,29 +4,9 @@ var total;
 
 function change(a)
 {
-  i=1;
+ alert('working');
   
-  while(i<=a)
-  {
-    total=0;
-    var x='total'+i;
-    var q='quantity'+i;
-var tbl=document.getElementById('desc');
-if(tbl==null)
-{
-  for(var i=1;i<tbl.rows.length;i++)
-  {
-        alert(tbl.rows[i].cells[2].innerHTML);
-    
-  }
-}
-
-     // alert(document.getElementById(q).innerHTML);
-      //alert(document.getElementById('x'));
-     total=parseInt(document.getElementById(q).innerHTML)*parseInt(document.getElementById('i'+i).value);
-      document.getElementById(x).innerHTML=total;
-    i++;
-}
+  
 }
 </script>
 
@@ -46,7 +26,7 @@ function display()
     
     <td id='<?php echo "quantity".$_SESSION['j']; ?>'><?php echo $_SESSION['quantity']?></td>
     
-    <td><input type="text" name="<?php echo "rate".$_SESSION['j'];?>" id="<?php echo "i".$_SESSION['j'];?>" onchange="change(<?php echo $_SESSION['j']; ?>)"></td>
+    <td><input type="text"  name="<?php echo "rate".$_SESSION['j'];?>" id="<?php echo "i".$_SESSION['j'];?>" onchange="change(<?php echo $_SESSION['j']; ?>)"></td>
 
     <td id="total<?php echo $_SESSION['j']; ?>"></td>
   </tr>

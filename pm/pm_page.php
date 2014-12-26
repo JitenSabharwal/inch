@@ -364,6 +364,7 @@ include 'quote_select.php';
   
 if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['po']=='click' && @$_REQUEST['st']=='wopo')
 {
+  include 'order_desc.php';
   include 'wopo.php';
 }
 

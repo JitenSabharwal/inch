@@ -29,7 +29,7 @@
               if(in_array($ex[1], $file_display)==true)
               {
 
-            echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
+            echo  "<li><a src='$path/$filename' width='604' height='453'/></li>";
             $arr = explode(".", $filename, 2);  
                     $_SESSION['filename'] = $arr[0];
                     

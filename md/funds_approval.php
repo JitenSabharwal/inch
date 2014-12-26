@@ -53,5 +53,5 @@ mail("garvit1608@gmail.com","PM Comment",$msg,$head);
 	
 	}	
 }
-//header('md_page.php?op=approval');
+header('md_page.php?op=approval');
 ?>
