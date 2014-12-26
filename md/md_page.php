@@ -506,9 +506,9 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
                   <br>
                   
                   <input name="approval" type="submit" class="style3" value="Approval" />
-                  
+                
                   <input name="reject" type="submit" class="style3" value="Reject" />
-              
+            
               </form>
 <?php
 
@@ -545,6 +545,7 @@ else
 function val1() 
 {
   // body...
+  alert('vvv');
   if(document.form4.St_comment.value=='')
   {
     alert('Please enter the comment');
@@ -552,6 +553,7 @@ function val1()
   }
 else
   return true;
+
 }
 
 </script>
