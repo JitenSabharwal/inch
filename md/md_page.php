@@ -135,8 +135,9 @@ echo "<script>alert('The Project Id is $id_no')</script>";
  ?>
 
 <head>
-
+<!--
 <link rel="stylesheet" type="text/css" href="cssstyles.css" />
+-->
 
 <style> 
 body {
@@ -148,6 +149,7 @@ body {
         width:80%;
         margin-left:auto;
         margin-right:auto;
+        background: #eee;
 }
 </style>
 <meta charset="UTF-8">
@@ -157,10 +159,10 @@ body {
 
 <body onload="refresh();">
 
-<div style="display:table; width:100%;">
-<div style="display:table-row">
-<div class="menu bar" style="display:table-cell;width:300px; ">
-  <table width="200" class="table table-hover table-bordered">
+<div style="" class="container">
+<div style="">
+<div class="menu bar dist-top" style="display:table-cell;width:300px; ">
+  <table width="200" class="table table-hover tab-border">
   <tr>
     <td><span class="menu bar" style=" float:left"><span class="menu bar" style=" float:left"><img src="css/image/logo.png" width="300" height="83"></span></span></td>
   </tr>
@@ -179,8 +181,8 @@ body {
 </table>
 </div>
 <div class="top menu" style="display:table-cell;width:auto;">
-  <div class="header" align="center">
-  <table width="700" class="table table-bordered">
+  <div class="header">
+  <table width="700" class="table tab-border table-striped ">
     <tr>
       <td width="342">Employee Name : <?php echo $_SESSION['Employee']; ?></td>
       <td width="342" id="demo"> 
@@ -207,7 +209,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
   
 <div class="search" align="center">
   <form name="form2" method="post" action="md_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click">
-      <table width="700" class="table table-bordered" >
+      <table width="700" class="table tab-border" >
       <tr>
         <td width="612">Project Name : <input type="text" placeholder="Project Name" name="project_name"></td>
         <td width="612">Status :<label>
@@ -227,7 +229,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
       <tr>
         <td>Project ID : 
             <input type="text" placeholder="Project ID" name="project_id"></td>
-        <td><input name="search_submit" type="submit" class="style3" value="Search" /></td>
+        <td><input name="search_submit" type="submit" class="style3 btn btn-primary" value="Search" /></td>
       </tr>
     </table>
 	</form>
@@ -238,7 +240,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
 
   <p>&nbsp;</p>
   <p>&nbsp;</p>
-  <table width="700" class="table table-hover table-bordered" >
+  <table width="700" class="table table-hover tab-border" >
     
     <?php
     }
@@ -309,7 +311,7 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
 <div class="new_project" align="center">
 <form name="form1" method="post" action="md_page.php?op=<?php echo $_REQUEST['op']; ?>&new=click" onSubmit="return validate_form1()">
 
-    <table width="700" border="1">
+    <table width="700"  class="tab-border table table-striped">
     <tr>
       <td>Project Name </td>
       <td><input type="text" placeholder="Project Name" name="project_name"></td>
@@ -412,7 +414,7 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
 
     </tr> 
   </table>
-  <input name="submit" type="submit" class="style3" value="Submit" />
+  <input name="submit" type="submit" class="style3 btn btn-primary" value="Submit" />
   </form>
 	</div>
 	<?php
@@ -504,9 +506,9 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
                   <br>
                   
                   <input name="approval" type="submit" class="style3" value="Approval" />
-                  
+                
                   <input name="reject" type="submit" class="style3" value="Reject" />
-              
+            
               </form>
 <?php
 
@@ -525,6 +527,7 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
 </div>
 </div>
 
+      <?php include '../include/footer.php'; ?>
 </body>
 <script type="text/javascript">
 function valf() 
@@ -542,6 +545,7 @@ else
 function val1() 
 {
   // body...
+  alert('vvv');
   if(document.form4.St_comment.value=='')
   {
     alert('Please enter the comment');
@@ -549,6 +553,7 @@ function val1()
   }
 else
   return true;
+
 }
 
 </script>

@@ -1,3 +1,5 @@
+
+
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <?php session_start(); 
@@ -35,8 +37,11 @@ return true;
 <html>
 
 <head>
+  <!--
 
 <link rel="stylesheet" type="text/css" href="cssstyles.css" />
+
+-->
 
 <style> 
 body {
@@ -48,6 +53,7 @@ body {
         width:80%;
         margin-left:auto;
         margin-right:auto;
+        background: #eee;
 }
 </style>
 
@@ -108,10 +114,10 @@ $(window).load(function(){
 
 <body>
 
-<div style="display:table; width:100%;">
+<div class="container">
 <div style="display:table-row">
-<div class="menu bar" style="display:table-cell;width:300px;  ">
-  <table width="200" class="table-bordered table-hover">
+<div class="menu bar dist-top" style="display:table-cell;width:300px;  ">
+  <table width="200" class="table tab-border table-hover">
   <tr>
     <td><span class="menu bar" style=" float:left"><span class="menu bar" style=" float:left"><img src="../css/image/logo.png" width="300" height="83"></span></span></td>
   </tr>
@@ -128,7 +134,7 @@ $(window).load(function(){
 </div>
 <div class="top menu" style="display:table-cell;width:auto;">
   <div class="header" align="center">
-  <table width="700" class="table table-bordered">
+  <table width="700" class="table tab-border table-striped">
     <tr>
       <td width="342">Employee Name : <?php echo $_SESSION['Employee'];?> </td>
       <td width="342" id="demo"> 
@@ -154,7 +160,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval' )
   
 <div class="search" align="center">
   <form name="form2" method="post" action="si_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click">
-      <table width="700" class="table-bordered">
+      <table width="700" class="tab-border table ">
       <tr>
         <td width="612" height="33">Project Name : 
           <input type="text" placeholder="Project Name" name="project_name"></td>
@@ -175,7 +181,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval' )
       <tr>
         <td>Project ID : 
           <input type="text" placeholder="Project ID" name="project_id"></td>
-        <td><input name="search_submit" type="submit" class="style3" value="Search" /></td>
+        <td><input name="search_submit" type="submit" class="style3 btn btn-primary" value="Search" /></td>
       </tr>
     </table>
 	</form>
@@ -184,7 +190,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval' )
   <?php }?>
 <div class="search_table" align="center">
   <p>&nbsp;</p>
-  <table width="700" class="table-bordered table-hover">
+  <table width="700" class="table tab-border table-hover">
     <tr>
       <td>Project Name </td>
       <td>Project ID </td>
@@ -259,12 +265,13 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click'  && @$_REQUEST['po
 if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click'  && @$_REQUEST['po']=='click')
 {
 
-            $pid=$_REQUEST['pn'];
-            $path="../si/uploaded_files/$pid";
+            $pid=$_REQUEST['pn']. '/' . $_REQUEST['or']. '/' . $_REQUEST['st'];
+
+            $path="../si/upload/uploads/$pid";
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
             if(is_dir($path))
             {
-            $files_count= count(glob("$path./*"));
+            $files_count= count(glob($path.'/'.'*'));
 
 ?>
 <center>
@@ -272,17 +279,25 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click'  && @$_REQUEST[
   <ul>
       
           <?php
-            if($dir_list=opendir($path))
+           if($dir_list=@opendir($path))
             {
               while (($filename = readdir($dir_list)) !== false) {
-              $ex=strtolower(end(explode('.', $filename)));
+                
+              $ex=explode('.', $filename);
+             @include '../file_search.php';
+              if(@$valid==1)
+              {
 
-              if(in_array($ex, $file_display)==true)
+              if(in_array($ex[1], $file_display)==true)
               {
 
             echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
               }
             }
+          } 
+           $arr = explode(".", $filename, 2);  
+                    $_SESSION['filename'] = $arr[0];
+                      
           }
        
             
@@ -297,13 +312,13 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click'  && @$_REQUEST[
 ?>
 
  
-<form method="POST" name="comment" action="si_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&com=comment " onsubmit="return val() ">
+<form method="post" name="comment" action="si_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&com=comment " onsubmit="return val() ">
      <p>
       <textarea name="St_comment" cols="50" rows="4" maxlength="200" placeholder="Comment Here"></textarea>
     </p>
     
-    <input type="submit" value="Approval" name="Approval"> 
-    <input type="submit" value="Reject" name="Reject">
+    <input type="submit" value="Approval" class="btn btn-primary" name="Approval"> 
+    <input type="submit" value="Reject"  class="btn btn-primary" name="Reject">
 </form>  
 <?php
 }
@@ -333,6 +348,7 @@ else
 }
 
 </script>
+<?php include '../include/footer.php'; ?>
 </body>
 </html>
 

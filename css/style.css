@@ -1,2 +1,8 @@
 
 a:hover{text-decoration: none;}
+.tab-border{border:2px solid #333;}
+.container{padding-top: 100px;}
+.header{margin-left: 70px;}
+.new_project{margin-left: 40px;}
+.dist-top{vertical-align: top;}
+.search_table,.search{margin-left: 50px;}

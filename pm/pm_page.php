@@ -148,7 +148,8 @@ body {
   background-size: cover;*/
         width:80%;
         margin-left:auto;
-        margin-right:auto;
+        margin-right:auto;background: #eee;
+
 }
 </style>
 <meta charset="UTF-8">
@@ -158,10 +159,10 @@ body {
 
 <body onload="refresh();">
 
-<div style="display:table; width:100%;">
+<div class="container">
 <div style="display:table-row">
-<div class="menu bar" style="display:table-cell;width:300px; ">
-  <table width="200" class="table table-bordered table-hover">
+<div class="menu bar dist-top" style="display:table-cell;width:300px; ">
+  <table width="200" class="table tab-border table-hover">
   <tr>
     <td><span class="menu bar" style=" float:left"><span class="menu bar" style=" float:left"><img src="css/image/logo.png" width="300" height="83"></span></span></td>
   </tr>
@@ -180,8 +181,8 @@ body {
 </table>
 </div>
 <div class="top menu" style="display:table-cell;width:auto;">
-  <div class="header" align="center">
-  <table width="700" border="1">
+  <div class="header">
+  <table width="700" class="table table-striped tab-border">
     <tr>
       <td width="342">Employee Name : 
 
@@ -215,7 +216,7 @@ if(@$_REQUEST['op']=='overview' || @$_REQUEST['op']=='approval' || @$_REQUEST['s
   
 <div class="search" align="center">
   <form name="form2" method="post" action="pm_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click">
-      <table width="700" class="table table-bordered">
+      <table width="700" class="table tab-border">
       <tr>
         <td width="612">Project Name : <input type="text" placeholder="Project Name" name="project_name"></td>
         <td width="612">Status :<label>
@@ -235,7 +236,7 @@ if(@$_REQUEST['op']=='overview' || @$_REQUEST['op']=='approval' || @$_REQUEST['s
       <tr>
         <td>Project ID : 
           <input type="text" placeholder="Project ID" name="project_id"></td>
-        <td><input name="search_submit" type="submit" class="style3" value="Search" /></td>
+        <td><input name="search_submit" type="submit" class="style3 btn btn-primary" value="Search" /></td>
       </tr>
     </table>
 	</form>
@@ -247,7 +248,7 @@ if(@$_REQUEST['op']=='overview' || @$_REQUEST['op']=='approval' || @$_REQUEST['s
 if(@$_REQUEST['op']=='overview')  
 {
   ?> 
-  <table width="700" class="table table-bordered table-hover">
+  <table width="700" class="table tab-border table-hover">
     <tr>
       <td>Project Name </td>
       <td>Project ID </td>
@@ -260,7 +261,7 @@ if(@$_REQUEST['op']=='overview')
 else if(@$_REQUEST['op']=='approval' || @$_REQUEST['stage']=='Approval')
 {
  ?>
- <table width="700" class="table table-bordered table-hover">
+ <table width="700" class="table tab-border table-hover">
     <tr>
       <td>Project Name </td>
       <td>Project ID </td>
@@ -310,7 +311,7 @@ if(@$_REQUEST['op']=='overview' && @$_REQUEST['search']=='click' && @$_REQUEST['
   include 'Project_order.php';
 ?>
 
- <table width="700" class="table table-bordered table-hover">
+ <table width="700" class="table tab-border table-hover">
 
  </table>
   
@@ -327,7 +328,7 @@ if(@$_REQUEST['op']=='overview' && @$_REQUEST['search']=='click' && @$_REQUEST['
     <p>&nbsp;</p>
 	        <div id="catList">
 <p><input type="button" value="Add" onclick="addElement();" id="add" name="add"><input type="button" value="Remove" onclick="removeElement();"></p>
-<table width="700" class="table table-bordered " id="myTable">
+<table width="700" class="table tab-border " id="myTable">
   <tr>
     <td>Sno</td>
     <td>Description</td>
@@ -337,7 +338,7 @@ if(@$_REQUEST['op']=='overview' && @$_REQUEST['search']=='click' && @$_REQUEST['
           
 </table>
 <br>
-<input type="submit" name="submit" value="Submit" id="submit" style="display:none;"/>
+<input type="submit" name="submit" value="Submit" id="submit" class="btn btn-primary" style="display:none;"/>
 
 </div>
     
@@ -438,7 +439,7 @@ if(@$_REQUEST['op']=='ST_Approval' && @$_REQUEST['search']=='click' && @$_REQUES
 </center> 
 <br>
 <br>
-<table border=1  width=500px>
+<table border="1"  width="500">
   
   <tr>
     <th>
@@ -455,13 +456,13 @@ if(@$_REQUEST['op']=='ST_Approval' && @$_REQUEST['search']=='click' && @$_REQUES
 </table>
 <br>
 <br>
-<form name='form5' method="POST" action="ap_st_com.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&com=comment&st=<?php echo $_SESSION['stg_id'];?>&st_click=click" onsubmit='return val3()'>
+<form name='form5' method="post" action="ap_st_com.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&com=comment&st=<?php echo $_SESSION['stg_id'];?>&st_click=click" onsubmit='return val3()'>
      <p>
       <textarea name="St_comment" cols="50" rows="4" maxlength="200" placeholder="Comment Here"></textarea>
     </p>
     
-    <input type="submit" value="Approval" name="Approval"> 
-    <input type="submit" value="Reject" name="Reject">
+    <input type="submit" value="Approval" class="btn btn-primary" name="Approval"> 
+    <input type="submit" value="Reject" class="btn btn-primary" name="Reject">
 
 </form>  
 <?php
@@ -472,6 +473,7 @@ if(@$_REQUEST['op']=='ST_Approval' && @$_REQUEST['search']=='click' && @$_REQUES
 </div>
 </div>
 </div></div>
+<?php include '../include/footer.php'; ?>
 </body>
 <script>
 function val3()
