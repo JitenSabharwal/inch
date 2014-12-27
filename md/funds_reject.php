@@ -17,6 +17,10 @@ while($row=mysqli_fetch_array($result))
 		if(!empty($upa))
 		{			
 			$upo=mysqli_query($con,"UPDATE orders SET or_status='Request for quotes' WHERE or_wopo_cid='$cid'");
+			$msg = wordwrap($mdcom,70);
+			$head='From:noreply@auricktech.com';
+// send email
+			mail("garvit1608@gmail.com","MD Comment",$msg,$head);
 		}
 	
 	}	
@@ -28,10 +32,16 @@ while($row=mysqli_fetch_array($result1))
 	{
 		$id=$row['po_poid'];
 		$upa=mysqli_query($con,"UPDATE pod_order SET po_mdcomment='$mdcom',po_approval='no' WHERE po_poid='$id'");
+		
 		if(!empty($upa))
 		{
 			
 			$upo=mysqli_query($con,"UPDATE orders SET or_status='Request for quotes' WHERE or_wopo_cid='$cid'");
+			$msg = wordwrap($mdcom,70);
+			$head='From:noreply@auricktech.com';
+// send email
+			mail("garvit1608@gmail.com","MD Comment",$msg,$head);
+
 		}
 	
 	}	
