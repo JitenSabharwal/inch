@@ -1,4 +1,4 @@
-<table border=1 width=700>
+<table class="tab-border table" width="700">
 <tr>
 	<th>Stage Id</th>
 	<th>Description</th>

@@ -1,6 +1,4 @@
-<html>
-<head>
-<title>Adding and Removing Text Boxes Dynamically</title>
+
 <script type="text/javascript">
 var intTextBox=0;
 
@@ -53,12 +51,12 @@ intTextBox = intTextBox-1;
 }
 }
 </script>
-</head>
+
 <body>
 
-<p><input type="button" value="Add" onclick="addElement();"><input type="button" value="Remove" onclick="removeElement();"></p>
+<p><input type="button" value="Add" class="btn btn-primary" onclick="addElement();"><input type="button" class="btn btn-primary" value="Remove" onclick="removeElement();"></p>
 
-<table width="700" border="1" id="myTable">
+<table width="700" class="tab-border table" id="myTable">
   <tr>
     <td>Stages</td>
     <td>Description</td>

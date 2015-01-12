@@ -439,7 +439,7 @@ if(@$_REQUEST['op']=='ST_Approval' && @$_REQUEST['search']=='click' && @$_REQUES
 </center> 
 <br>
 <br>
-<table border="1"  width="500">
+<table class="table table-hover tab-border"  width="500">
   
   <tr>
     <th>

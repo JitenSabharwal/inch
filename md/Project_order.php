@@ -1,4 +1,4 @@
-<table width="700" class="table table-bordered table-hover">
+<table width="700" class="table tab-border table-hover">
 <tr>
 <th>Project Name</th>
 <th>Order Id</th>

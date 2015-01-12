@@ -45,7 +45,7 @@ $result=mysqli_query($con,"Select * from usx_user");
                       }                  
                     else if(isset($row['us_si']))
                       {
-                        $_SESSION['role']="Si";
+                        $_SESSION['role']="Site Engineer";
                       
                           header ("location:./si/si_page.php?op=overview");
                            setcookie("user_role","si",time()+(86400*30),"/");
@@ -61,7 +61,7 @@ $result=mysqli_query($con,"Select * from usx_user");
                        }
                     else if(isset($row['us_fs']))
                       {
-                          $_SESSION['role']="FS";
+                          $_SESSION['role']="Finance Specialist";
                         
                           header ("location:./fs/fs_page.php?op=overview");
                            setcookie("user_role","fs",time()+(86400*30),"/");
@@ -81,7 +81,8 @@ $result=mysqli_query($con,"Select * from usx_user");
                            setcookie("user_role","client",time()+(86400*30),"/");
                        }
                       else
-                      header ("location:index.php?pid=err");      
+                     // header ("location:index.php?pid=err");    
+                     echo "<script>alert('Error in log in,please try again')</script>";  
                 }
               }
               

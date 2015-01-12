@@ -334,7 +334,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
    <?php include 'description.php'; ?>
                    </table>
 
-                      <input name="quote_submit" type="submit" class="style3" value="Submit" />
+                      <input name="quote_submit" type="submit" class="style3 btn btn-primary" value="Submit" />
                     </form>
 
 

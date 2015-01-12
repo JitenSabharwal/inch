@@ -103,8 +103,7 @@ $(window).load(function(){
 //session_start();
 
 
-$md=$_SESSION['Employee'];
-$_SESSION['desig']="managing director";
+
 
 
 if($_REQUEST['op']=='new_project' && @$_REQUEST['new']=='click')
@@ -193,7 +192,7 @@ document.getElementById("demo").innerHTML = "Date : " + d.toDateString();
  </td>
     </tr>
     <tr>
-      <td>Role : <?php echo $_SESSION['desig']; ?> </td>
+      <td>Role : <span style="margin-left:85px;"><?php echo $_SESSION['role']; ?></span> </td>
       <td>&nbsp;</td>
     </tr>
   </table>
@@ -227,7 +226,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
           </td>
       </tr>
       <tr>
-        <td>Project ID : 
+        <td>Project ID : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="text" placeholder="Project ID" name="project_id"></td>
         <td><input name="search_submit" type="submit" class="style3 btn btn-primary" value="Search" /></td>
       </tr>
@@ -450,9 +449,9 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
                 
                 </textarea><br>
                 
-                <input name="approval" type="submit" class="style3" value="Approval" />
+                <input name="approval" type="submit"   class="style3 btn btn-primary" value="Approval" />
                 
-                <input name="reject" type="submit" class="style3" value="Reject" />
+                <input name="reject" type="submit"   class="style3 btn btn-primary" value="Reject" />
             
             </form>
 <?php
@@ -479,7 +478,7 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
                  include 'stg_status_click.php';      
  ?>
 
-                <table border='2'  width='500px'>
+                <table class="table table-hover tab-border"  width='700'>
                   
                   <tr>
                     <th>
@@ -505,9 +504,9 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
 
                   <br>
                   
-                  <input name="approval" type="submit" class="style3" value="Approval" />
+                  <input name="approval" type="submit"  class="style3 btn btn-primary" value="Approval" />
                 
-                  <input name="reject" type="submit" class="style3" value="Reject" />
+                  <input name="reject" type="submit"  class="style3 btn btn-primary" value="Reject" />
             
               </form>
 <?php

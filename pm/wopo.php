@@ -7,7 +7,7 @@ $w=substr($_REQUEST['or'],0,1);
 if($w=='W')
 {	
 ?>
-<table width="700" border="1">
+<table width="700" class="table table-hover tab-border">
   <tr>
     <td>Stage id</td>
     <td>Work order</td>
@@ -62,6 +62,6 @@ while($row1=mysqli_fetch_array($result2))
 
 <form method="POST" action="wopoinsert.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_REQUEST['pn']; ?>&or=<?php echo $_SESSION['order'];?>&st=insert">
      
-    <input type="submit" value="Approve" name="Approvalwopo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-    <input type="submit" value="Reject" name="Rejectwopo">
+    <input type="submit" value="Approve" class="btn btn-primary" name="Approvalwopo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    <input type="submit" value="Reject" class="btn btn-primary" name="Rejectwopo">
 </form>  

@@ -333,7 +333,7 @@ if(@$_REQUEST['com']=='comment')
     include 'Reject.php';
   }
 }
-        $_SESSION['second_login_count']=1;
+       
 ?>
 <script type="text/javascript">
 function val () {

@@ -5,7 +5,7 @@ $c=mysqli_query($con,"SELECT wo_wocid,wo_wodesc,wo_woquantity from wok_order" );
 
 ?>
 <div align="center">
-	<table width="700" border="1">
+	<table width="700" class="tab-border table">
 		<tr>
 			<td>WC ID</td>
 			<td>WO Desc</td>

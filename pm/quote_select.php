@@ -1,7 +1,7 @@
 <br>
 <br>
 
-<table width="800" border="3">
+<table width="800" class="table table-hover tab-border">
     <tr>
       <th>Project Name </th>
       <th>Description</th>

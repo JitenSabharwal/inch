@@ -3,7 +3,7 @@
 .mark{color:red;}
 </style>
 <br><br>
-<table width="700"  border="1">
+<table width="700"  class="table table-hover tab-border" >
 	<tr>
 		<td>Current Status of the Project:</td>
 	</tr>
@@ -16,18 +16,7 @@ while ($r=mysqli_fetch_array($sq1)) {
 
 	if(strcmp($r['or_prjname'],@$_REQUEST['pn'])==0)
 	{
-	/*	if(strcmp($r[''],"Project Created")==0)
-		{
-			echo "<td class='highlight'>MD Alloted</td><td class='highlight'>PM Alloted</td><td class='highlight'>PI Alloted</td>";
-			echo "<td class='highlight'>SI Alloted</td><td class='highlight'>PS Alloted</td><td class='highlight'>FS Alloted</td>";
-		}
-		if(strcmp($r['pr_status'],"PO Created")==0 ||  strcmp($r['pr_status'],"WO Created")==0)
-		{
-			echo "<td class='highlight'>MD Alloted</td><td class='highlight'>PM Alloted</td><td class='mark'>PI Pending</td>";
-			echo "<td class='mark'>SI Pending</td><td class='highlight'>PS Alloted</td><td class='mark'>FS Pending</td>";
-		}
-	}
-	*/
+	
 	echo "<tr>";
 	switch ($r['or_status']) {
 			case 'Project Created':

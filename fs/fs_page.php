@@ -115,7 +115,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
   
 <div class="search" align="center">
   <form name="form2" method="post" action="fs_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click">
-      <table width="700" class="tab-border">
+      <table width="700" class="tab-border table">
       <tr>
         <td width="612" height="33">Project Name : 
           <input type="text" placeholder="Project Name" name="project_name"></td>
@@ -288,7 +288,7 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
 <br>
 <br>
 <br>
-<table border="1"  width="500">
+<table class="tab-border table"  width="500">
   
   <tr>
     <th>
