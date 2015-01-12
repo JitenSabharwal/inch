@@ -74,7 +74,7 @@ $(window).load(function(){
 <div class="menu bar" style="display:table-cell;width:300px;  ">
   <table width="200" class="table tab-border table-hover">
   <tr>
-    <td><span class="menu bar" style=" float:left"><span class="menu bar" style=" float:left"><img src="css/image/logo.png" width="300" height="83"></span></span></td>
+    <td><span class="menu bar" style=" float:left"><span class="menu bar" style=" float:left"><img src="../images/logo.png" width="300" height="83"></span></span></td>
   </tr>
   <tr>
     <td><div align="center"><a href="fs_page.php?op=overview">Overview</a></div></td>
@@ -100,7 +100,7 @@ document.getElementById("demo").innerHTML = "Date : " + d.toDateString();
  </td>
     </tr>
     <tr>
-      <td>Role :<?php echo $_SESSION['role']; ?> </td>
+      <td>Role <span style="margin-left:85px">:<?php echo $_SESSION['role']; ?></span> </td>
       <td>&nbsp;</td>
     </tr>
   </table>
@@ -123,8 +123,8 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
           </td>
       </tr>
       <tr>
-        <td>Project ID : 
-          <input type="text" placeholder="Project ID" name="project_id"></td>
+        <td>Project ID <span style="margin-left:25px">: 
+          <input type="text" placeholder="Project ID" name="project_id"></span></td>
         <td><input name="search_submit" type="submit" class="style3 btn btn-primary" value="Search" /></td>
       </tr>
     </table>
@@ -134,7 +134,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
   <?php }?>
 <div class="search_table" align="center">
   <p>&nbsp;</p>
-  <table width="700" class="table table-border table-hover">
+  <table width="700" class="table tab-border table-hover">
     <tr>
       <td>Project Name </td>
       <td>Project ID </td>

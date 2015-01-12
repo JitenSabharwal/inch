@@ -99,7 +99,7 @@ document.getElementById("demo").innerHTML = "Date : " + d.toDateString();
  </td>
     </tr>
     <tr>
-      <td>Role :<?php echo $_SESSION['role']; ?> </td>
+      <td>Role<span style="margin-left:85px"> :<?php echo $_SESSION['role']; ?></span> </td>
       <td>&nbsp;</td>
     </tr>
   </table>
@@ -122,8 +122,8 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval')
           </td>
       </tr>
       <tr>
-        <td>Project ID : 
-          <input type="text" placeholder="Project ID" name="project_id"></td>
+        <td>Project ID<span style="margin-left:28px"> : 
+          <input type="text" placeholder="Project ID" name="project_id"></span></td>
         <td><input name="search_submit" type="submit" class="style3 btn btn-primary" value="Search" /></td>
       </tr>
     </table>

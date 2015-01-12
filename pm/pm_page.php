@@ -198,9 +198,9 @@ document.getElementById("demo").innerHTML = "Date : " + d.toDateString();
  </td>
     </tr>
     <tr>
-      <td>Role :   <?php 
+      <td>Role <span style="margin-left:80px">:   <?php 
       echo @$_SESSION['role'];
-      ?></td>
+      ?></span></td>
       <td>&nbsp;</td>
     </tr>
   </table>
@@ -234,8 +234,8 @@ if(@$_REQUEST['op']=='overview' || @$_REQUEST['op']=='approval' || @$_REQUEST['s
           </td>
       </tr>
       <tr>
-        <td>Project ID : 
-          <input type="text" placeholder="Project ID" name="project_id"></td>
+        <td>Project ID <span style="margin-left:30px"> : 
+          <input type="text" placeholder="Project ID" name="project_id"></span></td>
         <td><input name="search_submit" type="submit" class="style3 btn btn-primary" value="Search" /></td>
       </tr>
     </table>

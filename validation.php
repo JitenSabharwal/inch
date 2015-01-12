@@ -54,7 +54,7 @@ $result=mysqli_query($con,"Select * from usx_user");
                       }
                     else if(isset($row['us_ps']))
                       {
-                          $_SESSION['role']="Ps";
+                          $_SESSION['role']="Purchase Specialist";
                          
                           header ("location:./ps/ps_page.php?op=quotation");
                           setcookie("user_role","ps",time()+(86400*30),"/");
@@ -68,7 +68,7 @@ $result=mysqli_query($con,"Select * from usx_user");
                        }
                     else if(isset($row['us_pi']))
                       {
-                          $_SESSION['role']="Pi";
+                          $_SESSION['role']="Project Engineer";
                          
                           header ("location:./pi/pi_page.php?op=quotation");
                            setcookie("user_role","pi",time()+(86400*30),"/");
