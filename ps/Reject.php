@@ -19,7 +19,10 @@ else
 	{
 		$f=$_SESSION['filename'];
 		$del=mysqli_query($con,"DELETE from fid_file where fi_fiid='$f'");
-
+									$msg = wordwrap($com,70);
+											      	$head='From:noreply@auricktech.com';
+											// send email
+											      mail("garvit1608@gmail.com","Ps Comment",$msg,$head);
 	}
 }
 ?>

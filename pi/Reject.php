@@ -19,7 +19,11 @@ else
 	{
 		$f=$_SESSION['filename'];
 		$del=mysqli_query($con,"DELETE from fid_file where fi_fiid='$f'");
-
+		$com="This file cannot be approved";
+		$msg = wordwrap($com,70);
+      $head='From:noreply@auricktech.com';
+// send email
+      mail("garvit1608@gmail.com","Stage Rejected",$msg,$head);
 	}
 }
 ?>

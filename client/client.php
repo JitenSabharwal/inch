@@ -152,40 +152,63 @@ if(@$_REQUEST['op']=='overview' && @$_REQUEST['search']=='click' && @$_REQUEST['
   <center>
 
       <?php
-            $pid=$_REQUEST['pn'];
-            $path="../si/uploaded_files/$pid";
+      $p=$_SESSION['project_id'];
+
+###################################################################################
+$result=mysqli_query($con,"SELECT * from stg_stage s join orders o where (s.st_woid=o.or_wwpo_cid) AND o.or_prid='$p'");            
+###################################################################################
+  while($row=mysqli_fetch_array($result))
+  {
+
+    $pid=$_REQUEST['pn']. '/' . $row['or']. '/' . $_REQUEST['st'];
+
+
+            $path="../si/upload/uploads/$pid";
+           //  echo "<script>alert('$path')</script>";
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
             if(is_dir($path))
             {
-                 $files_count= count(glob("$path./*"));
+            $files_count= count(glob($path.'/'.'*'));
+         //   echo "<script>alert('lol')</script>";
+            ?>
 
-  ?>
- 
-                  <div id="container">
-                  <ul>
-<?php
-                              if($dir_list=@opendir($path))
-                              {
-                                while (($filename = readdir($dir_list)) !== false) {
-                                $ex=strtolower(end(explode('.', $filename)));
+<div id="container">
 
-                                if(in_array($ex, $file_display)==true)
-                                {
+<ul>
+          <?php
+            if($dir_list=@opendir($path))
+            {
+              while (($filename = readdir($dir_list)) !== false) {
+                
+              $ex=explode('.', $filename);
+             @include '../file_search.php';
+              if(@$valid==1)
+              {
 
-                              echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
-                                }
-                              }
-                            }
-                         
-                              
-?>
-                        </ul>
-                        <span class="button prevButton"></span>
-                        <span class="button nextButton"></span></div>
-<?php
+              if(in_array($ex[1], $file_display)==true)
+              {
+
+            echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
+              }
             }
+          }
+           $arr = explode(".", $filename, 2);  
+                    $_SESSION['filename'] = $arr[0];
+                       
+          }
+       
+  }          
+            ?>
+      </ul>
+      <span class="button prevButton"></span>
+      <span class="button nextButton"></span></div>
+      <?php
+}
 
 ?>
+ <br>
+ <br>
+
 
 <p>&nbsp;</p>
 

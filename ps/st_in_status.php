@@ -10,6 +10,13 @@ if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click'  && @$_REQUEST['po
       }
       else
       {
+        $msg = wordwrap($com,70);
+                              $head='From:noreply@auricktech.com';
+                      // send email
+                            mail("garvit1608@gmail.com","Ps Comment",$msg,$head);
+      }
+      else
+      {
          include 'update.php';
          echo "<script>alert('stage table updated');</script>";
          
