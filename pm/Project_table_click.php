@@ -14,7 +14,19 @@ function display_project1()//function to display the table values
       ?></a></td>
       <td><?php echo @$_SESSION['project_id'];?></td>
       
-      <td><?php echo @$_SESSION['date']      ;?></td>
+      <td><?php
+                  include 'connection.php'; 
+                  $pn=$_REQUEST['pn'];
+                  $result3=mysqli_query($con,"SELECT * from prj_project where pr_prname='$pn'");//the query to get the whole database in one variable 
+                  
+                    while($row3=mysqli_fetch_array($result3))
+                    {
+                        {
+                          echo $row3['pr_odate'];
+                        }
+      
+                    }          
+                ?></td>
       <td><?php echo @$_SESSION['initiated_by'];?></td>
     </tr>
     <?php

@@ -74,8 +74,14 @@ while($row=mysqli_fetch_array($result))
 											{
 												echo "error";
 											}
-										}
+										}	
 									}
+									$com=$_REQUEST['Quote_comment'];
+									$msg = wordwrap($com,70);
+											      	$head='From:noreply@auricktech.com';
+											// send email
+											      mail("garvit1608@gmail.com","Pi Comment",$msg,$head);
+											
 								}
 								else
 								{
@@ -130,6 +136,11 @@ while($row=mysqli_fetch_array($result))
 											}
 										}
 									}
+									$com=$_REQUEST['Quote_comment'];
+									$msg = wordwrap($com,70);
+											      	$head='From:noreply@auricktech.com';
+											// send email
+											      mail("garvit1608@gmail.com","Pi Comment",$msg,$head);
 								}
 		if(empty($insert))
 		{

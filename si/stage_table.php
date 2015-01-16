@@ -1,8 +1,8 @@
 <table class="tab-border table" width="700">
 <tr>
-	<th>Stage Id</th>
-	<th>Description</th>
-	<th>Percentage</th>
+	<td>Stage Id</td>
+	<td>Description</td>
+	<td>Percentage</td>
 </tr>
 <?php
 function display_stage()
