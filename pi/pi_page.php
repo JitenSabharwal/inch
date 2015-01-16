@@ -246,13 +246,13 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
   $pid=$_REQUEST['pn']. '/' . $_REQUEST['or']. '/' . $_REQUEST['st'];
 
 
-            $path="../si/upload/uploads/$pid";
+            $path="../si/uploads/$pid";
           //  echo "<script>alert('$path')</script>";
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
             if(is_dir($path))
             {
             $files_count= count(glob($path.'/'.'*'));
-         //   echo "<script>alert('lol')</script>";
+           echo "<script>alert('lol')</script>";
             ?>
 <div id="container">
 

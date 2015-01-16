@@ -2,8 +2,6 @@
 ?>
 <?php include 'intialize.php' ?>
 <?php
-$name = explode(" ", $_SESSION['Employee']);
-
 //#####################################################
 $result=mysqli_query($con,"SELECT * from prj_project");//the query to get the whole database in one variable 
 $result1=mysqli_query($con,"SELECT * from orders");       
@@ -16,7 +14,19 @@ $result1=mysqli_query($con,"SELECT * from orders");
               <td><a href="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name'] ?>&or=<?php echo @$_SESSION['order'];?>&po=click"> <?php  echo @$_SESSION['project_name'];  ?></a></td>
               <td><?php echo @$_SESSION['project_id'];?></td>
               <td><?php echo @$_SESSION['status']    ;?></td>
-              <td><?php echo @$_SESSION['date']      ;?></td>
+              <td><?php
+                  include 'connection.php'; 
+                  $pn=$_REQUEST['pn'];
+                  $result3=mysqli_query($con,"SELECT * from prj_project where pr_prname='$pn'");//the query to get the whole database in one variable 
+                  
+                    while($row3=mysqli_fetch_array($result3))
+                    {
+                        {
+                          echo $row3['pr_odate'];
+                        }
+      
+                    }          
+                ?></td>
               <td><?php echo @$_SESSION['order'];?></td>
         </tr>
       <?php

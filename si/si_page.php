@@ -122,7 +122,7 @@ $(window).load(function(){
     <td><span class="menu bar" style=" float:left"><span class="menu bar" style=" float:left"><img src="../css/image/logo.png" width="300" height="83"></span></span></td>
   </tr>
   <tr>
-    <td><div align="center"><a href="si_page.php?op=overview">Overview</a></div></td>
+    <td><div align="center"><a href="si_page.php?op=overview">Stage</a></div></td>
   </tr>
   <tr>
     <td><div align="center"><a href="si_page.php?op=approval">Approval</a></div></td>
@@ -164,19 +164,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval' )
       <tr>
         <td width="612" height="33">Project Name : 
           <input type="text" placeholder="Project Name" name="project_name"></td>
-        <td width="612">Status :<label>
-              <select name="status" id="status">
-                <option value="">Choose</option>  
-                <option value="Project created">Project created</option>
-                <option value="Request for overview">Request for overview</option>
-                <option value="Create overview">Create overview</option>
-                <option value="overview approval">overview approval</option>
-                <option value="WO created">WO created</option>
-                <option value="PO created">PO created</option>
-              </select>
-              </label>
-          
-          </td>
+        <td></td>
       </tr>
       <tr>
         <td>Project ID <span style="margin-left:28px">: 
@@ -235,7 +223,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval' )
           $_SESSION['pr_upload']=$_REQUEST['pn'];
           $_SESSION['st_upload']=$_REQUEST['st'];
          // echo "<script>alert('$r')</script>";
-          include 'upload/index.php';
+          include 'doc.html';
         }
 
 ?>
