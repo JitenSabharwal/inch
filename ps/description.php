@@ -1,12 +1,13 @@
+
 <script>
 var i=1;
 var total;
 
 function change(a)
 {
- alert('working');
-  
-  
+var qty=document.getElementById('quantity'+a).innerHTML;
+var rt=document.getElementById('i'+a).value;
+document.getElementById('total'+a).innerHTML=qty*rt;
 }
 </script>
 
@@ -17,7 +18,7 @@ include 'connection.php';
 $_SESSION['j']=1;
 
 function display()
-{//echo "<td>".$_SESSION['j']
+{
 ?>
   <tr>
     <td><?php echo $_SESSION['j'];?></td>
@@ -26,12 +27,11 @@ function display()
     
     <td id='<?php echo "quantity".$_SESSION['j']; ?>'><?php echo $_SESSION['quantity']?></td>
     
-    <td><input type="text"  name="<?php echo "rate".$_SESSION['j'];?>" id="<?php echo "i".$_SESSION['j'];?>" onchange="change(<?php echo $_SESSION['j']; ?>)"></td>
+    <td><input type="text"   name="<?php echo "rate".$_SESSION['j'];?>" id="<?php echo "i".$_SESSION['j'];?>" onkeyup="change(<?php echo $_SESSION['j']; ?>)"></td>
 
     <td id="total<?php echo $_SESSION['j']; ?>"></td>
   </tr>
   <?php
-//echo "rate".$_SESSION['j'];
 $_SESSION['j']++;
 }
 
