@@ -3,10 +3,11 @@
 
 <table width="800" class="table table-hover tab-border">
     <tr>
-      <th>Project Name </th>
-      <th>Description</th>
-      <th>Quantity</th>
-      <th>Rate</th>
+      <td>Project Name </td>
+      <td>Description</td>
+      <td>Quantity</td>
+      <td>Rate</td>
+      <td>Total</td>
           </tr>
  
 <?php
@@ -19,6 +20,8 @@ function displayq()
 		<td><?php echo $_SESSION['desc'];?></td>
 		<td><?php echo $_SESSION['quan'];?></td>
 		<td><?php echo $_SESSION['q'];?></td>
+      	<td><?php echo $_SESSION['q']*$_SESSION['quan'];?></td>
+		
 		</tr>
 
 <?php

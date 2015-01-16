@@ -50,13 +50,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
              // echo "working";
               while($row= mysqli_fetch_array($result))
                     {
-                          //echo "string";
+                       $pname=test_input($_REQUEST['project_name']);  
+                        
+                        if(strcmp($row['pr_prname'],trim($pname))==0)
+                        {
                           $_SESSION['project_name'] =$row['pr_prname'];     
                           $_SESSION['project_id']   =$row['pr_prid'];
                           $_SESSION['status']       =$row['pr_prnotes'];
                           $_SESSION['date']         =$row['pr_odate'];
                           $_SESSION['initiated_by'] =$row['pr_md'];
                           display_project();//calling the function diaplay                          
+                        }
                      }               
             }
 
@@ -67,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                     $pname=test_input($_REQUEST['project_name']);  
                       while($row= mysqli_fetch_array($result))
                       {
-                        if(strcmp($row['pr_prname'],$pname)==0)
+                        if(strcmp($row['pr_prname'],trim($pname))==0)
                         {
                     
                           $_SESSION['project_name'] =$row['pr_prname'];     

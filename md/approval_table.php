@@ -66,6 +66,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
               
               while($row= mysqli_fetch_array($result))
                     {
+                          $pname=test_input($_REQUEST['project_name']);  
+                        
+                        if(strcmp($row['pr_prname'],trim($pname))==0)
+                        {
+                       
                           while($row1=mysqli_fetch_array($result1))
                           {
                           	if(strcmp($row1['or_status'],'WO(MD Approval)')==0)	
@@ -109,7 +114,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                           }
 
                      		}
-                     	}	               
+                     	}	 
+                      }              
             }
 
     
