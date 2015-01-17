@@ -64,6 +64,6 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-header('location:si_page.php?op=overview&search=click');            
+//eader('location:si_page.php?op=overview&search=click');            
 
 ?>
