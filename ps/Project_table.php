@@ -45,8 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                   $_SESSION['date1']=$row['pr_odate'];
                                 while($row1=mysqli_fetch_array($result1))
                                 {
-                                    //if($row['pr_prname']==$row1['or_prjname'])
-                                    { 
+                                      
+                                    if($row['pr_prname']==$row1['or_prjname'])
+                                    {     
                                           if($row1['or_status']=="Request for quotes")                                 
                                           {   
                                               $_SESSION['project_name'] =$row1['or_prjname'];
@@ -55,8 +56,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                               $_SESSION['order']        =$row1['or_wopo_cid'];
                                               display_project(); 
                                            }
-                                     } 
-                                }                             
+                                     }
+
+                                }    
+                                mysqli_data_seek($result1,0);
+
                                                           
                             
                       }                    
@@ -87,7 +91,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                               display_project(); 
                                            }
                                         }                            
-                                      }             //$_SESSION['initiated_by'] =$row['pr_md'];
+                                      }  
+                                mysqli_data_seek($result1,0);
+                                                 //$_SESSION['initiated_by'] =$row['pr_md'];
                                //callin-g the function diaplay                          
                                   }
                       }
@@ -118,6 +124,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                      }                          
                             
                               }
+                                mysqli_data_seek($result1,0);
+                              
                         }
                   }
 }

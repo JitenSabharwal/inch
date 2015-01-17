@@ -115,6 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                   }
                                }     
                      		}
+                                mysqli_data_seek($result1,0);
                      	}	 
                       }              
             }
@@ -160,6 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                 }
                             }
                      		}
+                                mysqli_data_seek($result1,0);
                       }
             }
             elseif(isset($_SESSION['pid']) && empty($_SESSION['pn']) && empty($_SESSION['stat']))
@@ -200,6 +202,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                     }
                               }  
                      		}
+                                mysqli_data_seek($result1,0);
                         }
                   }
             

@@ -61,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                 //$_SESSION['initiated_by'] =$row['pr_md'];
                                //callin-g the function diaplay                          
                             }
+                                mysqli_data_seek($result1,0);
                       }                    
             }
 
@@ -92,6 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                 //$_SESSION['initiated_by'] =$row['pr_md'];
                                //callin-g the function diaplay                          
                             }
+                                mysqli_data_seek($result1,0);
                       }
             }
           }
@@ -121,6 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                 //$_SESSION['initiated_by'] =$row['pr_md'];
                                //callin-g the function diaplay                          
                             }
+                                mysqli_data_seek($result1,0);
                               }
                         }
                   }

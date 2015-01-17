@@ -65,7 +65,7 @@ if ($uploadOk == 0) {
         $row=mysqli_fetch_array($count_query);
         echo "<br>".$row['st_count']."<br>";
         $count=$row['st_count'] + 1;
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        echo "string"; "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
         $inserto=mysqli_query($con,"UPDATE orders SET or_status='Site Survey' where or_wopo_cid='$ido'");
       
         if($count ==5)

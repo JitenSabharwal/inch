@@ -92,6 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                             }
                         }
                      	}	               
+                                mysqli_data_seek($result1,0);
             }
           }
 
@@ -135,6 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                       }
                                 	}
                                 }
+                                mysqli_data_seek($result1,0);
                               }
                             }
             }
@@ -176,6 +178,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                 }
                              }
                              }
+                                mysqli_data_seek($result1,0);
                            }
                   }
             
