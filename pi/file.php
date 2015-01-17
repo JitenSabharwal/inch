@@ -3,7 +3,7 @@
  $pid=$_REQUEST['pn']. '/' . $_REQUEST['or'];
 
 
-            $path="../ps/upload/uploads/$pid";
+            $path="../ps/uploads/$pid";
            //  echo "<script>alert('$path')</script>";
             $file_display = array('jpg','jpeg','gif','png','pdf','doc','docx','txt','rtf');
             if(is_dir($path))
@@ -14,8 +14,10 @@
             ?>
 <center>
 <div id="container" style="height:20px">
-
-<ul style="margin-left:300px">
+ <table  class="table  table-hover">
+<tr>
+  <td>
+<ul>
           <?php
             if($dir_list=@opendir($path))
             {
@@ -41,8 +43,12 @@
             
             ?>
       </ul>
-      <span class="button prevButton" style="margin-right:200px"></span>
+      <span class="button prevButton"></span>
       <span class="button nextButton"></span></div>
+</td>
+</tr>
+</table>
       <?php
+
 }
 ?>

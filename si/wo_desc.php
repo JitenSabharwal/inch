@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+include '../include/connection.php';
 
 $c=mysqli_query($con,"SELECT wo_wocid,wo_wodesc,wo_woquantity from wok_order" );
 

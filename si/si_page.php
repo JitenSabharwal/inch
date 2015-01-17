@@ -255,7 +255,7 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click'  && @$_REQUEST[
 
             $pid=$_REQUEST['pn']. '/' . $_REQUEST['or']. '/' . $_REQUEST['st'];
 
-            $path="../si/upload/uploads/$pid";
+            $path="../si/uploads/$pid";
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
             if(is_dir($path))
             {

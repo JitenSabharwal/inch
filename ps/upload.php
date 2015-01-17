@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../connection.php';
+include '../include/connection.php';
 include 'idgen.php';
 $target_dir = "uploads/";
 $targetFolder = 'uploads/'; // Relative to the root
@@ -35,10 +35,10 @@ if ($_FILES["fileToUpload"]["size"] > 500000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
-// Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+// Allow certain file formats'pdf','doc','docx','txt','rtf'
+if($imageFileType != "pdf" && $imageFileType != "doc" && $imageFileType != "docx"
+&& $imageFileType != "txt" ) {
+    echo "Sorry, only 'pdf','doc','docx','txt','rtf' files are allowed.";
     $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error

@@ -9,7 +9,7 @@
 	</tr>
 <?php
 
-include 'connection.php';
+include '../include/connection.php';
 $sq1=mysqli_query($con,"SELECT * from orders");
 
 while ($r=mysqli_fetch_array($sq1)) {
