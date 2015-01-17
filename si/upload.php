@@ -11,6 +11,11 @@ $targetFolder = 'uploads/'; // Relative to the root
                     mkdir($targetFolder.'/'.$_SESSION['pr_upload']. '/' .$_SESSION['or_upload']. '/' .$_SESSION['st_upload'],0777,true);
 $target_dir=$target_dir.$_SESSION['pr_upload']. '/' . $_SESSION['or_upload']. '/' . $_SESSION['st_upload'].'/';
 
+
+if(count(glob($target_dir.'*'))<5)
+{
+    echo count(glob($target_dir.'*'));
+
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 //echo basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -56,14 +61,28 @@ if ($uploadOk == 0) {
        {
         $id=$_SESSION['st_upload']; 
         $ido=$_SESSION['or_upload'];
+        $count_query=mysqli_query($con,"SELECT st_count from stg_status where st_stageid='$id'");
+        $row=mysqli_fetch_array($count_query);
+        echo "<br>".$row['st_count']."<br>";
+        $count=$row['st_count'] + 1;
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
         $inserto=mysqli_query($con,"UPDATE orders SET or_status='Site Survey' where or_wopo_cid='$ido'");
-        $inserts=mysqli_query($con,"UPDATE stg_status SET st_status='PI' where st_stageid='$id'");
+      
+        if($count ==5)
+          {
+            $inserts=mysqli_query($con,"UPDATE stg_status SET st_status='PI' ,st_count='$count' where st_stageid='$id'");
+          }  
+         else
+         { 
+            $inserts=mysqli_query($con,"UPDATE stg_status SET  st_count='$count' where st_stageid='$id'");  
+          }  
         include 'filedetails.php';
         }
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
+}
+
 }
 header('location:si_page.php?op=overview&search=click');            
 

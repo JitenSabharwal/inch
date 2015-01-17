@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                 {
                                  // echo $row['pr_prname'].$row1['or_prjname']; 
                                    {
-                                    if($row1['or_status']=='WO Approved' || $row1['st_status']=="SI")
+                                    if($row1['or_status']=='WO Approved'  || $row1['st_status']=="SI")
                                   {                                    
                                         $_SESSION['project_name'] =$row1['or_prjname'];
                                         $_SESSION['project_id']   =$row1['or_prid'];
