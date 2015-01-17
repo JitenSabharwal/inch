@@ -1,3 +1,4 @@
+<?php include '../include/connection.php'; ?>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <!--connecting to the dtabase-->
@@ -7,7 +8,7 @@ if(!isset($_SESSION['Employee']) || $_COOKIE['user_role']!="pm")
 {
   header("location:../logout.php");
 }
-include 'connection.php'
+
   
 ?>
 

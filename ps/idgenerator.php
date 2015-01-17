@@ -1,7 +1,4 @@
-<?php
-//session_start();
-include 'connection.php'
-?>
+
  <?php
 $id_search=mysqli_query($con,"SELECT max(qu_quid) as maximumw from qut_quote");
 

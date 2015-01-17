@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+
 if(@$_REQUEST['com']=='comment')
 {
   if($_REQUEST['Approval']=='Approval')

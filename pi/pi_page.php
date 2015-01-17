@@ -1,17 +1,20 @@
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+
 <?php 
+
+include '../include/connection.php';
 
 session_start();
 if(!isset($_SESSION['Employee']) || $_COOKIE['user_role']!="pi")
 {
   header("location:../logout.php");
 }
-include 'connection.php' ?>
+ ?>
 <script src="jquery-1.4.2.min.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
 
 
 <style> 

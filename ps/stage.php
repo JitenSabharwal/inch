@@ -1,11 +1,10 @@
 <?php
 $x=1;
-//echo "workibg";
-include 'connection.php';
+
     $count=1;
 //if($_SESSION['order']=="wo")
-{
-  echo "workibg";
+
+ 
     while (isset($_REQUEST['description-'.$count]))
      {
 
@@ -56,5 +55,5 @@ $id_search=mysqli_query($con,"SELECT max(st_stid) as maximum from stg_stage");
     }
     }
     
-}     
+    
 ?>

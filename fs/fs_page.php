@@ -1,8 +1,9 @@
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+
 <?php 
+include '../include/connection.php';
 session_start();
-include 'connection.php';
+
 if(!isset($_SESSION['Employee']) || $_COOKIE['user_role']!="fs")
 {
   header("location:../logout.php");
@@ -15,6 +16,8 @@ if(!isset($_SESSION['Employee']) || $_COOKIE['user_role']!="fs")
   <!--
 <link rel="stylesheet" type="text/css" href="cssstyles.css" />
   -->
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
 <style> 
 body {
 /*  background: url(../random-login-form/css/image/wallpaper2.jpeg) no-repeat center center fixed; 

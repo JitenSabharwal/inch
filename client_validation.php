@@ -36,7 +36,7 @@ $result=mysqli_query($con,"Select * from cle_client");
 }
 if($x==0)
 {
- header ("location:client.php");     
+ header ("location:client.php?pid=err");     
 }
 }
 ?>                          		

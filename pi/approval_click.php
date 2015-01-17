@@ -1,5 +1,4 @@
-<?php include 'connection.php'
-?>
+
 <?php include 'intialize.php' ?>
 <?php
 //$name = explode(" ", $_SESSION['Employee']);

@@ -80,7 +80,7 @@ while($row=mysqli_fetch_array($result2))
 	
 <form name="formc" method="POST" action="quote_finalize.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&or=<?php echo $_REQUEST['or']; ?>&po=click&wo=create&in=insert&st=quote" onsubmit="return confirm5();">
 <h3>Comments</h3>
-<table width="700" border="3" cellspacing="10" style="text-align:center">
+<table width="700" class="table tab-border" cellspacing="10" style="text-align:center">
 	<tr>
 		<th>
 			Quote
@@ -157,7 +157,7 @@ $_SESSION['j']=1;
 <br>
 <br>
 <h3>Selection </h3>
-<table border=2 width=400>	
+<table class="table tab-border" width=400>	
 	<tr>
 		
 		<th><input type="radio" name="quote" id="1" value="Quote1">Quote1 </th>

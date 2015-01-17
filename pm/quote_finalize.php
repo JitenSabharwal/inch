@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php';
+
 $_SESSION['quote']=$_REQUEST['quote'];
 ########################################
 $resultw=mysqli_query($con,"SELECT * from wok_order");

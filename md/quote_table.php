@@ -1,4 +1,4 @@
-<table border=2 width=700>
+<table class="table tab-border" width=700>
 	<th>S.no</th>
 	<th>Quote</th>
 	<th>Vendor Name</th>

@@ -50,10 +50,17 @@ body{background: #eee;font-size: 16px;}
 
 </div>
 
-<div class="error">
+<div class="">
 <?php
-if(@$pid=='err')
-echo "<div>incorrect<span> username and password</span></div>";
+$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+	$url=parse_url($actual_link);
+	$pid=array();
+
+	parse_str(@$url['query'],$pid);
+
+if(@$pid['pid']=='err')
+echo "<div style='color:red'>incorrect username and password</div>";
 ?>
 
 	</div>
@@ -61,4 +68,20 @@ echo "<div>incorrect<span> username and password</span></div>";
 <?php include 'include/footer.php'; ?>
 
 </body>
+<script type="text/javascript">
+function validate () {
+	// body...
+	function validate () {
+	alert('ccca');
+
+	var user=document.form1.user.value;
+	var pwd=document.form1.pass.value;
+	if(user=='')
+	{	alert('Please enter username'); return false;}
+	else if(pwd=='')
+	{	alert('Please enter the password'); return false;}
+
+}
+
+</script>
 </html>

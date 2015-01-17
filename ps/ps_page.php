@@ -1,4 +1,4 @@
-
+<?php include "../include/connection.php"; ?>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <?php
@@ -8,13 +8,15 @@ if(!isset($_SESSION['Employee']) || $_COOKIE['user_role']!="ps")
   header("location:../logout.php");
 }
 
-include "connection.php";
+
 ?>
 
 <script>
 function confirm1()
 {
    var phone_no=/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/;
+   var landline = /^([0-9]{1,5}[\-]{1}[0-9]{7})$/;
+
    var quote1=document.getElementById('quote_table').rows.length;
 
   if(document.form4.vendor_name.value=='')
@@ -22,9 +24,9 @@ function confirm1()
     alert('Please Fill the name...');
     return false;
   }
-  if(document.form4.contact_no.value=='' || phone_no.test(document.form4.contact_no.value)==false)
+  if(document.form4.contact_no.value=='' || (phone_no.test(document.form4.contact_no.value)==false && landline.test(document.form4.contact_no.value)==false))
   {
-    alert('Please Fill the contact no...');
+    alert('Please Fill Correct contact no\nLandline No should be in format : STD Code-Phone No ');
     return false;
   }
   if(1)
@@ -322,7 +324,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
                     <div class="quote" align="center">
                   <p>Quote<?php echo $quote_no; ?></p>
                     <form name="form4"  method="post" action="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name'] ;?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create&quote=<?php echo $quote_no; ?>" onsubmit="return confirm1();">
-                      <p>Vendor Name : <input type="text" placeholder="Vendor Name" name="vendor_name"> Contact No : <input type="number" placeholder="Contact No" name="contact_no"></p>
+                      <p>Vendor Name : <input type="text" placeholder="Vendor Name" name="vendor_name"> Contact No : <input type="text" placeholder="Contact No" name="contact_no"></p>
                   	
                   	<table width="700" id="quote_table" class="tab-border table-hover table" id="desc">
                     <tr>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php';
+
  			 
 $check=0;
 $pn=$_REQUEST['pn'];

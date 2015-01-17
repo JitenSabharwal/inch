@@ -1,5 +1,5 @@
 <h4>Comments</h4>
-<table border=1 width=700>
+<table class="table tab-border" width=700>
 	<tr>
 		<th>Name</th>
 		<th>Designation</th>

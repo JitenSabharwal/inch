@@ -1,5 +1,4 @@
-   <?php 
-include 'connection.php';?>
+
 
 <?php include_once 'intialize.php' ?>
 <?php 
