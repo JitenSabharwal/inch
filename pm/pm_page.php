@@ -219,25 +219,13 @@ if(@$_REQUEST['op']=='overview' || @$_REQUEST['op']=='approval' || @$_REQUEST['s
   <form name="form2" method="post" action="pm_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click">
       <table width="700" class="table tab-border">
       <tr>
-        <td width="612">Project Name : <input type="text" placeholder="Project Name" name="project_name"></td>
-        <td width="612">Status :<label>
-              <select name="status" id="status">
-                <option value="">Choose The Status</option>
-                <option value="Project created">Project created</option>
-                <option value="Request for quotation">Request for quotation</option>
-                <option value="Create quotation">Create quotation</option>
-                <option value="Quotation approval">Quotation approval</option>
-                <option value="WO created">WO created</option>
-                <option value="PO created">PO created</option>
-              </select>
-              </label>
-          
-          </td>
+        <td width="512">Project Name : <input type="text" placeholder="Project Name" name="project_name"></td>    
+      <td></td>
       </tr>
       <tr>
         <td>Project ID <span style="margin-left:30px"> : 
           <input type="text" placeholder="Project ID" name="project_id"></span></td>
-        <td><input name="search_submit" type="submit" class="style3 btn btn-primary" value="Search" /></td>
+          <td><input name="search_submit" type="submit" class="style3 btn btn-primary" value="Search" /></td>
       </tr>
     </table>
 	</form>

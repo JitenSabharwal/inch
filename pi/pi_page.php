@@ -255,7 +255,7 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
             if(is_dir($path))
             {
             $files_count= count(glob($path.'/'.'*'));
-           echo "<script>alert('lol')</script>";
+         //  echo "<script>alert('lol')</script>";
             ?>
 <div id="container">
 

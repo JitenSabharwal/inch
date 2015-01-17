@@ -2,7 +2,8 @@
 <?php include_once 'intialize.php' ?>
 <?php 
 ##########################################################
-$result=mysqli_query($con,"SELECT * from prj_project");//the query to get the whole database in one variable        
+$emp=trim($_SESSION['Employee']);
+$result=mysqli_query($con,"SELECT * from prj_project where pr_pm='$emp'");//the query to get the whole database in one variable        
 $result1=mysqli_query($con,"SELECT * from orders");//the query to get the whole database in one variable        
 ##########################################################
       function test_input($data)//this is to set the value porperly removing all the extra sapces and other things ... 
@@ -40,15 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
               
               while($row= mysqli_fetch_array($result))
                     {
-                         if(strcmp($row['pr_pm'],$_SESSION['Employee'])==0)
-                        { //echo "string";
                           $_SESSION['project_name'] =$row['pr_prname'];     
                           $_SESSION['project_id']   =$row['pr_prid'];
                           $_SESSION['status']       =$row['pr_prnotes'];
                           $_SESSION['date']         =$row['pr_odate'];
                           $_SESSION['initiated_by'] =$row['pr_md'];
                           display_project();//calling the function diaplay                          
-                        }
+                        
                      }               
             }
 
@@ -61,15 +60,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                       {
                         if(strcmp($row['pr_prname'],$pname)==0)
                         {
-                          if(strcmp($row['pr_pm'],$_SESSION['Employee'])==0)
-                        {
+                          
                           $_SESSION['project_name'] =$row['pr_prname'];     
                           $_SESSION['project_id']   =$row['pr_prid'];
                           $_SESSION['status']       =$row['pr_prnotes'];
                           $_SESSION['date']         =$row['pr_odate'];
                           $_SESSION['initiated_by'] =$row['pr_md'];
                           display_project();
-                        }
+                        
                       }
                       }
             }
@@ -80,42 +78,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                              
                               if(strcmp($row['pr_prid'],$_SESSION['pid'])==0)
                               {
-                                if(strcmp($row['pr_pm'],$_SESSION['Employee'])==0)
-                            {
                                 $_SESSION['project_name'] =$row['pr_prname'];     
                                 $_SESSION['project_id']   =$row['pr_prid'];
                                 $_SESSION['status']       =$row['pr_prnotes'];
                                 $_SESSION['date']         =$row['pr_odate'];
                                 $_SESSION['initiated_by'] =$row['pr_md'];
                                 display_project();
-                             }
+                             
                           }
                         }
                   }
             
-          elseif(isset($_SESSION['stat']) && empty($_SESSION['pn']) && empty($_SESSION['pid']))
-           {
-                while($row= mysqli_fetch_array($result))
-                        {
-                            if(strcmp($row['pr_pm'],$_SESSION['Employee'])==0)
-                            { 
-                              while($row1=mysqli_fetch_array($result1))
-                              {   
-                                if(strcmp($row1['or_status'],$_SESSION['stat'])==0)
-                                {                               
-                                  
-                                    $_SESSION['project_name'] =$row['pr_prname'];     
-                                    $_SESSION['project_id']   =$row['pr_prid'];
-                                    $_SESSION['status']       =$row['pr_prnotes'];
-                                    $_SESSION['date']         =$row['pr_odate'];
-                                    $_SESSION['initiated_by'] =$row['pr_md'];
-                                    display_project();
-                                 }
-                                } 
-                              }
-                        }
-           } 
-
+         
 
 }
 

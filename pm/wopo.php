@@ -33,9 +33,9 @@ function disp()
     <td><?php echo $_SESSION['desc']; ?></td>
     <td><?php echo $_SESSION['rate']; ?></td>    
   </tr>
- 	
 
 <?php
+
 }
 while($row1=mysqli_fetch_array($result2))
 {	

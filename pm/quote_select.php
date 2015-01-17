@@ -3,12 +3,12 @@
 
 <table width="800" class="table table-hover tab-border">
     <tr>
-      <th>Project Name </th>
-      <th>Description</th>
-      <th>Quantity</th>
-      <th>Quote1</th>
-      <th>Quote2</th>
-      <th>Quote3</th>
+      <td>Project Name </td>
+      <td>Description</td>
+      <td>Quantity</td>
+      <td>Quote1</td>
+      <td>Quote2</td>
+      <td>Quote3</td>
     </tr>
  
 <?php
@@ -82,24 +82,24 @@ while($row=mysqli_fetch_array($result2))
 <h3>Comments</h3>
 <table width="700" class="table tab-border" cellspacing="10" style="text-align:center">
 	<tr>
-		<th>
+		<td>
 			Quote
-		</th>
-		<th> 
+		</td>
+		<td> 
 			Name
-		</th>
-		<th>
+		</td>
+		<td>
 			Designation
-		</th>
-		<th>
+		</td>
+		<td>
 			Vendor Name
-		</th>
-		<th>
+		</td>
+		<td>
 			Contact
-		</th>
-		<th>
+		</td>
+		<td>
 			Quote comments by Pi
-		</th>
+		</td>
 		
 	</tr>
 <?php
@@ -160,10 +160,10 @@ $_SESSION['j']=1;
 <table class="table tab-border" width=400>	
 	<tr>
 		
-		<th><input type="radio" name="quote" id="1" value="Quote1">Quote1 </th>
-		<th><input type="radio" name="quote" id="2" value="Quote2">Quote2	</th>
-		<th><input type="radio" name="quote" id="3" value="Quote3">Quote3	</th>
-		<th><input type="radio" name="quote" id="4" value="Reject All">Reject All	</th>
+		<td><input type="radio" name="quote" id="1" value="Quote1">Quote1 </td>
+		<td><input type="radio" name="quote" id="2" value="Quote2">Quote2	</td>
+		<td><input type="radio" name="quote" id="3" value="Quote3">Quote3	</td>
+		<td><input type="radio" name="quote" id="4" value="Reject All">Reject All	</td>
 		
 	</tr>	
 </table>
