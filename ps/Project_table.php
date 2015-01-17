@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                   $_SESSION['date1']=$row['pr_odate'];
                                 while($row1=mysqli_fetch_array($result1))
                                 {
-                                    if($row['pr_prname']==$row1['or_prjname'])
+                                    //if($row['pr_prname']==$row1['or_prjname'])
                                     { 
                                           if($row1['or_status']=="Request for quotes")                                 
                                           {   

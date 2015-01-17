@@ -1,8 +1,8 @@
 <table width="700" class="table table-bordered table-hover">
 <tr>
-<th>Project Name</th>
-<th>Order Id</th>
-<th>Status</th>
+<td>Project Name</td>
+<td>Order Id</td>
+<td>Status</td>
  </tr>
 
  <?php
