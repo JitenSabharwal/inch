@@ -348,7 +348,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
                   {
                      $_SESSION['or_upload']=$_REQUEST['or'];
                      $_SESSION['pr_upload']=$_REQUEST['pn'];
-                    @include 'upload/index.php';
+                    @include 'doc.html';
 
    ?>
 
@@ -427,7 +427,7 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
   $pid=$_REQUEST['pn']. '/' . $_REQUEST['or']. '/' . $_REQUEST['st'];
 
 
-            $path="../si/upload/uploads/$pid";
+            $path="../si/uploads/$pid";
            //  echo "<script>alert('$path')</script>";
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
             if(is_dir($path))
