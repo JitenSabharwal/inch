@@ -55,6 +55,7 @@ if ($uploadOk == 0) {
         $id=$_SESSION['st_upload']; 
         $ido=$_SESSION['or_upload'];
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        include 'filedatails.php';
         }
     } else {
         echo "Sorry, there was an error uploading your file.";
