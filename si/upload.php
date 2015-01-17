@@ -10,6 +10,7 @@ $targetFolder = 'uploads/'; // Relative to the root
                 if(!is_dir($targetFolder.'/'.$_SESSION['pr_upload']. '/' .$_SESSION['or_upload']. '/' .$_SESSION['st_upload']))
                     mkdir($targetFolder.'/'.$_SESSION['pr_upload']. '/' .$_SESSION['or_upload']. '/' .$_SESSION['st_upload'],0777,true);
 $target_dir=$target_dir.$_SESSION['pr_upload']. '/' . $_SESSION['or_upload']. '/' . $_SESSION['st_upload'].'/';
+
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 //echo basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -49,6 +50,7 @@ if ($uploadOk == 0) {
  {
     $var=explode('.',basename($_FILES["fileToUpload"]["name"]));
     $target_file= $target_dir .$_SESSION['fi_fiid'].'.'.$var[1];
+    $_SESSION['path']=$target_file;
     echo "<br>".$target_file;
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
        {
@@ -63,6 +65,6 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-//eader('location:si_page.php?op=overview&search=click');            
+header('location:si_page.php?op=overview&search=click');            
 
 ?>

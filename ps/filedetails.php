@@ -14,30 +14,27 @@ $wo=$_SESSION['or_upload'];
 			$_SESSION['b']=$row['wo_prid'];
 			$_SESSION['c']=$_SESSION['or_upload'];
 			$_SESSION['e']=$row['pr_si'];
-			$_SESSION['d']=$_SESSION['st_upload'];
+			$_SESSION['d']=@$_SESSION['st_upload'];
 			$_SESSION['f']=$row['wo_quoteid'];
 			//$_SESSION['g']=$targetFile;
 			
 		}
 	$b=$_SESSION['b'];
 	$c=$_SESSION['c'];
-	$d=$_SESSION['d'];
+	$d=@$_SESSION['d'];
+	$f=$_SESSION['f'];
+	$g=$_SESSION['path'];
+	$e=$_SESSION['Employee'];
+	echo $e;
 	echo $b;
 	echo $c;
 	echo $d;
 	echo $a;
-	$updfile=mysqli_query($con,"INSERT INTO fid_file(fi_fiid) VALUES('$a')");
+	$updfile=mysqli_query($con,"INSERT INTO fid_file(fi_fiid,fi_prid,fi_woid,fi_usid,fi_quid,fi_path,fi_edtm) VALUES('$a','$b','$c','$e','$f','$g',CURDATE())");
+	
 	if(empty($updfile))
 	{
 		echo "not";
-	}
-	else
-	{
-		$up=mysqli_query($con,"UPDATE fid_file SET fi_woid='$c',fi_prid='$b',fi_stid='$d' where fi_fiid='$a'");
-		if(empty($up))
-		{
-			echo "kid";
-		}
 	}
 	
 ?>

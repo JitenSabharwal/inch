@@ -1,7 +1,7 @@
 <style type="text/css">
 #footer{
 	text-align: center;
-	margin-top: 50px;
+	margin-top: 200px;
 	font-size: 14px;
 }
 </style>
