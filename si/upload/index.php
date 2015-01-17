@@ -8,7 +8,7 @@
 	<h2>Select Files</h2>
 	<form>
 		<div id="queue"></div>
-		<input id="file_upload" class="btn btn-primary" name="file_upload" type="file" multiple="true">
+		<input id="file_upload"  name="file_upload" type="file" multiple="true">
 		
 	</form>
 
