@@ -80,15 +80,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                              
                               if(strcmp($row['pr_prid'],$_SESSION['pid'])==0)
                               {
-                                if(strcmp($row['pr_pm'],$_SESSION['Employee'])==0)
-                            {
                                 $_SESSION['project_name'] =$row['pr_prname'];     
                                 $_SESSION['project_id']   =$row['pr_prid'];
                                 $_SESSION['status']       =$row['pr_prnotes'];
                                 $_SESSION['date']         =$row['pr_odate'];
                                 $_SESSION['initiated_by'] =$row['pr_md'];
                                 display_project();
-                             }
+                             
                           }
                         }
                   }

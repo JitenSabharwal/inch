@@ -11,7 +11,7 @@ include 'connection.php';?>
 <?php include_once 'intialize.php' ?>
 <?php 
 #######################################################
-$emp=trim($_SESSION['employee']);
+$emp=trim($_SESSION['Employee']);
 $result=mysqli_query($con,"SELECT * from prj_project where pr_md='$emp'");//the query to get the whole database in one variable   
 $result1=mysqli_query($con,"SELECT * from orders");     
 ########################################################

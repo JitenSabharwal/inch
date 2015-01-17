@@ -219,19 +219,8 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
   <form name="form2" method="post" action="md_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click">
       <table width="700" class="table tab-border" >
       <tr>
-        <td width="612">Project Name : <input type="text" placeholder="Project Name" name="project_name"></td>
-        <td width="612">Status :<label>
-              <select name="status" id="status">
-                <option value=""></option>
-                <option value="Project created">Project created</option>
-                <option value="Request for quotation">Request for quotation</option>
-                <option value="Create quotation">Create quotation</option>
-                <option value="Quotation approval">Quotation approval</option>
-                <option value="WO created">WO created</option>
-                <option value="PO created">PO created</option>
-              </select>
-              </label>
-          
+        <td width="500">Project Name : <input type="text" placeholder="Project Name" name="project_name"></td>
+        <td >              
           </td>
       </tr>
       <tr>

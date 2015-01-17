@@ -3,10 +3,10 @@ include 'connection.php';?>
 
 <?php include_once 'initialize.php' ?>
 <?php 
-$name =$_SESSION['Employee'];
+$emp =trim($_SESSION['Employee']);
 
 //#####################################################
-$result=mysqli_query($con,"SELECT * from prj_project");//the query to get the whole database in one variable 
+$result=mysqli_query($con,"SELECT * from prj_project where pr_si='$emp'");//the query to get the whole database in one variable 
 $result1=mysqli_query($con,"SELECT * from orders join stg_status on(st_woid=or_wopo_cid) where st_status='SI' group by or_prjname ");       
 //######################################################
       
@@ -46,14 +46,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                       {
                                         $_SESSION['date']         =$row['pr_odate'];
                         
-                            if(strcmp($row['pr_si'],$name)==0)
-                            {  
-                                
+                               
                                 while($row1=mysqli_fetch_array($result1))
                                 {
-                                 //echo $row1['or_status'].$row1['st_status']."<br>";    
-                                  
-                                  if($row1['or_status']=='WO Approved' || $row1['st_status']=="SI")
+                                 if($row['pr_prname']==$row1['or_prjname'])
+                                    { 
+                                   if($row1['or_status']=='WO Approved' || $row1['st_status']=="SI")
                                   {                                    
                                         $_SESSION['project_name'] =$row1['or_prjname'];
                                         $_SESSION['project_id']   =$row1['or_prid'];
@@ -78,23 +76,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                         if(strcmp($row['pr_prname'],$pname)==0)
                         {
                     
-                         if(strcmp($row['pr_si'],$name)==0)
-                            {  
-                                
-                                     
                                while($row1=mysqli_fetch_array($result1))
                                 {
+                                  if($row['pr_prname']==$row1['or_prjname'])
+                                    { 
                                   if($row1['or_status']=='WO Approved')
                                   {
-                                    if(strcmp($row['pr_prname'],$row1['or_prjname'])==0)
-                                    {   
                                         $_SESSION['project_name'] =$row1['or_prjname'];
                                         $_SESSION['project_id']   =$row1['or_prid'];
                                         $_SESSION['status']       =$row1['or_status'];
                                         $_SESSION['date']         =$row['pr_odate'];
                                         $_SESSION['order']        =$row1['or_wopo_cid'];
                                         display_project(); 
-                                     }
+                                     
                                   } 
                                 }           
                                 //$_SESSION['initiated_by'] =$row['pr_md'];
@@ -111,23 +105,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                               if(strcmp($row['pr_prid'],$_SESSION['pid'])==0)
                               {
                              
-                              if(strcmp($row['pr_si'],$name)==0)
-                            {  
-                                
-                                     
                               while($row1=mysqli_fetch_array($result1))
                                 {
+                                  if($row['pr_prname']==$row1['or_prjname'])
+                                    { 
                                   if($row1['or_status']=='WO Approved')
                                   {
-                                    if(strcmp($row['pr_prname'],$row1['or_prjname'])==0)
-                                    {   
                                         $_SESSION['project_name'] =$row1['or_prjname'];
                                         $_SESSION['project_id']   =$row1['or_prid'];
                                         $_SESSION['status']       =$row1['or_status'];
                                         $_SESSION['date']         =$row['pr_adtm'];
                                         $_SESSION['order']        =$row1['or_wopo_cid'];
                                         display_project(); 
-                                     }
+                                     
                                   } 
                                 }
                                 //$_SESSION['initiated_by'] =$row['pr_md'];
