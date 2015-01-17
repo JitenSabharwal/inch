@@ -7,8 +7,8 @@
 </tr>
     
 <?php 
-include 'connection.php';?>
-<?php include_once 'intialize.php' ?>
+include '../include/connection.php';
+ include_once 'intialize.php' ?>
 <?php 
 #######################################################
 $emp=trim($_SESSION['Employee']);

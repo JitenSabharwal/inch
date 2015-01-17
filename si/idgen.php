@@ -1,6 +1,5 @@
  <?php
-include '../connection.php';
-
+ include '../include/connection.php';
     $id_search=mysqli_query($con,"SELECT max(fi_fiid) as maximumpc from fid_file");
 
     while ($row=mysqli_fetch_array($id_search))

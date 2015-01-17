@@ -1,7 +1,7 @@
 
 
 <?php
-include 'connection.php';
+include '../include/connection.php';
 $c=mysqli_query($con,"SELECT * from stg_stage");
 ?>
 <br>

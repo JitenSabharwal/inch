@@ -1,10 +1,9 @@
 <?php 
-include 'connection.php';?>
+include '../include/connection.php';?>
 
 <?php include_once 'initialize.php' ?>
 <?php 
 $emp =trim($_SESSION['Employee']);
-
 //#####################################################
 $result=mysqli_query($con,"SELECT * from prj_project where pr_si='$emp'");//the query to get the whole database in one variable 
 $result1=mysqli_query($con,"SELECT * from orders join stg_status on(st_woid=or_wopo_cid) where st_status='SI' group by or_prjname ");       
@@ -49,9 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                
                                 while($row1=mysqli_fetch_array($result1))
                                 {
-                                 if($row['pr_prname']==$row1['or_prjname'])
-                                    { 
-                                   if($row1['or_status']=='WO Approved' || $row1['st_status']=="SI")
+                                 // echo $row['pr_prname'].$row1['or_prjname']; 
+                                   {
+                                    if($row1['or_status']=='WO Approved' || $row1['st_status']=="SI")
                                   {                                    
                                         $_SESSION['project_name'] =$row1['or_prjname'];
                                         $_SESSION['project_id']   =$row1['or_prid'];

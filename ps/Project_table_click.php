@@ -14,7 +14,7 @@ $result1=mysqli_query($con,"SELECT * from orders");
               <td><?php echo @$_SESSION['project_id'];?></td>
               <td><?php echo @$_SESSION['status']    ;?></td>
               <td><?php
-                  include 'connection.php'; 
+                  include '../include/connection.php';
                   $pn=$_REQUEST['pn'];
                   $result3=mysqli_query($con,"SELECT * from prj_project where pr_prname='$pn'");//the query to get the whole database in one variable 
                   

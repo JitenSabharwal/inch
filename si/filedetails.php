@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../connection.php';
+include '../include/connection.php';;
 $a=$_SESSION['fi_fiid'];
 $wo=$_SESSION['or_upload'];
 
