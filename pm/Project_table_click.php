@@ -1,5 +1,4 @@
-<?php include 'connection.php'
-?>
+
 <?php include 'intialize.php' ?>
 <?php
 $result=mysqli_query($con,"SELECT * from prj_project");//the query to get the whole database in one variable        

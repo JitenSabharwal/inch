@@ -4,9 +4,7 @@
       <td>Date</td>
       <td>Initiated By </td>
     </tr>
-    <?php 
-include 'connection.php'
-?>
+ 
 <?php include 'intialize.php' ?>
 <?php
 $result=mysqli_query($con,"SELECT * from prj_project");//the query to get the whole database in one variable
@@ -22,7 +20,7 @@ function display_project1()//function to display the table values
       ?></a></td>
       <td><?php echo @$_SESSION['project_id'];?></td>
       <td><?php
-                  include 'connection.php'; 
+                 
                   $pn=$_REQUEST['pn'];
                   $result3=mysqli_query($con,"SELECT * from prj_project where pr_prname='$pn'");//the query to get the whole database in one variable 
                   

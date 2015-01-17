@@ -1,5 +1,3 @@
-<?php 
-include 'connection.php';?>
 
 <?php include_once 'intialize.php' ?>
 <?php 
@@ -33,7 +31,7 @@ $result1=mysqli_query($con,"SELECT * from orders join stg_status on(st_woid=or_w
         }
 
 
-//starting th etable part....
+//starting the table part....
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whether has he clicked on post and search has been clickek

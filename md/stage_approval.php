@@ -1,5 +1,4 @@
 <?php
-include 'connection.php';
 $wo=$_REQUEST['or'];
 $com=$_REQUEST['St_comment'];
 $st=$_REQUEST['st'];

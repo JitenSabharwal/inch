@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+
 //$total=0;
 ######################################################
 $result=mysqli_query($con,"SELECT * from prj_project");

@@ -1,4 +1,5 @@
 <?php
+include 'connection.php';
 session_start();
 if(!isset($_SESSION['Employee']) || $_COOKIE['user_role']!="md")
 {
@@ -108,7 +109,7 @@ $(window).load(function(){
 
 if($_REQUEST['op']=='new_project' && @$_REQUEST['new']=='click')
 {
-  include 'connection.php';
+
 
  $p_name=$_REQUEST['project_name'];
  $pm=$_REQUEST['pm_list'];
@@ -117,6 +118,7 @@ if($_REQUEST['op']=='new_project' && @$_REQUEST['new']=='click')
  $fs=$_REQUEST['fs_list'];
  $si=$_REQUEST['si_list'];
  //$id=md5($id_no);
+ $md=$_SESSION['Employee'];
  $cl_name=$_REQUEST['client_name'];
 
 
@@ -143,9 +145,8 @@ echo "<script>alert('The Project Id is $id_no')</script>";
  ?>
 
 <head>
-<!--
+
 <link rel="stylesheet" type="text/css" href="cssstyles.css" />
--->
 
 <style> 
 body {
@@ -201,7 +202,7 @@ document.getElementById("demo").innerHTML = "Date : " + d.toDateString();
  </td>
     </tr>
     <tr>
-      <td>Role : <span style="margin-left:85px;"><?php echo $_SESSION['role']; ?></span> </td>
+      <td>Role  <span style="margin-left:85px;">:<?php echo $_SESSION['role']; ?></span> </td>
       <td>&nbsp;</td>
     </tr>
   </table>
@@ -224,8 +225,8 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval')
           </td>
       </tr>
       <tr>
-        <td>Project ID : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="text" placeholder="Project ID" name="project_id"></td>
+        <td>Project ID  <span style="margin-left:28px">:
+            <input type="text" placeholder="Project ID" name="project_id"></span></td>
         <td><input name="search_submit" type="submit" class="style3 btn btn-primary" value="Search" /></td>
       </tr>
     </table>
@@ -302,8 +303,8 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
 	
 	if($_REQUEST['op']=='new_project')
 	{
-    include 'connection.php';
-  //  @$result1=mysqli_query($con,"SELECT * from usx_project");
+    
+  @$result=mysqli_query($con,"SELECT * from usx_user");
 	?>
 <div class="new_project" align="center">
 <form name="form1" method="post" action="md_page.php?op=<?php echo $_REQUEST['op']; ?>&new=click" onSubmit="return validate_form1()">

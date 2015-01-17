@@ -1,6 +1,4 @@
-<?php 
-//session_start();
-include 'connection.php';?>
+
 <?php include_once 'intialize.php' ?>
 <?php 
 #######################################################

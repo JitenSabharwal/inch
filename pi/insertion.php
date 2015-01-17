@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+
 $or=$_REQUEST['or'];
 //#################################################
 $result=mysqli_query($con,"SELECT * from qut_quote");

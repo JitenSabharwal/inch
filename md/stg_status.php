@@ -1,4 +1,4 @@
-<table border=1 width=500>
+<table class="table tab-border" width=500>
 	<tr>
 		<th>Stage Id</th>
 		<th>Project Name</th>	

@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+
 ##############################
 $result=mysqli_query($con,"SELECT * from wok_order");
 $result1=mysqli_query($con,"SELECT * from pod_order");

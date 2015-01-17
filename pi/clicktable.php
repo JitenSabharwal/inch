@@ -1,5 +1,4 @@
-<?php include 'connection.php'
-?>
+
 <?php include 'intialize.php' ?>
 <?php
 $name = explode(" ", $_SESSION['Employee']);
@@ -19,14 +18,14 @@ $result3=mysqli_query($con,"SELECT * from wok_order");
               <td><?php echo @$_SESSION['project_id'];?></td>
               <td><?php echo @$_SESSION['status']    ;?></td>
               <td><?php
-                  include 'connection.php'; 
+                 
                   $pn=$_REQUEST['pn'];
-                  $result3=mysqli_query($con,"SELECT * from prj_project where pr_prname='$pn'");//the query to get the whole database in one variable 
+                  @$result3=mysqli_query(@$con,"SELECT * from prj_project where pr_prname='$pn'");//the query to get the whole database in one variable 
                   
-                    while($row3=mysqli_fetch_array($result3))
+                    while(@$row3=mysqli_fetch_array($result3))
                     {
                         {
-                          echo $row3['pr_odate'];
+                          echo @$row3['pr_odate'];
                         }
       
                     }          

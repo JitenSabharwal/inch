@@ -1,4 +1,3 @@
-
 <script src="../js/jquery.min.js" type="text/javascript"></script>
 <script src="js/jquery.uploadify.min.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="css/uploadify.css">

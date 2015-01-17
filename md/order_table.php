@@ -1,4 +1,4 @@
-<table width="700" border="2">
+<table width="700" class="table tab-border">
   <tr>
     <th>S.no</th>
   <th>Description</th>
@@ -8,7 +8,7 @@
 
   </tr>
   <?php
-include 'connection.php';
+
 //$total=0;
 $_SESSION['j']=1;
 

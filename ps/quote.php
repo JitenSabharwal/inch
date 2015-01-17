@@ -1,6 +1,4 @@
 <?php
-
-include 'connection.php';
 include 'idgenerator.php';
 
 //#################################

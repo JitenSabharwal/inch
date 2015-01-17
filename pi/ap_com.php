@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php';
+
 if(@$_REQUEST['com']=='comment')
 {
   

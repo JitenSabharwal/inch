@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php';
+
 if(@$_REQUEST['op']=='wo_po' && @$_REQUEST['search']=='click'  && @$_REQUEST['po']=='click' && @$_REQUEST['wo']=='create')
 {
    include 'stage.php'; 

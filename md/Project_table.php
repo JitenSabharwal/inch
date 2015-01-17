@@ -4,10 +4,6 @@
       <td>Date</td>
       <td>Initiated By </td>
     </tr>
-    
-<?php 
-//session_start();
-include 'connection.php';?>
 <?php include_once 'initialize.php' ?>
 <?php 
 #############################################################
