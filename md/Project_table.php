@@ -11,7 +11,8 @@ include 'connection.php';?>
 <?php include_once 'initialize.php' ?>
 <?php 
 #############################################################
-$result=mysqli_query($con,"SELECT * from prj_project");//the query to get the whole database in one variable        
+$emp=trim($_SESSION['Employee']);
+$result=mysqli_query($con,"SELECT * from prj_project where pr_md='$emp'");//the query to get the whole database in one variable        
 $result1=mysqli_query($con,"SELECT * from orders");//the query to get the whole database in one variable        
 #########################################################
       function test_input($data)//this is to set the value porperly removing all the extra sapces and other things ... 
@@ -50,17 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
              // echo "working";
               while($row= mysqli_fetch_array($result))
                     {
-                       $pname=test_input($_REQUEST['project_name']);  
-                        
-                        if(strcmp($row['pr_prname'],trim($pname))==0)
-                        {
                           $_SESSION['project_name'] =$row['pr_prname'];     
                           $_SESSION['project_id']   =$row['pr_prid'];
                           $_SESSION['status']       =$row['pr_prnotes'];
                           $_SESSION['date']         =$row['pr_odate'];
                           $_SESSION['initiated_by'] =$row['pr_md'];
                           display_project();//calling the function diaplay                          
-                        }
+                        
                      }               
             }
 

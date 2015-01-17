@@ -3,10 +3,10 @@ include 'connection.php';?>
 
 <?php include_once 'intialize.php' ?>
 <?php 
-$name =$_SESSION['Employee'];
+$emp =trim($_SESSION['Employee']);
 
 //#####################################################
-$result=mysqli_query($con,"SELECT * from prj_project");//the query to get the whole database in one variable 
+$result=mysqli_query($con,"SELECT * from prj_project where pr_ps='$emp'");//the query to get the whole database in one variable 
 $result1=mysqli_query($con,"SELECT * from orders");       
 //######################################################
       
@@ -44,41 +44,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                
                 while($row= mysqli_fetch_array($result))
                       {
-                            if(strcmp($row['pr_ps'],$name)==0)
-                            {  
-                                
-                                     
                                 while($row1=mysqli_fetch_array($result1))
                                 {
-                                  if(strcmp(@$row1["or_status"],"Wo Create")==0)
-                                   { 
-                                        
-                                             
-                                              $_SESSION['project_name'] =$row1['or_prjname'];
-                                              $_SESSION['project_id']   =$row1['or_prid'];
-                                              $_SESSION['status']       =$row1['or_status'];
-                                              $_SESSION['date']         =$row['pr_adtm'];
-                                              $_SESSION['order']        =$row1['or_wopo_cid'];
-                                              display_project(); 
-                                           
-                                     }
-                                    else if(strcmp(@$row1["or_status"],"Po Create")==0)
-                                    { 
-                                        
-                                             
-                                              $_SESSION['project_name'] =$row1['or_prjname'];
-                                              $_SESSION['project_id']   =$row1['or_prid'];
-                                              $_SESSION['status']       =$row1['or_status'];
-                                              $_SESSION['date']         =$row['pr_adtm'];
-                                              $_SESSION['order']        =$row1['or_wopo_cid'];
-                                              display_project(); 
-                                           
-                                     } 
+                                    if($row['pr_prname']==$row1['or_prjname'])
+                                    {     
+                                      if(strcmp(@$row1["or_status"],"Wo Create")==0)
+                                       { 
+                                            
+                                                 
+                                                  $_SESSION['project_name'] =$row1['or_prjname'];
+                                                  $_SESSION['project_id']   =$row1['or_prid'];
+                                                  $_SESSION['status']       =$row1['or_status'];
+                                                  $_SESSION['date']         =$row['pr_adtm'];
+                                                  $_SESSION['order']        =$row1['or_wopo_cid'];
+                                                  display_project(); 
+                                               
+                                         }
+                                        else if(strcmp(@$row1["or_status"],"Po Create")==0)
+                                        { 
+                                            
+                                                 
+                                                  $_SESSION['project_name'] =$row1['or_prjname'];
+                                                  $_SESSION['project_id']   =$row1['or_prid'];
+                                                  $_SESSION['status']       =$row1['or_status'];
+                                                  $_SESSION['date']         =$row['pr_adtm'];
+                                                  $_SESSION['order']        =$row1['or_wopo_cid'];
+                                                  display_project(); 
+                                               
+                                         }
+                                    }   
                                 }                             
                                 //$_SESSION['initiated_by'] =$row['pr_md'];
                                //callin-g the function diaplay                          
                             }
-                      }                    
+                                         
             }
 
     
@@ -91,40 +90,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                 if(strcmp($row['pr_prname'],$pname)==0)
                                 {
                             
-                                 if(strcmp($row['pr_ps'],$name)==0)
-                                    {  
-                                        
-                                             
                                         while($row1=mysqli_fetch_array($result1))
                                         {
-                                          if(strcmp(@$row1["or_status"],"Wo Create")==0)
-                                          {
-                        
-                                          if(strcmp($row['pr_prname'],$row1['or_prjname'])==0)
-                                            {   
-                                                $_SESSION['project_name'] =$row1['or_prjname'];
-                                                $_SESSION['project_id']   =$row1['or_prid'];
-                                                $_SESSION['status']       =$row['pr_prnotes'];
-                                                $_SESSION['date']         =$row['pr_adtm'];
-                                                $_SESSION['order']        =$row1['or_wopo_id'];
-                                                display_project(); 
-                                             } 
-                                        }
-                                         else if(strcmp(@$row1["or_status"],"Po Create")==0)
-                                   { 
-                                        if(strcmp($row['pr_prname'],$row1['or_prjname'])==0)
-                                          {   
-                                              $_SESSION['project_name'] =$row1['or_prjname'];
-                                              $_SESSION['project_id']   =$row1['or_prid'];
-                                              $_SESSION['status']       =$row1['or_status'];
-                                              $_SESSION['date']         =$row['pr_adtm'];
-                                              $_SESSION['order']        =$row1['or_wopo_cid'];
-                                              display_project(); 
-                                           }
-                                     }                              
-                                      }             //$_SESSION['initiated_by'] =$row['pr_md'];
-                               //callin-g the function diaplay                          
-                                  }
+                                         if($row['pr_prname']==$row1['or_prjname'])
+                                    {     
+                                      if(strcmp(@$row1["or_status"],"Wo Create")==0)
+                                       { 
+                                            
+                                                 
+                                                  $_SESSION['project_name'] =$row1['or_prjname'];
+                                                  $_SESSION['project_id']   =$row1['or_prid'];
+                                                  $_SESSION['status']       =$row1['or_status'];
+                                                  $_SESSION['date']         =$row['pr_adtm'];
+                                                  $_SESSION['order']        =$row1['or_wopo_cid'];
+                                                  display_project(); 
+                                               
+                                         }
+                                        else if(strcmp(@$row1["or_status"],"Po Create")==0)
+                                        { 
+                                            
+                                                 
+                                                  $_SESSION['project_name'] =$row1['or_prjname'];
+                                                  $_SESSION['project_id']   =$row1['or_prid'];
+                                                  $_SESSION['status']       =$row1['or_status'];
+                                                  $_SESSION['date']         =$row['pr_adtm'];
+                                                  $_SESSION['order']        =$row1['or_wopo_cid'];
+                                                  display_project(); 
+                                               
+                                         }
+                                    }           
+                               }
                       }
             }
           }
@@ -136,43 +131,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                               if(strcmp($row['pr_prid'],$_SESSION['pid'])==0)
                               {
                              
-                              if(strcmp($row['pr_ps'],$name)==0)
-                            {  
-                                
-                                     
-                                while($row1=mysqli_fetch_array($result1))
+                                 while($row1=mysqli_fetch_array($result1))
                                 {
-                                  if(strcmp(@$row1["or_status"],"Wo Create")==0)
-                                  {
-                        
-                                  if(strcmp($row['pr_prname'],$row1['or_prjname'])==0)
-                                    {   
-                                        $_SESSION['project_name'] =$row1['or_prjname'];
-                                        $_SESSION['project_id']   =$row1['or_prid'];
-                                        $_SESSION['status']       =$row['pr_prnotes'];
-                                        $_SESSION['date']         =$row['pr_adtm'];
-                                        $_SESSION['order']        =$row1['or_wopo_id'];
-                                        display_project(); 
-                                     } 
-                                }
-                                 else if(strcmp(@$row1["or_status"],"Po Create")==0)
-                                   { 
-                                        if(strcmp($row['pr_prname'],$row1['or_prjname'])==0)
-                                          {   
-                                              $_SESSION['project_name'] =$row1['or_prjname'];
-                                              $_SESSION['project_id']   =$row1['or_prid'];
-                                              $_SESSION['status']       =$row1['or_status'];
-                                              $_SESSION['date']         =$row['pr_adtm'];
-                                              $_SESSION['order']        =$row1['or_wopo_cid'];
-                                              display_project(); 
-                                           }
-                                     }                              
-                                //$_SESSION['initiated_by'] =$row['pr_md'];
-                               }//callin-g the function diaplay                          
-                            }
+                                  if($row['pr_prname']==$row1['or_prjname'])
+                                    {     
+                                      if(strcmp(@$row1["or_status"],"Wo Create")==0)
+                                       { 
+                                            
+                                                 
+                                                  $_SESSION['project_name'] =$row1['or_prjname'];
+                                                  $_SESSION['project_id']   =$row1['or_prid'];
+                                                  $_SESSION['status']       =$row1['or_status'];
+                                                  $_SESSION['date']         =$row['pr_adtm'];
+                                                  $_SESSION['order']        =$row1['or_wopo_cid'];
+                                                  display_project(); 
+                                               
+                                         }
+                                        else if(strcmp(@$row1["or_status"],"Po Create")==0)
+                                        { 
+                                            
+                                                 
+                                                  $_SESSION['project_name'] =$row1['or_prjname'];
+                                                  $_SESSION['project_id']   =$row1['or_prid'];
+                                                  $_SESSION['status']       =$row1['or_status'];
+                                                  $_SESSION['date']         =$row['pr_adtm'];
+                                                  $_SESSION['order']        =$row1['or_wopo_cid'];
+                                                  display_project(); 
+                                               
+                                         }
+                                    }//callin-g the function diaplay                          
+                            
                               }
                         }
                   }
+               }     
 }
 
   ?>

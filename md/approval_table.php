@@ -11,7 +11,8 @@ include 'connection.php';?>
 <?php include_once 'intialize.php' ?>
 <?php 
 #######################################################
-$result=mysqli_query($con,"SELECT * from prj_project");//the query to get the whole database in one variable   
+$emp=trim($_SESSION['employee']);
+$result=mysqli_query($con,"SELECT * from prj_project where pr_md='$emp'");//the query to get the whole database in one variable   
 $result1=mysqli_query($con,"SELECT * from orders");     
 ########################################################
       function test_input($data)//this is to set the value porperly removing all the extra sapces and other things ... 
@@ -66,53 +67,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
               
               while($row= mysqli_fetch_array($result))
                     {
-                          $pname=test_input($_REQUEST['project_name']);  
                         
-                        if(strcmp($row['pr_prname'],trim($pname))==0)
                         {
                        
                           while($row1=mysqli_fetch_array($result1))
                           {
-                          	if(strcmp($row1['or_status'],'WO(MD Approval)')==0)	
-	                          {
-		                          $_SESSION['project_name'] =$row1['or_prjname'];
-                             // echo  $_SESSION['project_name'];    
-			                        $_SESSION['project_id']   =$row1['or_prid'];
-			                        $_SESSION['status']       =$row1['or_status'];
-			                        $_SESSION['date']         =$row['pr_odate'];
-			                        $_SESSION['order'] 		   =$row1['or_wopo_cid'];
-			                        display_project();//calling the function diaplay                          
-                     		  }
-                          if(strcmp($row1['or_status'],'PO(MD Approval)')==0) 
-                            {
-                              $_SESSION['project_name'] =$row1['or_prjname'];
-                             // echo  $_SESSION['project_name'];    
-                              $_SESSION['project_id']   =$row1['or_prid'];
-                              $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_odate'];
-                              $_SESSION['order']       =$row1['or_wopo_cid'];
-                              display_project();//calling the function diaplay                          
-                          }
-                          		
-                     			else if (strcmp($row1['or_status'],'No Funds')==0) 
-                     			{
-                     				   $_SESSION['project_name'] =$row1['or_prjname'];     
-                              $_SESSION['project_id']   =$row1['or_prid'];
-                              $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_odate'];
-                              $_SESSION['order']       =$row1['or_wopo_cid'];
-                              display_project();
-                     			}
-                          elseif(strcmp($row1['or_status'],'Site Survey')==0)
-                          {
-                               $_SESSION['project_name'] =$row1['or_prjname'];     
-                              $_SESSION['project_id']   =$row1['or_prid'];
-                              $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_odate'];
-                              $_SESSION['order']       =$row1['or_wopo_cid'];
-                              display_project();
-                          }
-
+                              if($row['pr_prname']==$row1['or_prjname'])
+                          	   {
+                                    if(strcmp($row1['or_status'],'WO(MD Approval)')==0)	
+        	                          {
+        		                          $_SESSION['project_name'] =$row1['or_prjname'];
+                                     // echo  $_SESSION['project_name'];    
+        			                        $_SESSION['project_id']   =$row1['or_prid'];
+        			                        $_SESSION['status']       =$row1['or_status'];
+        			                        $_SESSION['date']         =$row['pr_odate'];
+        			                        $_SESSION['order'] 		   =$row1['or_wopo_cid'];
+        			                        display_project();//calling the function diaplay                          
+                             		  }
+                                  if(strcmp($row1['or_status'],'PO(MD Approval)')==0) 
+                                    {
+                                      $_SESSION['project_name'] =$row1['or_prjname'];
+                                     // echo  $_SESSION['project_name'];    
+                                      $_SESSION['project_id']   =$row1['or_prid'];
+                                      $_SESSION['status']       =$row1['or_status'];
+                                      $_SESSION['date']         =$row['pr_odate'];
+                                      $_SESSION['order']       =$row1['or_wopo_cid'];
+                                      display_project();//calling the function diaplay                          
+                                  }
+                                  		
+                             			else if (strcmp($row1['or_status'],'No Funds')==0) 
+                             			{
+                             				   $_SESSION['project_name'] =$row1['or_prjname'];     
+                                      $_SESSION['project_id']   =$row1['or_prid'];
+                                      $_SESSION['status']       =$row1['or_status'];
+                                      $_SESSION['date']         =$row['pr_odate'];
+                                      $_SESSION['order']       =$row1['or_wopo_cid'];
+                                      display_project();
+                             			}
+                                  elseif(strcmp($row1['or_status'],'Site Survey')==0)
+                                  {
+                                       $_SESSION['project_name'] =$row1['or_prjname'];     
+                                      $_SESSION['project_id']   =$row1['or_prid'];
+                                      $_SESSION['status']       =$row1['or_status'];
+                                      $_SESSION['date']         =$row['pr_odate'];
+                                      $_SESSION['order']       =$row1['or_wopo_cid'];
+                                      display_project();
+                                  }
+                               }     
                      		}
                      	}	 
                       }              
@@ -125,36 +126,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                     $pname=test_input($_POST['project_name']);  
                       while($row= mysqli_fetch_array($result))
                       {
+                        
                         while($row1=mysqli_fetch_array($result1))
                           {
-                          	if(strcmp($row1['or_status'],"WO(MD Approval)")==0)	
-	                          {
-		                             $_SESSION['project_name'] =$row1['or_prjname'];     
-                              $_SESSION['project_id']   =$row1['or_prid'];
-                              $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_odate'];
-                              $_SESSION['order']       =$row1['or_wopo_cid'];
-                              display_project();// the function diaplay                          
-                     		  }
-                     		  elseif (strcmp($row1['or_status'],'No Funds')==0) 
-                     			{
-                     				  $_SESSION['project_name'] =$row1['or_prjname'];     
-                              $_SESSION['project_id']   =$row1['or_prid'];
-                              $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_odate'];
-                              $_SESSION['order']       =$row1['or_wopo_cid'];
-                              display_project();
-                     			}
-                           elseif(strcmp($row1['or_status'],'Site Survey')==0)
-                          {
-                               $_SESSION['project_name'] =$row1['or_prjname'];     
-                              $_SESSION['project_id']   =$row1['or_prid'];
-                              $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_odate'];
-                              $_SESSION['order']       =$row1['or_wopo_cid'];
-                              display_project();
-                          }
-  
+                            if($row['pr_prname']==$row1['or_prjname'])
+                              {
+                                	if(strcmp($row1['or_status'],"WO(MD Approval)")==0)	
+      	                          {
+      		                             $_SESSION['project_name'] =$row1['or_prjname'];     
+                                    $_SESSION['project_id']   =$row1['or_prid'];
+                                    $_SESSION['status']       =$row1['or_status'];
+                                    $_SESSION['date']         =$row['pr_odate'];
+                                    $_SESSION['order']       =$row1['or_wopo_cid'];
+                                    display_project();// the function diaplay                          
+                           		  }
+                           		  elseif (strcmp($row1['or_status'],'No Funds')==0) 
+                           			{
+                           				  $_SESSION['project_name'] =$row1['or_prjname'];     
+                                    $_SESSION['project_id']   =$row1['or_prid'];
+                                    $_SESSION['status']       =$row1['or_status'];
+                                    $_SESSION['date']         =$row['pr_odate'];
+                                    $_SESSION['order']       =$row1['or_wopo_cid'];
+                                    display_project();
+                           			}
+                                 elseif(strcmp($row1['or_status'],'Site Survey')==0)
+                                {
+                                     $_SESSION['project_name'] =$row1['or_prjname'];     
+                                    $_SESSION['project_id']   =$row1['or_prid'];
+                                    $_SESSION['status']       =$row1['or_status'];
+                                    $_SESSION['date']         =$row['pr_odate'];
+                                    $_SESSION['order']       =$row1['or_wopo_cid'];
+                                    display_project();
+                                }
+                            }
                      		}
                       }
             }
@@ -165,78 +169,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                              
                              while($row1=mysqli_fetch_array($result1))
                           {
-                          	if(strcmp($row1['or_status'],"WO(MD Approval)")==0)	
-	                          {
-		                             $_SESSION['project_name'] =$row1['or_prjname'];     
-                              $_SESSION['project_id']   =$row1['or_prid'];
-                              $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_odate'];
-                              $_SESSION['order']       =$row1['or_wopo_cid'];
-                              display_project();                      
-                     		  }
-                     		  elseif (strcmp($row1['or_status'],'No Funds')==0) 
-                     			{
-                     				  $_SESSION['project_name'] =$row1['or_prjname'];     
-                              $_SESSION['project_id']   =$row1['or_prid'];
-                              $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_odate'];
-                              $_SESSION['order']       =$row1['or_wopo_cid'];
-                              display_project();
-                     			}
-                           elseif(strcmp($row1['or_status'],'Site Survey(MD)')==0)
-                          {
-                               $_SESSION['project_name'] =$row1['or_prjname'];     
-                              $_SESSION['project_id']   =$row1['or_prid'];
-                              $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_odate'];
-                              $_SESSION['order']       =$row1['or_wopo_cid'];
-                              display_project();
-                          }
-
+                            if($row['pr_prname']==$row1['or_prjname'])
+                                {
+                                    	if(strcmp($row1['or_status'],"WO(MD Approval)")==0)	
+          	                          {
+          		                             $_SESSION['project_name'] =$row1['or_prjname'];     
+                                        $_SESSION['project_id']   =$row1['or_prid'];
+                                        $_SESSION['status']       =$row1['or_status'];
+                                        $_SESSION['date']         =$row['pr_odate'];
+                                        $_SESSION['order']       =$row1['or_wopo_cid'];
+                                        display_project();                      
+                               		  }
+                               		  elseif (strcmp($row1['or_status'],'No Funds')==0) 
+                               			{
+                               				  $_SESSION['project_name'] =$row1['or_prjname'];     
+                                        $_SESSION['project_id']   =$row1['or_prid'];
+                                        $_SESSION['status']       =$row1['or_status'];
+                                        $_SESSION['date']         =$row['pr_odate'];
+                                        $_SESSION['order']       =$row1['or_wopo_cid'];
+                                        display_project();
+                               			}
+                                     elseif(strcmp($row1['or_status'],'Site Survey(MD)')==0)
+                                    {
+                                         $_SESSION['project_name'] =$row1['or_prjname'];     
+                                        $_SESSION['project_id']   =$row1['or_prid'];
+                                        $_SESSION['status']       =$row1['or_status'];
+                                        $_SESSION['date']         =$row['pr_odate'];
+                                        $_SESSION['order']       =$row1['or_wopo_cid'];
+                                        display_project();
+                                    }
+                              }  
                      		}
                         }
                   }
             
-          elseif(isset($_SESSION['stat']) && empty($_SESSION['pn']) && empty($_SESSION['pid']))
-           {
-                while($row= mysqli_fetch_array($result))
-                        {
-                             
-                             while($row1=mysqli_fetch_array($result1))
-                          {
-                          	if(strcmp($row1['or_status'],"WO(MD Approval)")==0)	
-	                          {
-		                              $_SESSION['project_name'] =$row1['or_prjname'];     
-                              $_SESSION['project_id']   =$row1['or_prid'];
-                              $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_odate'];
-                              $_SESSION['order']       =$row1['or_wopo_cid'];
-                              display_project();                       
-                     		  }
-                     		  elseif (strcmp($row1['or_status'],'No Funds')==0) 
-                     			{
-                     				  $_SESSION['project_name'] =$row1['or_prjname'];     
-                              $_SESSION['project_id']   =$row1['or_prid'];
-                              $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_odate'];
-                              $_SESSION['order']       =$row1['or_wopo_cid'];
-                              display_project();
-                     			}
-                           elseif(strcmp($row1['or_status'],'Site Survey(MD)')==0)
-                          {
-                                $_SESSION['project_name'] =$row1['or_prjname'];     
-                              $_SESSION['project_id']   =$row1['or_prid'];
-                              $_SESSION['status']       =$row1['or_status'];
-                              $_SESSION['date']         =$row['pr_odate'];
-                              $_SESSION['order']       =$row1['or_wopo_cid'];
-                              display_project();
-                          }
-
-                     		}
-                        }
-           } 
-
-
+          
 }
 
   ?>
