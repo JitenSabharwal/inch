@@ -58,6 +58,7 @@ if ($uploadOk == 0) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
         $inserto=mysqli_query($con,"UPDATE orders SET or_status='Site Survey' where or_wopo_cid='$ido'");
         $inserts=mysqli_query($con,"UPDATE stg_status SET st_status='PI' where st_stageid='$id'");
+        include 'filedetails.php';
         }
     } else {
         echo "Sorry, there was an error uploading your file.";
