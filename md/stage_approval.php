@@ -11,6 +11,7 @@ if(empty($in))
 else
 {
 	$or=mysqli_query($con,"UPDATE stg_status SET st_status='PS(Contractor)' WHERE st_stageid='$st'");
+	$up=mysqli_query($con,"UPDATE orders SET or_status='PS(Contractor)' WHERE or_wopo_cid='$wo'");
 	$msg = wordwrap($com,70);
 
 $head='From:noreply@auricktech.com';

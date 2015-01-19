@@ -431,15 +431,15 @@ if(@$_REQUEST['op']=='ST_Approval' && @$_REQUEST['search']=='click' && @$_REQUES
 <table class="table table-hover tab-border"  width="500">
   
   <tr>
-    <th>
+    <td>
       S.No.
-    </th>
-    <th>
+    </td>
+    <td>
         Authority
-    </th>
-    <th>
+    </td>
+    <td>
       Comment
-    </th>   
+    </td>   
   </tr>
   <?php include'comment.php'; ?>
 </table>

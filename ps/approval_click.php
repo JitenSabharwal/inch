@@ -39,6 +39,7 @@ while($row=mysqli_fetch_array($result))
          
                                
       }
+                                mysqli_data_seek($result1,0);
   }
 
 ?>

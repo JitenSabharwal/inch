@@ -1,6 +1,7 @@
 
 <?php include_once 'intialize.php' ?>
 <?php 
+include '../include/connection.php';
 ##########################################################
 $emp=trim($_SESSION['Employee']);
 $result=mysqli_query($con,"SELECT * from prj_project where pr_pm='$emp'");//the query to get the whole database in one variable        
@@ -22,7 +23,8 @@ $result1=mysqli_query($con,"SELECT * from orders");//the query to get the whole 
           <td><a href="pm_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']?>&po=click">
           <?php 
           echo @$_SESSION['project_name']; 
-          ?></a></td>
+          ?></a>
+        </td>
           <td><?php echo @$_SESSION['project_id'];?></td>
           <td><?php echo @$_SESSION['date']      ;?></td>
           <td><?php echo @$_SESSION['initiated_by'];?></td>
@@ -43,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                     {
                           $_SESSION['project_name'] =$row['pr_prname'];     
                           $_SESSION['project_id']   =$row['pr_prid'];
-                          $_SESSION['status']       =$row['pr_prnotes'];
+                          //$_SESSION['status']       =$row['pr_prnotes'];
                           $_SESSION['date']         =$row['pr_odate'];
                           $_SESSION['initiated_by'] =$row['pr_md'];
                           display_project();//calling the function diaplay                          

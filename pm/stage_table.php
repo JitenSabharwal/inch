@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                       {
                                 while($row1=mysqli_fetch_array($result1))
                                 {
-                                  if($row['pr_prname']==$row['or_prjname'])    
+                                  if($row['pr_prname']==$row1['or_prjname'])    
                                       {
                                         if($row1['or_status']=='Site Survey')
                                       {
@@ -63,6 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                       }
                                       } 
                                 }                             
+                                mysqli_data_seek($result1,0);
                                 //$_SESSION['initiated_by'] =$row['pr_md'];
                                //callin-g the function diaplay                          
                             
@@ -99,6 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                       } 
                                   } 
                                 }           
+                                mysqli_data_seek($result1,0);
                                 //$_SESSION['initiated_by'] =$row['pr_md'];
                                //callin-g the function diaplay                          
                             }
@@ -132,6 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                       }
                                       }  
                                 }
+                                mysqli_data_seek($result1,0);
                                 //$_SESSION['initiated_by'] =$row['pr_md'];
                                //callin-g the function diaplay                          
                             }

@@ -13,6 +13,7 @@ if(!isset($_SESSION['Employee']) || $_COOKIE['user_role']!="pi")
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="cssstyles.css" />
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 

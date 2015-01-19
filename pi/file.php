@@ -17,7 +17,7 @@
  <table  class="table  table-hover">
 <tr>
   <td>
-<ul>
+<ul style="">
           <?php
             if($dir_list=@opendir($path))
             {

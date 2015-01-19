@@ -1,6 +1,8 @@
 <?php include "../include/connection.php"; ?>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="cssstyles.css" />
+
 <?php
 session_start();
 if(!isset($_SESSION['Employee']) || $_COOKIE['user_role']!="ps")
@@ -457,10 +459,10 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
             echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
               }
             }
-          }
+          } 
            $arr = explode(".", $filename, 2);  
                     $_SESSION['filename'] = $arr[0];
-                       
+                      
           }
        
             

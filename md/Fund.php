@@ -1,5 +1,6 @@
 <?php
 session_start(fund);
+include '../include/connection.php';  
 
 
 			if(@$_REQUEST['approval']=='Approval')

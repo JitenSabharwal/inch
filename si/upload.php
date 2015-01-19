@@ -1,6 +1,7 @@
 <?php
 session_start();
-include '../include/connection.php';include 'idgen.php';
+include '../include/connection.php';
+include 'idgen.php';
 $target_dir = "uploads/";
 $targetFolder = 'uploads/'; // Relative to the root
                 if(!is_dir($targetFolder.$_SESSION['pr_upload']))
@@ -84,6 +85,6 @@ if ($uploadOk == 0) {
 }
 
 }
-header('location:si_page.php?op=overview&search=click');            
+            header('location:si_page.php?op=overview&search=click');            
 
 ?>

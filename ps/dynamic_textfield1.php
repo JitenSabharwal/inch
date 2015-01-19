@@ -54,7 +54,7 @@ intTextBox = intTextBox-1;
 
 <body>
 
-<p><input type="button" value="Add" class="btn btn-primary" onclick="addElement();"><input type="button" class="btn btn-primary" value="Remove" onclick="removeElement();"></p>
+<p><input type="button" value="Add" class="btn btn-primary" onclick="addElement();">&nbsp;<input type="button" class="btn btn-primary" value="Remove" onclick="removeElement();"></p>
 
 <table width="700" class="tab-border table" id="myTable">
   <tr>
