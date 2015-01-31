@@ -216,14 +216,14 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval' )
 
 <?php 
         if(@$_REQUEST['st_click']=='click')
-         // include 'stage_upload.php';
+        
         {
           $_SESSION['or_upload']=$_REQUEST['or'];
-        //  $r=$_SESSION['or_upload'];
+        
           $_SESSION['pr_upload']=$_REQUEST['pn'];
           $_SESSION['st_upload']=$_REQUEST['st'];
-         // echo "<script>alert('$r')</script>";
-          include 'doc.html';
+
+          include 'upload/index.php';
         }
 
 ?>

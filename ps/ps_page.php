@@ -352,7 +352,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
                   {
                      $_SESSION['or_upload']=$_REQUEST['or'];
                      $_SESSION['pr_upload']=$_REQUEST['pn'];
-                    @include 'doc.html';
+                    @include 'upload/index.php';
 
    ?>
 
