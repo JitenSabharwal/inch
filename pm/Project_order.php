@@ -8,6 +8,7 @@
  <?php
 ################################################################################################
 $result=mysqli_query($con,"SELECT * from orders");//the query to get the whole database in one variable        
+$value=0;
  ################################################################################################
  function display()
  {
@@ -23,13 +24,24 @@ $result=mysqli_query($con,"SELECT * from orders");//the query to get the whole d
  	{
  		if($row['or_prjname']==$_REQUEST['pn'])
  		{
+ 			$value=1;
  			$_SESSION['name']=$row['or_prjname'];
  			$_SESSION['id']=$row['or_wopo_cid'];
  			$_SESSION['status']=$row['or_status'];
  			display();
  		}
  	}
+ if($value==0)
+	{
+  ?>
+  <tr>
+      <td colspan="3" align="center" >No &nbsp; Results </td>
+  </tr>
+  <?php
+	}
+
  ?>
+
  </table>
 
  

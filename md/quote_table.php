@@ -1,8 +1,8 @@
 <table class="table tab-border" width=700>
-	<th>S.no</th>
-	<th>Quote</th>
-	<th>Vendor Name</th>
-	<th>Vendor Contact</th>
+	<td>S.no</td>
+	<td>Quote</td>
+	<td>Vendor Name</td>
+	<td>Vendor Contact</td>
 	
 <?php
 $_SESSION['x']=1;
@@ -23,6 +23,7 @@ $_SESSION['x']++;
 $result1=mysqli_query($con,"SELECT * from wok_order group by wo_wocid");
 $result2=mysqli_query($con,"SELECT * from pod_order group by po_pocid");
 $result3=mysqli_query($con,"SELECT * from qut_quote a,ven_vendor b WHERE a.qu_venid=b.ve_veid ");
+$value=0;
 ##############################################################################################
 
 while($row1=mysqli_fetch_array($result1))
@@ -34,6 +35,7 @@ while($row1=mysqli_fetch_array($result1))
 		{
 			if($row1['wo_quoteid']==$row2['qu_quid'])
 			{
+				$value=1;
 				$_SESSION['quote_id']=$row2['qu_quid'];
 				$_SESSION['name']=$row2['ve_vname'];;
 				$_SESSION['contact']=$row2['ve_contact1'];
@@ -51,6 +53,7 @@ while($row1=mysqli_fetch_array($result2))
 		{
 			if($row1['po_quoteid']==$row2['qu_quid'])
 			{
+				$value=1;
 				$_SESSION['quote_id']=$row2['qu_quid'];
 				$_SESSION['name']=$row2['ve_vname'];;
 				$_SESSION['contact']=$row2['ve_contact1'];
@@ -59,6 +62,14 @@ while($row1=mysqli_fetch_array($result2))
 		}
 	}
 }
+if($value==0)
+	{
+  ?>
+  <tr>
+      <td colspan="4" align="center" >No &nbsp; Results </td>
+  </tr>
+  <?php
+	}
 
 ?>
 </table>

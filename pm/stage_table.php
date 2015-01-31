@@ -7,7 +7,7 @@ include '../include/connection.php';?>
 $emp=trim($_SESSION['Employee']);
 $result=mysqli_query($con,"SELECT * from prj_project where pr_pm='$emp'");//the query to get the whole database in one variable 
 $result1=mysqli_query($con,"SELECT * from orders join stg_status on(st_woid=or_wopo_cid)  where st_status='PM' group by or_prjname ");       
-
+$value=0;
 
 
 
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                       {
                                         if($row1['or_status']=='Site Survey')
                                       {
-                                         
+                                            $value=1;
                                             $_SESSION['project_name'] =$row1['or_prjname'];
                                             $_SESSION['project_id']   =$row1['or_prid'];
                                             $_SESSION['status']       =$row1['or_status'];
@@ -89,6 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                         if($row1['or_status']=='Site Survey')
                                       {
                                          
+                                            $value=1;
                                             $_SESSION['project_name'] =$row1['or_prjname'];
                                             $_SESSION['project_id']   =$row1['or_prid'];
                                             $_SESSION['status']       =$row1['or_status'];
@@ -124,6 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                                         if($row1['or_status']=='Site Survey')
                                       {
                                          
+                                            $value=1;
                                             $_SESSION['project_name'] =$row1['or_prjname'];
                                             $_SESSION['project_id']   =$row1['or_prid'];
                                             $_SESSION['status']       =$row1['or_status'];
@@ -141,6 +143,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click') //whet
                               }
                         }
                   
+ if($value==0)
+  {
+  ?>
+  <tr>
+      <td colspan="5" align="center" >No &nbsp; Results </td>
+  </tr>
+  <?php
+  }
+
 }
 
   ?>

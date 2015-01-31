@@ -6,6 +6,7 @@ include '../include/connection.php';
 $emp=trim($_SESSION['Employee']);
 $result=mysqli_query($con,"SELECT * from prj_project where pr_pm='$emp'");//the query to get the whole database in one variable        
 $result1=mysqli_query($con,"SELECT * from orders");//the query to get the whole database in one variable        
+$value=0;
 ##########################################################
       function test_input($data)//this is to set the value porperly removing all the extra sapces and other things ... 
       {
@@ -43,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
               
               while($row= mysqli_fetch_array($result))
                     {
+                          $value=1;
                           $_SESSION['project_name'] =$row['pr_prname'];     
                           $_SESSION['project_id']   =$row['pr_prid'];
                           //$_SESSION['status']       =$row['pr_prnotes'];
@@ -62,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                       {
                         if(strcmp($row['pr_prname'],$pname)==0)
                         {
-                          
+                          $value=1;                         
                           $_SESSION['project_name'] =$row['pr_prname'];     
                           $_SESSION['project_id']   =$row['pr_prid'];
                           $_SESSION['status']       =$row['pr_prnotes'];
@@ -80,6 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                              
                               if(strcmp($row['pr_prid'],$_SESSION['pid'])==0)
                               {
+                                 $value=1;
                                 $_SESSION['project_name'] =$row['pr_prname'];     
                                 $_SESSION['project_id']   =$row['pr_prid'];
                                 $_SESSION['status']       =$row['pr_prnotes'];
@@ -92,6 +95,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                   }
             
          
+if($value==0)
+  {
+  ?>
+  <tr>
+      <td colspan="4" align="center" >No &nbsp; Results </td>
+  </tr>
+  <?php
+  }
 
 }
 

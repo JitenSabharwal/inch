@@ -23,7 +23,7 @@ var html = '<table width="200" border="1"><tr><th scope="col">Sno</th><th scope=
 	//cell4.id="myRow";
     cell1.innerHTML = intTextBox;
     cell2.innerHTML = "<input type='text' id='" + intTextBox + "' name='description-" + intTextBox + "'/>";
-	cell3.innerHTML = "<input type='text' id='" + intTextBox + "' name='percentage-" + intTextBox + "'/>";
+	cell3.innerHTML = "<input type='text' id='" + intTextBox + "' name='percentage-" + intTextBox + "' pattern='^[0-9]{1,15}$'/>";
 	//cell4.innerHTML = "<select name='work_type-"+ intTextBox +"' id='work_type"+ intTextBox +"'><option value='carpenter'>carpenter</option><option value='painter'>painter</option><option value='civil'>civil</option><option value='tiles'>tiles</option></select>";
 
 /*  newTBDiv.innerHTML = "<table width='200' border='1'><tr><th scope='col'>Sno</th><th scope='col'>Description</th><th scope='col'>Quality</th><th scope='col'>Type</th></tr><tr><td>"+intTextBox+"</td><td><input type='text' id='" + intTextBox + "' name='description-" + intTextBox + "'/></td><td><input type='text' id='" + intTextBox + "' name='quantity-" + intTextBox + "'/></td><td><select name='work_type-"+ intTextBox +"' id='work_type"+ intTextBox +"'><option value='carpenter'>carpenter</option><option value='painter'>painter</option><option value='civil'>civil</option><option value='tiles'>tiles</option></select></td></tr>";*/

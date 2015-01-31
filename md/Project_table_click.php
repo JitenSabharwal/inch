@@ -7,6 +7,7 @@
  
 <?php include 'intialize.php' ?>
 <?php
+$value=0;
 $result=mysqli_query($con,"SELECT * from prj_project");//the query to get the whole database in one variable
 $result1=mysqli_query($con,"SELECT * from orders");       
 //echo "working";        
@@ -42,6 +43,7 @@ while($row=mysqli_fetch_array($result))
       if(strcmp($row['pr_prname'],@$_REQUEST['pn'])==0)
       {
       	//echo @$_REQUEST['pn'];
+         $value=1;
          $_SESSION['project_name'] =$row['pr_prname'];     
          $_SESSION['project_id']   =$row['pr_prid'];
         $_SESSION['date']         =$row['pr_odate'];
@@ -49,6 +51,13 @@ while($row=mysqli_fetch_array($result))
          display_project1();//calling the function diaplay                          
       }
   }
-
+if($value==0)
+{
+  ?>
+  <tr>
+      <td colspan="4">No Results </td>
+  </tr>
+  <?php
+}
   
 ?>

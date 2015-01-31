@@ -5,6 +5,7 @@
 $emp=trim($_SESSION['Employee']);
 $result=mysqli_query($con,"SELECT * from prj_project where pr_pm='$emp'");//the query to get the whole database in one variable   
 $result1=mysqli_query($con,"SELECT * from orders");
+$value=0;
 ########################################################
 
       function test_input($data)//this is to set the value porperly removing all the extra sapces and other things ... 
@@ -64,7 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                             {
                                   if(strcmp($row1['or_status'],"Quote Approved")==0)	
     	                          {
-    		                          $_SESSION['project_name'] =$row1['or_prjname'];     
+    		                          $value=1;
+                                  $_SESSION['project_name'] =$row1['or_prjname'];     
     			                        $_SESSION['project_id']   =$row1['or_prid'];
     			                        $_SESSION['status']       =$row1['or_status'];
     			                        $_SESSION['date']         =$row['pr_odate'];
@@ -74,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                 }       
                              else if(strcmp($row1['or_status'],"WO Created(PM Approval)")==0)  
                                 {
+                                  $value=1;
                                   $_SESSION['project_name'] =$row1['or_prjname'];     
                                   $_SESSION['project_id']   =$row1['or_prid'];
                                   $_SESSION['status']       =$row1['or_status'];
@@ -83,6 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                          		}
                              else if(strcmp($row1['or_status'],"PO Created(PM Approval)")==0)  
                                 {
+                                  $value=1;
                                   $_SESSION['project_name'] =$row1['or_prjname'];     
                                   $_SESSION['project_id']   =$row1['or_prid'];
                                   $_SESSION['status']       =$row1['or_status'];
@@ -109,6 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                           	{
                                       if(strcmp($row1['or_status'],"Quote Approved")==0)	
           	                          {
+                                  $value=1;
           		                          $_SESSION['project_name'] =$row1['or_prjname'];     
           			                        $_SESSION['project_id']   =$row1['or_prid'];
           			                        $_SESSION['status']       =$row1['or_status'];
@@ -118,6 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                		  }
                                      else if(strcmp($row1['or_status'],"WO Created(PM Approval)")==0)  
                                       {
+                                  $value=1;
                                         $_SESSION['project_name'] =$row1['or_prjname'];     
                                         $_SESSION['project_id']   =$row1['or_prid'];
                                         $_SESSION['status']       =$row1['or_status'];
@@ -127,6 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                   }
                                    else if(strcmp($row1['or_status'],"PO Created(PM Approval)")==0)  
                                       {
+                                  $value=1;
                                         $_SESSION['project_name'] =$row1['or_prjname'];     
                                         $_SESSION['project_id']   =$row1['or_prid'];
                                         $_SESSION['status']       =$row1['or_status'];
@@ -139,8 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                 mysqli_data_seek($result1,0);
                               }
                             }
-            }
-          else  if(isset($_SESSION['pid']) && empty($_SESSION['pn']) && empty($_SESSION['stat']))
+            else  if(isset($_SESSION['pid']) && empty($_SESSION['pn']) && empty($_SESSION['stat']))
                   {
                         while($row= mysqli_fetch_array($result))
                         {
@@ -151,6 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                           	{
                                     if(strcmp($row1['or_status'],"Quote Approved")==0)	
         	                          {
+                                  $value=1;
         		                            $_SESSION['project_name'] =$row1['or_prjname'];     
         			                        $_SESSION['project_id']   =$row1['or_prid'];
         			                        $_SESSION['status']       =$row1['or_status'];
@@ -160,6 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                              		  }
                                    else if(strcmp($row1['or_status'],"WO Created(PM Approval)")==0)  
                                     {
+                                  $value=1;
                                       $_SESSION['project_name'] =$row1['or_prjname'];     
                                       $_SESSION['project_id']   =$row1['or_prid'];
                                       $_SESSION['status']       =$row1['or_status'];
@@ -169,6 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                 }
                                  else if(strcmp($row1['or_status'],"PO Created(PM Approval)")==0)  
                                     {
+                                  $value=1;
                                       $_SESSION['project_name'] =$row1['or_prjname'];     
                                       $_SESSION['project_id']   =$row1['or_prid'];
                                       $_SESSION['status']       =$row1['or_status'];
@@ -182,5 +191,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                            }
                   }
             
-        
+  if($value==0)
+  {
+  ?>
+  <tr>
+      <td colspan="5" align="center" >No &nbsp; Results </td>
+  </tr>
+  <?php
+  }
+}
+ 
   ?>

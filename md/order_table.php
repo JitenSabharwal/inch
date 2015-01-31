@@ -1,10 +1,10 @@
 <table width="700" class="table tab-border">
   <tr>
-    <th>S.no</th>
-  <th>Description</th>
-  <th>Quantity</th>
-  <th>Rate</th>
-  <th>Total</th>
+  <td>S.no</td>
+  <td>Description</td>
+  <td>Quantity</td>
+  <td>Rate</td>
+  <td>Total</td>
 
   </tr>
   <?php
@@ -35,6 +35,7 @@ $_SESSION['j']++;
 $result=mysqli_query($con,"SELECT * from prj_project");
 $result1=mysqli_query($con,"SELECT * from wok_order");
 $result2=mysqli_query($con,"SELECT * from pod_order");
+$value=0;
 ######################################################  
 
 while($row=mysqli_fetch_array($result))
@@ -54,6 +55,7 @@ while($row=mysqli_fetch_array($result1))
       {
       		if(strcmp($row['wo_prid'], $_SESSION['prid'])==0)
       		{
+            $value=1;
       			$_SESSION['desc']=$row['wo_wodesc'];
       			$_SESSION['quantity']=$row['wo_woquantity'];
             $_SESSION['rate']=$row['wo_worate'];
@@ -70,6 +72,7 @@ while($row1=mysqli_fetch_array($result2))
         {
             if(strcmp($row1['po_prid'], $_SESSION['prid'])==0)
             {
+            $value=1;
               $_SESSION['desc']=$row1['po_podesc'];
               $_SESSION['quantity']=$row1['po_poquantity'];
               $_SESSION['order']=$_REQUEST['or'];
@@ -79,6 +82,15 @@ while($row1=mysqli_fetch_array($result2))
             }
         }
     }
+  if($value==0)
+  {
+  ?>
+  <tr>
+      <td colspan="5" align="center" >No &nbsp; Results </td>
+  </tr>
+  <?php
+  }
+
 
 ?>
 </table>

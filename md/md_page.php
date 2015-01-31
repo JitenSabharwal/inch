@@ -480,15 +480,19 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
                 <table class="table table-hover tab-border"  width='700'>
                   
                   <tr>
-                    <th>
+                    <td>
                       S.No.
-                    </th>
-                    <th>
+                    </td>
+                    <td>
+                      Name
+                    </td>
+                    <td>
                         Authority
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                       Comment
-                    </th>   
+                    </td>
+
                   </tr>
                   <?php include 'st_comment.php'; ?>
                 </table>

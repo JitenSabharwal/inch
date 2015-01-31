@@ -6,6 +6,7 @@
     </tr>
 <?php include_once 'initialize.php' ?>
 <?php 
+$value=0;
 #############################################################
 $emp=trim($_SESSION['Employee']);
 $result=mysqli_query($con,"SELECT * from prj_project where pr_md='$emp'");//the query to get the whole database in one variable        
@@ -47,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
              // echo "working";
               while($row= mysqli_fetch_array($result))
                     {
+                         $value=1;
                           $_SESSION['project_name'] =$row['pr_prname'];     
                           $_SESSION['project_id']   =$row['pr_prid'];
                           $_SESSION['status']       =$row['pr_prnotes'];
@@ -67,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                         if(strcmp($row['pr_prname'],trim($pname))==0)
                         {
                     
+                          $value=1;
                           $_SESSION['project_name'] =$row['pr_prname'];     
                           $_SESSION['project_id']   =$row['pr_prid'];
                           $_SESSION['status']       =$row['pr_prnotes'];
@@ -84,6 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                               if(strcmp($row['pr_prid'],$_SESSION['pid'])==0)
                               {
                              
+                                $value=1;
                                 $_SESSION['project_name'] =$row['pr_prname'];     
                                 $_SESSION['project_id']   =$row['pr_prid'];
                                 $_SESSION['status']       =$row['pr_prnotes'];
@@ -102,7 +106,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                               { 
 
                                  if(strcmp($row1['or_status'],$_SESSION['stat'])==0)
-                                  {                           
+                                  {
+                                     $value=1;
+
                                     $_SESSION['project_name'] =$row['pr_prname'];     
                                     $_SESSION['project_id']   =$row['pr_prid'];
                                     $_SESSION['status']       =$row['pr_prnotes'];
@@ -114,7 +120,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                } 
                         }
            } 
-
+if($value==0)
+{
+  ?>
+  <tr>
+      <td colspan="4">No Results </td>
+  </tr>
+  <?php
+}
 
 }
 
