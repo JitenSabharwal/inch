@@ -6,7 +6,7 @@
 **/
 
 $valid_formats = array("jpg", "png", "gif", "zip", "bmp","pdf","docx","doc");
-$max_file_size = 1024*1000*5; //1mb 
+$max_file_size = 1024*1000*5; //5mb 
 //$path = "uploads/"; // Upload directory
 $targetFolder = 'upload/uploads/'; // Relative to the root
 				if(!is_dir($targetFolder.$_SESSION['pr_upload']))
