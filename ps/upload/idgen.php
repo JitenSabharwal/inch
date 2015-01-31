@@ -24,7 +24,7 @@
         
       }
       $_SESSION['fi_fiid']=$id_no;
-    //echo $_SESSION['fi_fiid'];
+   // echo $_SESSION['fi_fiid'];
 
 ?>
 

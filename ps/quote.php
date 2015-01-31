@@ -10,9 +10,9 @@ $prid=$_SESSION['prid'];
 $quid=$_SESSION['qu_id'];
 //echo $quid;
 $vid=$_SESSION['vid'];
-$name=$_REQUEST['vendor_name'];
+$name=@$_REQUEST['vendor_name'];
 //echo $name;
-$contact=$_REQUEST['contact_no'];
+$contact=@$_REQUEST['contact_no'];
 
 //echo $contact;
 //$amount=0;
@@ -25,7 +25,7 @@ while($row=mysqli_fetch_array($result1) )
 		//echo "working";
 		if(strcmp($_REQUEST['or'],$row['wo_wocid'])==0)
 		{
-			$r=$_REQUEST['rate'.$i];
+			$r=@$_REQUEST['rate'.$i];
 		//echo $r;
 		$x=$row['wo_woid'];
 		//echo $x;
@@ -41,7 +41,7 @@ while($row=mysqli_fetch_array($result1) )
 			$in=mysqli_query($con,"UPDATE  wok_order SET wo_rateq2='$r',wo_quoteid2='$quid' WHERE wo_woid= '$x' ");
 			$i++;
 		}
-		else//if(strcmp($_REQUEST['quote'],'3')==0)
+		elseif(strcmp($_REQUEST['quote'],'3')==0)
 		{
 			//echo "working";
 			$in=mysqli_query($con,"UPDATE  wok_order SET wo_rateq3 ='$r',wo_quoteid3='$quid'  WHERE wo_woid= '$x' ");
@@ -66,7 +66,7 @@ while($row=mysqli_fetch_array($result2))
 	{
 		if(strcmp($_REQUEST['or'],$row['po_pocid'])==0)
 		{
-			$r=$_REQUEST['rate'.$i];			
+			$r=@$_REQUEST['rate'.$i];			
 			$x=$row['po_poid'];
 			if(strcmp($_REQUEST['quote'],'1')==0)
 			{

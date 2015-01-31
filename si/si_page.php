@@ -224,6 +224,7 @@ if($_REQUEST['op']=='overview' || $_REQUEST['op']=='approval' )
           $_SESSION['st_upload']=$_REQUEST['st'];
 
           include 'upload/index.php';
+         
         }
 
 ?>

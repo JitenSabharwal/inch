@@ -308,21 +308,29 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
   
                     if(isset($_REQUEST['quote']))
                     {
-                      if(@$_REQUEST['wo']=='create')
-                      {
-                        include 'quote.php';     
-                      }  
+                        
+                      $quote_no=@$_REQUEST['quote']+1;
 
-                      $quote_no=$_REQUEST['quote']+1;
                     }
                     else
                     {
                       $quote_no=1;
+                      $_SESSION['sumit_count']=0;  
                     }
-                    if($quote_no!=4)
+                    $_SESSION['sumit_count']++;
+                    if(@$_REQUEST['wo']=='create' && @$_SESSION['sumit_count']<=4)
+                        {
+                             include 'quote.php';     
+                             echo "Working";
+                             echo $_SESSION['sumit_count'];
+                        }
+                    if(@$quote_no!=4)
                     {
+
+
    ?>
-                    
+
+                                        
                     <div class="quote" align="center">
                   <p>Quote<?php echo $quote_no; ?></p>
                     <form name="form4"  method="post" action="ps_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name'] ;?>&or=<?php echo $_SESSION['order'];?>&po=click&wo=create&quote=<?php echo $quote_no; ?>" onsubmit="return confirm1();">
@@ -350,6 +358,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
                   }
                   if($quote_no==4)
                   {
+                     
                      $_SESSION['or_upload']=$_REQUEST['or'];
                      $_SESSION['pr_upload']=$_REQUEST['pn'];
                     @include 'upload/index.php';

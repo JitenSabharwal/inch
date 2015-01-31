@@ -4,9 +4,11 @@
 * @author Resalat Haque
 * @link http://www.w3bees.com/2013/02/multiple-file-upload-with-php.html
 **/
-
+$id=$_SESSION['st_upload']; 
+$ido=$_SESSION['or_upload'];
+        			
 $valid_formats = array("jpg", "png", "gif", "zip", "bmp");
-$max_file_size = 1024*100; //100 kb
+$max_file_size = 1024*100000; //100 kb
 //$path = "uploads/"; // Upload directory
 $targetFolder = 'upload/uploads/'; // Relative to the root
 				if(!is_dir($targetFolder.$_SESSION['pr_upload']))
@@ -47,8 +49,12 @@ if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST"){
 	        else{ // No error found! Move uploaded files 
 	        	$temp=explode('.',$name);
 	            if(move_uploaded_file($_FILES["files"]["tmp_name"][$f], $path.'/'.$_SESSION['fi_fiid'].'.'.$temp[1])) {
-	            	$count++; // Number of successfully uploaded files
-	            }
+	            	 // Number of successfully uploaded files	
+	            	$count++;
+	            	$_SESSION['path']=$path.'/'.$_SESSION['fi_fiid'].'.'.$temp[1];
+	            	include 'filedetails.php';
+	            	//echo "Working";
+                 }
 	        }
 	    }
 	}
@@ -56,6 +62,16 @@ if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST"){
 }
 	else
 		$message[]="Only 5 files can be uploaded for this stage";
+if(empty($updfile))
+	{
+
+	}
+	else
+	{
+					$inserto=mysqli_query($con,"UPDATE orders SET or_status='Site Survey' where or_wopo_cid='$ido'");
+	            	$inserts=mysqli_query($con,"UPDATE stg_status SET st_status='PI' ,st_count='$count' where st_stageid='$id'");
+
+	}
 ?>
 
 
@@ -149,16 +165,33 @@ input[type="submit"]:active {
 		}
 		# success message
 		if(@$count !=0){
+			if(empty($updfile))
+			{
+					printf("<p class='status'>%d files Addition was unsuccessfully!</p>\n", $count);
+
+			}
+			else
 			printf("<p class='status'>%d files added successfully!</p>\n", $count);
-		}
+		
 		?>
-		<p>Max file size 100kb, Valid formats jpg, png, gif</p>
-		<br />
-		<br />
-		<!-- Multiple file upload html form-->
-		<form action="" method="post" enctype="multipart/form-data">
-			<input type="file" name="files[]" multiple="multiple" accept="image/*" >
-			<input type="submit" class="btn btn-primary" value="Upload">
+		<form action="si_page.php?op=overview&search=click" method="post" enctype="multipart/form-data">
+			<input type="submit" class="btn btn-primary" value="Finish">
 		</form>
+		<?php
+			}
+			else
+			{
+		?>
+			<p>Max file size 10Mb, Valid formats jpg, png, gif</p>
+			<br />
+			<br />
+			<!-- Multiple file upload html form-->
+			<form action="" method="post" enctype="multipart/form-data">
+				<input type="file" name="files[]" multiple="multiple" accept="image/*" >
+				<input type="submit" class="btn btn-primary" value="Upload">
+			</form>
+		<?php
+			}
+		?>
 </div>
 </body>

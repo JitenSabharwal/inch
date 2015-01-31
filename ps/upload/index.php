@@ -48,6 +48,8 @@ if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST"){
 	        	$temp=explode('.',$name);
 	            if(move_uploaded_file($_FILES["files"]["tmp_name"][$f], $path.'/'.$_SESSION['fi_fiid'].'.'.$temp[1])) {
 	            	$count++; // Number of successfully uploaded files
+	            	$_SESSION['path']=$path.'/'.$_SESSION['fi_fiid'].'.'.$temp[1];
+	            	include 'filedetails.php';
 	            }
 	        }
 	    }
@@ -150,15 +152,26 @@ input[type="submit"]:active {
 		# success message
 		if(@$count !=0){
 			printf("<p class='status'>%d files added successfully!</p>\n", $count);
-		}
+		
 		?>
-		<p>Max file size 5MB, Valid formats jpg, png, gif,pdf,docx,doc</p>
-		<br />
-		<br />
-		<!-- Multiple file upload html form-->
-		<form action="" method="post" enctype="multipart/form-data">
-			<input type="file" name="files[]" multiple="multiple" accept="image/*" >
-			<input type="submit" class="btn btn-primary" value="Upload">
+		<form action="ps_page.php?op=quotation&search=click" method="post" enctype="multipart/form-data">
+			<input type="submit" class="btn btn-primary" value="Finish">
 		</form>
+		<?php
+			}
+			else
+			{
+		?>
+			<p>Max file size 10Mb, Valid formats jpg, png, gif, zip, bmp , pdf, docx, doc</p>
+			<br />
+			<br />
+			<!-- Multiple file upload html form-->
+			<form action="" method="post" enctype="multipart/form-data">
+				<input type="file" name="files[]" multiple="multiple" accept="image/*" >
+				<input type="submit" class="btn btn-primary" value="Upload">
+			</form>
+		<?php
+			}
+		?>
 </div>
 </body>
