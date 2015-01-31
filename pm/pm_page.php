@@ -435,6 +435,9 @@ if(@$_REQUEST['op']=='ST_Approval' && @$_REQUEST['search']=='click' && @$_REQUES
       S.No.
     </td>
     <td>
+      Name
+    </td>
+    <td>
         Authority
     </td>
     <td>
