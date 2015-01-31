@@ -3,6 +3,7 @@
 <?php
 $result=mysqli_query($con,"SELECT * from prj_project");//the query to get the whole database in one variable        
 $result1=mysqli_query($con,"SELECT * from orders");       
+$value=0;
 function display_project1()//function to display the table values 
       {
         ?>      
@@ -36,6 +37,7 @@ while($row=mysqli_fetch_array($result))
       if(strcmp($row['pr_prname'],@$_REQUEST['pn'])==0)
       {
       	//echo @$_REQUEST['pn'];
+          $value=1;
          $_SESSION['project_name'] =$row['pr_prname'];     
          $_SESSION['project_id']   =$row['pr_prid'];
          
@@ -43,6 +45,14 @@ while($row=mysqli_fetch_array($result))
          $_SESSION['initiated_by'] =$row['pr_md'];
          display_project1();//calling the function diaplay                          
       }
+  }
+if($value==0)
+  {
+  ?>
+  <tr>
+      <td colspan="3" align="center" >No &nbsp; Results </td>
+  </tr>
+  <?php
   }
 
   

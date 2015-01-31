@@ -1,4 +1,5 @@
 <?php
+include '../include/connection.php';
 include 'idgenerator.php';
 
 //#################################
@@ -30,6 +31,7 @@ while($row=mysqli_fetch_array($result1) )
 		//echo $x;
 		if(strcmp($_REQUEST['quote'],'1')==0)
 		{
+			//echo "working";
 		$in=mysqli_query($con,"UPDATE  wok_order SET wo_rateq1 ='$r',wo_quoteid1='$quid' WHERE wo_woid='$x' ");
 			$i++;
 		}

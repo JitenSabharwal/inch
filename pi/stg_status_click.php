@@ -1,8 +1,8 @@
 <table class="tab-border table"width="500">
 	<tr>
-		<th>Stage Id</th>
-		<th>Project Name</th>	
-		<th>Work Order</th>
+		<td>Stage Id</td>
+		<td>Project Name</td>	
+		<td>Work Order</td>
 		
 	</tr>
 <?php

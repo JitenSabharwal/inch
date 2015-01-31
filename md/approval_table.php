@@ -10,6 +10,8 @@
 include '../include/connection.php';
  include_once 'intialize.php' ?>
 <?php 
+                                $value=0;
+
 #######################################################
 $emp=trim($_SESSION['Employee']);
 $result=mysqli_query($con,"SELECT * from prj_project where pr_md='$emp'");//the query to get the whole database in one variable   
@@ -76,6 +78,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                           	   {
                                     if(strcmp($row1['or_status'],'WO(MD Approval)')==0)	
         	                          {
+                                      $value=1;
+
         		                          $_SESSION['project_name'] =$row1['or_prjname'];
                                      // echo  $_SESSION['project_name'];    
         			                        $_SESSION['project_id']   =$row1['or_prid'];
@@ -86,6 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                              		  }
                                   if(strcmp($row1['or_status'],'PO(MD Approval)')==0) 
                                     {
+                                      $value=1;
                                       $_SESSION['project_name'] =$row1['or_prjname'];
                                      // echo  $_SESSION['project_name'];    
                                       $_SESSION['project_id']   =$row1['or_prid'];
@@ -97,6 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                   		
                              			else if (strcmp($row1['or_status'],'No Funds')==0) 
                              			{
+                                        $value=1;
                              				   $_SESSION['project_name'] =$row1['or_prjname'];     
                                       $_SESSION['project_id']   =$row1['or_prid'];
                                       $_SESSION['status']       =$row1['or_status'];
@@ -106,6 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                              			}
                                   elseif(strcmp($row1['or_status'],'Site Survey')==0)
                                   {
+                                      $value=1;
                                        $_SESSION['project_name'] =$row1['or_prjname'];     
                                       $_SESSION['project_id']   =$row1['or_prid'];
                                       $_SESSION['status']       =$row1['or_status'];
@@ -115,6 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                   }
                                }     
                      		}
+                                mysqli_data_seek($result1,0);
                      	}	 
                       }              
             }
@@ -133,6 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                               {
                                 	if(strcmp($row1['or_status'],"WO(MD Approval)")==0)	
       	                          {
+                                      $value=1;
       		                             $_SESSION['project_name'] =$row1['or_prjname'];     
                                     $_SESSION['project_id']   =$row1['or_prid'];
                                     $_SESSION['status']       =$row1['or_status'];
@@ -142,6 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                            		  }
                            		  elseif (strcmp($row1['or_status'],'No Funds')==0) 
                            			{
+                                    $value=1;
                            				  $_SESSION['project_name'] =$row1['or_prjname'];     
                                     $_SESSION['project_id']   =$row1['or_prid'];
                                     $_SESSION['status']       =$row1['or_status'];
@@ -151,6 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                            			}
                                  elseif(strcmp($row1['or_status'],'Site Survey')==0)
                                 {
+                                    $value=1;
                                      $_SESSION['project_name'] =$row1['or_prjname'];     
                                     $_SESSION['project_id']   =$row1['or_prid'];
                                     $_SESSION['status']       =$row1['or_status'];
@@ -160,6 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                 }
                             }
                      		}
+                                mysqli_data_seek($result1,0);
                       }
             }
             elseif(isset($_SESSION['pid']) && empty($_SESSION['pn']) && empty($_SESSION['stat']))
@@ -173,6 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                 {
                                     	if(strcmp($row1['or_status'],"WO(MD Approval)")==0)	
           	                          {
+                                        $value=1;
           		                             $_SESSION['project_name'] =$row1['or_prjname'];     
                                         $_SESSION['project_id']   =$row1['or_prid'];
                                         $_SESSION['status']       =$row1['or_status'];
@@ -182,6 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                		  }
                                		  elseif (strcmp($row1['or_status'],'No Funds')==0) 
                                			{
+                                       $value=1;
                                				  $_SESSION['project_name'] =$row1['or_prjname'];     
                                         $_SESSION['project_id']   =$row1['or_prid'];
                                         $_SESSION['status']       =$row1['or_status'];
@@ -191,6 +205,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                			}
                                      elseif(strcmp($row1['or_status'],'Site Survey(MD)')==0)
                                     {
+                                       $value=1;
                                          $_SESSION['project_name'] =$row1['or_prjname'];     
                                         $_SESSION['project_id']   =$row1['or_prid'];
                                         $_SESSION['status']       =$row1['or_status'];
@@ -200,9 +215,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_REQUEST['search']=='click' && @$_R
                                     }
                               }  
                      		}
+                                mysqli_data_seek($result1,0);
                         }
                   }
-            
+if($value==0)
+{
+  ?>
+  <tr>
+      <td colspan="4">No Results </td>
+  </tr>
+  <?php
+}
+    
           
 }
 

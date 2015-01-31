@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include '../include/connection.php';
 //echo "working";
 #####################################
 $result=mysqli_query($con,"SELECT * from stg_stage");

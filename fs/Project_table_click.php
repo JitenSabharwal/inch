@@ -14,8 +14,9 @@ $result1=mysqli_query($con,"SELECT * from orders");
         <tr>
               <td><a href="fs_page.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name'] ?>&or=<?php echo @$_SESSION['order'];?>&po=click"> <?php  echo @$_SESSION['project_name'];  ?></a></td>
               <td><?php echo @$_SESSION['project_id'];?></td>
+              <td><?php echo $_SESSION['status'] ; ?></td>
               <td><?php
-                 
+                 include '../include/connection.php';
                   $pn=$_REQUEST['pn'];
                   $result3=mysqli_query($con,"SELECT * from prj_project where pr_prname='$pn'");//the query to get the whole database in one variable 
                   
@@ -46,6 +47,8 @@ while($row=mysqli_fetch_array($result))
                    $_SESSION['status']       =$row1['or_status'];
                  }
               }
+                                mysqli_data_seek($result1,0);
+
               $_SESSION['date']         =$row['pr_adtm'];
               $_SESSION['order']        =$_REQUEST['or'];
               display_project(); 

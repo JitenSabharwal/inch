@@ -1,6 +1,6 @@
 <?php
 session_start();
-  
+include '../include/connection.php';  
   if(@$_REQUEST['approval']=='Approval')
    {
       include 'stage_approval.php';

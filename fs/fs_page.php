@@ -18,6 +18,8 @@ if(!isset($_SESSION['Employee']) || $_COOKIE['user_role']!="fs")
   -->
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="cssstyles.css" />
+
 <style> 
 body {
 /*  background: url(../random-login-form/css/image/wallpaper2.jpeg) no-repeat center center fixed; 
@@ -294,15 +296,15 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
 <table class="tab-border table"  width="500">
   
   <tr>
-    <th>
+    <td>
       S.No.
-    </th>
-    <th>
+    </td>
+    <td>
         Authority
-    </th>
-    <th>
+    </td>
+    <td>
       Comment
-    </th>   
+    </td>   
   </tr>
   <?php include'comment.php'; ?>
 </table>
