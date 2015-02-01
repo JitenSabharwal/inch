@@ -3,6 +3,7 @@
 $wo=$_REQUEST['or'];
 $com=$_REQUEST['St_comment'];
 $st=$_REQUEST['st'];
+$prname=$_REQUEST['pn'];
 $in=mysqli_query($con,"UPDATE stg_stage SET st_pscomment='$com' WHERE st_stid='$st'");
 if(empty($in))
 {
@@ -23,6 +24,7 @@ else
 											      	$head='From:noreply@auricktech.com';
 											// send email
 											      mail("garvit1608@gmail.com","Ps Comment",$msg,$head);
+											      include '../include/file_detail.php';
 	}
 }
 ?>
