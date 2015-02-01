@@ -485,6 +485,24 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
 ?>
  <br>
  <br>
+ <table class="table table-hover tab-border"  width="500">
+  
+  <tr>
+    <td>
+      S.No.
+    </td>
+    <td>
+      Name
+    </td>
+    <td>
+        Authority
+    </td>
+    <td>
+      Comment
+    </td>   
+  </tr>
+  <?php include'comment.php'; ?>
+</table>
 <form method="POST" action="ap_stage.php?op=<?php echo $_REQUEST['op']; ?>&search=click&pn=<?php echo $_SESSION['project_name']; ?>&or=<?php echo $_SESSION['order'];?>&com=comment&st=<?php echo $_SESSION['stg_id'];?>&st_click=click" onsubmit="return val();">
      <p>
       <textarea name="St_comment" cols="50" rows="4" maxlength="200" placeholder="Comment Here"></textarea>
