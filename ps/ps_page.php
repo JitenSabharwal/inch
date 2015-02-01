@@ -485,7 +485,7 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
 ?>
  <br>
  <br>
- <table class="table table-hover tab-border"  width="500">
+<table class="table table-hover tab-border"  width="500">
   
   <tr>
     <td>
