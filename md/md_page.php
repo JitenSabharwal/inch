@@ -131,7 +131,7 @@ echo "<script>alert('The Project Id is $id_no')</script>";
   }
   else
   {
-      $com="Project is created and people involved are ".$md.$pm.$pi.$ps.$fs.$si.$cl_name;
+      $com="Project is created and people involved are ".$md."  ".$pm." ".$pi." ".$ps." ".$fs." ".$si." ".$cl_name;
       $msg = wordwrap($com,70);
       $head='From:noreply@auricktech.com';
 // send email

@@ -8,7 +8,7 @@ $id=$_SESSION['st_upload'];
 $ido=$_SESSION['or_upload'];
         			
 $valid_formats = array("jpg", "png", "gif", "zip", "bmp");
-$max_file_size = 1024*100000; //100 kb
+$max_file_size = 1024*100000; //10 mb
 //$path = "uploads/"; // Upload directory
 $targetFolder = 'upload/uploads/'; // Relative to the root
 				if(!is_dir($targetFolder.$_SESSION['pr_upload']))
@@ -167,7 +167,7 @@ input[type="submit"]:active {
 		if(@$count !=0){
 			if(empty($updfile))
 			{
-					printf("<p class='status'>%d files Addition was unsuccessfully!</p>\n", $count);
+					printf("<p class='status'>%d files Addition was unsuccessfull!</p>\n", $count);
 
 			}
 			else

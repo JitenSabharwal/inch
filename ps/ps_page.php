@@ -321,7 +321,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval' || $_REQUEST['op'
                     if(@$_REQUEST['wo']=='create' && @$_SESSION['sumit_count']<=4)
                         {
                              include 'quote.php';     
-                             echo "Working";
+                          //   echo "Working";
                              echo $_SESSION['sumit_count'];
                         }
                     if(@$quote_no!=4)
@@ -440,7 +440,7 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
   $pid=$_REQUEST['pn']. '/' . $_REQUEST['or']. '/' . $_REQUEST['st'];
 
 
-            $path="../si/uploads/$pid";
+            $path="../si/upload/uploads/$pid";
            //  echo "<script>alert('$path')</script>";
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
             if(is_dir($path))
