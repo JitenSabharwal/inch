@@ -256,7 +256,7 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
             if(is_dir($path))
             {
             $files_count= count(glob($path.'/'.'*'));
-         //  echo "<script>alert('lol')</script>";
+          
             ?>
 <div id="container">
 
@@ -273,6 +273,7 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
 
               if(in_array($ex[1], $file_display)==true)
               {
+                
 
             echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
               }
@@ -280,9 +281,11 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
           } 
            $arr = explode(".", $filename, 2);  
                     $_SESSION['filename'] = $arr[0];
+
                       
           }
-       
+              echo  $ex[0];
+                   
             
             ?>
       </ul>

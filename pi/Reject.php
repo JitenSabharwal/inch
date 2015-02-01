@@ -19,7 +19,8 @@ else
 	else
 	{
 		$f=$_SESSION['filename'];
-		$del=mysqli_query($con,"DELETE from fid_file where fi_fiid='$f'");
+		echo $_SESSION['filename'];
+		$del=mysqli_query($con,"DELETE from fid_file where fi_stid='$st'");
 		$com="This file cannot be approved";
 		$msg = wordwrap($com,70);
       $head='From:noreply@auricktech.com';
@@ -28,4 +29,5 @@ else
       include '../include/file_delete.php';
 	}
 }
+echo "Working";
 ?>

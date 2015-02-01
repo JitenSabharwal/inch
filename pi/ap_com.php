@@ -4,7 +4,7 @@ include '../include/connection.php';
 if(@$_REQUEST['com']=='comment')
 {
   
-  if($_REQUEST['Approval']=='Approval')
+  if(@$_REQUEST['Approval']=='Approval')
   {
     include 'Approval.php';
   }

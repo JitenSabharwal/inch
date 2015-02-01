@@ -6,7 +6,7 @@
  //   echo "\n$filename size " . filesize($filename) . "\n";
     $str=substr($filename,-12);
     $temp_str=explode('.',$str);
-    if(strcasecmp($_SESSION['filename'],$temp_str[0])==0)
+   // if(strcasecmp($_SESSION['filename'],$temp_str[0])==0)
     {
     	unlink($filename);
     	echo "file deleted";

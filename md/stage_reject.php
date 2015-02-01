@@ -18,7 +18,7 @@ else
 	else
 	{
 		$f=$_SESSION['filename'];
-		$del=mysqli_query($con,"DELETE from fid_file where fi_fiid='$f'");
+		$del=mysqli_query($con,"DELETE from fid_file where fi_stid='$st'");
 
 	}
 }
