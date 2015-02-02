@@ -278,10 +278,6 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
         <?php include 'know_status.php'; ?>  
           </div>  
 
-       <center>
-<div id="container">
-
-<ul>
                 <?php
 }
 
@@ -289,9 +285,6 @@ if(@$_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['
 <br>
 
 
-        <p>&nbsp;</p>
-
-          </center>
 
 <?php
 
@@ -547,7 +540,7 @@ else
 function val1() 
 {
   // body...
-  alert('vvv');
+//  alert('vvv');
   if(document.form4.St_comment.value=='')
   {
     alert('Please enter the comment');
