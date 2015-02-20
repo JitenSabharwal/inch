@@ -23,7 +23,7 @@ while($row=mysqli_fetch_array($result))
 {
 	if($row['st_woid']==$_REQUEST['or'])
 	{
-		$value=1
+		$value=1;
 		$_SESSION['desc']=$row['st_stdesc'];
 		$_SESSION['st_stid']=$row['st_stid'];
 		$_SESSION['rate']=$row['st_strate'];
