@@ -1,8 +1,8 @@
 <table border=1 width=700 class="tab-border table" id="mytable">
-	<th>S.no</th>
-	<th>Quote</th>
-	<th>Vendor Name</th>
-	<th>Vendor Contact</th>
+	<td>S.no</td>
+	<td>Quote</td>
+	<td>Vendor Name</td>
+	<td>Vendor Contact</td>
 	
 <?php
 $_SESSION['x']=1;

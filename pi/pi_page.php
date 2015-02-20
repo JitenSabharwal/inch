@@ -208,7 +208,7 @@ if($_REQUEST['op']=='quotation' || $_REQUEST['op']=='approval')
   <?php include 'description.php' ?>
   </table>
   <?php 
-  include 'file.php';
+    include 'file.php';
   ?>
     <p>
       <textarea name="Quote_comment" cols="50" rows="4" maxlength="200" placeholder="Comment Here"></textarea>

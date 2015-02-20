@@ -47,7 +47,7 @@ $result=mysqli_query($con,"SELECT * from stg_status");
             if(is_dir($path))
             {
             $files_count= count(glob($path.'/'.'*'));
-          echo "<script>alert('lol');</script>";
+        //  echo "<script>alert('lol');</script>";
 
             ?>
 <center>

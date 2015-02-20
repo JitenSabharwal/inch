@@ -1,10 +1,10 @@
 <table width="700" class="table tab-border">
   <tr>
-    <th>S.no</th>
-  <th>Description</th>
-  <th>Quantity</th>
-  <th>Rate</th>
-  <th>Total</th>
+  <td>S.no</td>
+  <td>Description</td>
+  <td>Quantity</td>
+  <td>Rate</td>
+  <td>Total</td>
 
   </tr>
   <?php

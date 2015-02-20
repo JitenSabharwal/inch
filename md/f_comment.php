@@ -1,9 +1,9 @@
 <h4>Comments</h4>
 <table class="table tab-border" width=700>
 	<tr>
-		<th>Name</th>
-		<th>Designation</th>
-		<th>Comment</th>
+		<td>Name</td>
+		<td>Designation</td>
+		<td>Comment</td>
 	</tr>
 <?php
 
