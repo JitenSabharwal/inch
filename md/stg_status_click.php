@@ -41,13 +41,13 @@ $result=mysqli_query($con,"SELECT * from stg_status");
   $pid=$_REQUEST['pn']. '/' . $_REQUEST['or']. '/' . $_REQUEST['st'];
 
 
-           $path="../si/upload/uploads/$pid";
+            $path="../si/upload/uploads/$pid";
            //  echo "<script>alert('$path')</script>";
             $file_display = array('jpg', 'jpeg', 'png', 'gif');
             if(is_dir($path))
             {
             $files_count= count(glob($path.'/'.'*'));
-         //   echo "<script>alert('lol')</script>";
+          echo "<script>alert('lol');</script>";
 
             ?>
 <center>
@@ -67,7 +67,8 @@ $result=mysqli_query($con,"SELECT * from stg_status");
               if(in_array($ex[1], $file_display)==true)
               {
 
-            echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
+                echo  "<li><img src='$path/$filename' width='604' height='453'/></li>";
+              
               }
             }
           }   

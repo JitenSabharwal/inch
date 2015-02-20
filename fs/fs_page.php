@@ -285,29 +285,9 @@ if($_REQUEST['op']=='approval' && @$_REQUEST['search']=='click' && @$_REQUEST['p
 }
 
 ?><br>
-
 <br>
 <br>
-
-
-<br>
-<br>
-<br>
-<table class="tab-border table"  width="500">
-  
-  <tr>
-    <td>
-      S.No.
-    </td>
-    <td>
-        Authority
-    </td>
-    <td>
-      Comment
-    </td>   
-  </tr>
   <?php include'comment.php'; ?>
-</table>
 <br>
 <br>
 

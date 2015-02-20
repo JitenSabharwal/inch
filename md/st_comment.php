@@ -25,6 +25,12 @@ function display()
 		<td><?php echo 'Fs';?></td>
 		<td><?php echo $_SESSION['fs'] ;?></td>
 	</tr>
+	<tr>
+		<td> <?php echo $_SESSION['j']+3; ?></td>		
+		<td><?php echo $_SESSION['ps_name']; ?></td>
+		<td><?php echo 'PS';?></td>
+		<td><?php echo $_SESSION['ps'] ;?></td>
+	</tr>
 	
 	<?php
 
@@ -37,6 +43,7 @@ while($row1=mysqli_fetch_array($result1))
 		$_SESSION['pi_name']=$row1['pr_pi'];
 		$_SESSION['pm_name']=$row1['pr_pm'];
 		$_SESSION['fs_name']=$row1['pr_fs'];
+		$_SESSION['ps_name']=$row1['pr_ps'];
 	}
 }
 while($row=mysqli_fetch_array($result))
@@ -48,6 +55,8 @@ while($row=mysqli_fetch_array($result))
 			$_SESSION['pi']=$row['st_picomment'];
 			$_SESSION['pm']=$row['st_pmcomment'];
 			$_SESSION['fs']=$row['st_fscomment'];
+			$_SESSION['ps']=$row['st_pscomment'];
+
 			display();		
 		}
 	}
