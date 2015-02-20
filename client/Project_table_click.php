@@ -32,6 +32,6 @@ while($row=mysqli_fetch_array($result))
          display_project1();//calling the function diaplay                          
       }
   }
-
+ include '../include/find_project.php';
   
 ?>
